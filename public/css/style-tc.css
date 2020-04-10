@@ -1,825 +1,929 @@
 body{
-    padding: 0px;
-    margin: 0px;
-    background-image: linear-gradient( 109.6deg,  rgba(204,228,247,1) 11.2%, rgba(204,228,247,1) 11.2% );
-   height: 100vh;
+  padding: 0px;
+  margin: 0px;
+  background-image: linear-gradient( 109.6deg,  rgba(204,228,247,1) 11.2%, rgba(204,228,247,1) 11.2% );
+ height: 100vh;
 }
 
 @media (min-width: 320px) and (max-width: 374px){
-    .menu{
-        font-size: 13px !important;
-        font-family: serif;
-      }
-      .menu ul{
-        margin: 0px;
-        padding: 0px;
-      }
-      .menu ul li{
-        padding: 0px 5px !important;
-      }
-      .menu-lg{
-        width: 39%;
-      }
-    .menu-lg button.log{
-        height: 33px;
-        padding: 0px 16px;
-        font-size: 15px;
-        margin: 6px 0px;
+  .menu{
+      font-size: 13px !important;
+      font-family: serif;
     }
-    .form-student{
-      width: 100% !important;
-      font-size: 10px;
+    .menu ul{
+      margin: 0px;
+      padding: 0px;
+    }
+    .menu ul li{
+      padding: 0px 5px !important;
+    }
+    .menu-lg{
+      width: 39%;
+    }
+  .menu-lg button.log{
+      height: 33px;
+      padding: 0px 16px;
+      font-size: 15px;
+      margin: 6px 0px;
+  }
+  
+  .form-student h3{
+      font-size: 19px;
+      text-align: center;
+      margin-bottom: 15px;
+      font-family: serif;
       margin-top: 10px;
-      height: 300px !important;
-    }
-    .form-student h3{
-        font-size: 19px;
-        text-align: center;
-        margin-bottom: 15px;
-        font-family: serif;
-        margin-top: 10px;
-    }
-    .form-student button.save{
-        margin-left: 75px !important;
-        margin-bottom: 4px;
-        width: 118px !important;
-        height: 29px !important;
-    }
-    .list-student h3{
-        font-size: 18px;
-    text-align: center;
-    margin-top: 12px;
-    }
-    .list-student table td{
-      font-size: 4px;
-    }
-    .nav-left button.accordion{
-      font-size: 14px;
-    font-family: initial;
-
-    }
-    .nav-left .panel li a{
-            font-size: 14px;
-    font-family: serif;
-    }
-    .form-student input#name{
-        margin-left: 19px !important;
-    }
-    .form-student input#email{ 
-        margin-left: 38px !important;
-    }
-    .form-student input#phone{  
-        margin-left: 3px !important;
-    }
-    .form-student input#addr{     
-        margin-left: 31px !important;
-    }
-    .form-student input#female{
-      margin-left: 10px;
-    }
-    .form-student span.error{
-      font-size: 8px;
-    }
-    #login{
-      width: 90% !important;
-    font-size: 11px;
-    }
-    .menu-lg label{
-          width: 100px !important;
-    height: 33px !important;
-    font-size: 13px;
-    margin-top: 10px !important;
-    padding-top: 3px;
-    }
-    button.result{
-      width: 118px !important;
+  }
+  .form-student button.save{
+      margin-left: 75px !important;
       margin-bottom: 4px;
-      margin-left: 75px;
-    }
-    button.search{
       width: 118px !important;
-      margin-left: 75px;
-    }
+      height: 29px !important;
+  }
+  .list-student h3{
+      font-size: 18px;
+  text-align: center;
+  margin-top: 12px;
+  }
+  .list-student table td{
+    font-size: 4px;
+  }
+  .nav-left button.accordion{
+    font-size: 14px;
+  font-family: initial;
+
+  }
+  .nav-left .panel li a{
+          font-size: 14px;
+  font-family: serif;
+  }
+  .form-student input#name{
+      margin-left: 19px !important;
+  }
+  .form-student input#email{ 
+      margin-left: 38px !important;
+  }
+  .form-student input#phone{  
+      margin-left: 3px !important;
+  }
+  .form-student input#addr{     
+      margin-left: 31px !important;
+  }
+  .form-student input#female{
+    margin-left: 10px;
+  }
+  .form-student input#mssv{
+    margin-left: 19px;
+  }
+  .form-student input#lop{
+    margin-left: 45px;
+  }
+  .form-student input#khoa{
+    margin-left: 40px;
+  }
+  .form-student span.error{
+    font-size: 8px;
+  }
+  #login{
+    width: 90% !important;
+  font-size: 11px;
+  }
+  .menu-lg label{
+        width: 100px !important;
+  height: 33px !important;
+  font-size: 13px;
+  margin-top: 10px !important;
+  padding-top: 3px;
+  }
+  button.result{
+    width: 118px !important;
+    margin-bottom: 4px;
+    margin-left: 75px;
+  }
+  button.search{
+    width: 118px !important;
+    margin-left: 75px;
+  }
+  .form-student button.update{
+    margin-left: 75px;
+    width: 118px !important;
+    height: 29px !important;
+    margin-bottom: 4px;
+  }
+  .form-student{
+    width: 100% !important;
+    font-size: 10px;
+    margin-top: 10px;
+    height: 379px !important;
+  }
 }
 @media (min-width: 375px) and (max-width: 424px){
-    .menu{
-        font-size: 15px !important;
-        font-family: serif;
-      }
-      .menu ul{
-        margin: 0px;
-        padding: 0px;
-      }
-      .menu ul li{
-        padding: 0px 5px !important;
-      }
-      .menu-lg{
-        width: 39%;
-      }
-    .menu-lg button.log{
-        height: 33px;
-        padding: 0px 16px;
-        font-size: 15px;
-        margin: 8px 9px;
+  .menu{
+      font-size: 15px !important;
+      font-family: serif;
     }
-    .form-student{
-      width: 100% !important;
-      font-size: 10px;
-      margin-top: 10px;
+    .menu ul{
+      margin: 0px;
+      padding: 0px;
     }
-    .form-student h3{
-        font-size: 19px;
-        text-align: center;
-        margin-bottom: 15px;
-        font-family: serif;
-        margin-top: 12px;
+    .menu ul li{
+      padding: 0px 5px !important;
     }
-    .form-student button.save{
-        margin-left: 76px !important;
-        margin-bottom: 6px;
-        width: 146px !important;
-        height: 29px !important;
+    .menu-lg{
+      width: 39%;
     }
-    .list-student h3{
-        font-size: 18px;
-    text-align: center;
-    margin-top: 12px;
-    }
-    .list-student table td{
-      font-size: 6px;
-    }
-    .nav-left button.accordion{
+  .menu-lg button.log{
+      height: 33px;
+      padding: 0px 16px;
       font-size: 15px;
-      font-family: initial;
-    }
-    .nav-left .panel li a{
-            font-size: 15px;
-            font-family: serif;
-    }
-    .form-student input#name{
-        margin-left: 19px !important;
-    }
-    .form-student input#email{ 
-        margin-left: 38px !important;
-    }
-    .form-student input#phone{  
-        margin-left: 3px !important;
-    }
-    .form-student input#addr{     
-        margin-left: 31px !important;
-    }
-    .form-student input#female{
-      margin-left: 10px;
-    }
-    .form-student input#name, input#email, input#phone, input#addr{
-      width: 145px;
-    }
-    .form-student span.error{
-      font-size: 11px;
-    margin-left: 6px;
-    }
-    #login{
-      width: 92% !important;
-    font-size: 12px;
-    }
-    .menu-lg label{
-    width: 130px !important;
-    height: 33px !important;
-    font-size: 15px;
-    margin-top: 10px !important;
-    padding-top: 3px;
-    }
-   
-    button.result{
+      margin: 8px 9px;
+  }
+
+  .form-student h3{
+      font-size: 19px;
+      text-align: center;
+      margin-bottom: 15px;
+      font-family: serif;
+      margin-top: 12px;
+  }
+  .form-student button.save{
+      margin-left: 76px !important;
+      margin-bottom: 6px;
       width: 146px !important;
-      margin-bottom: 4px;
-      margin-left: 76px;
-    }
-    button.search{
-      width: 146px !important;
-      margin-left: 76px;
-    }
-}
-@media (min-width: 425px) and (max-width: 767px){
-    .menu{
-        font-size: 19px !important;
-        font-family: serif;
-      }
-      .menu ul{
-        margin: 0px;
-        padding: 0px;
-      }
-      .menu ul li{
-        padding: 0px 5px !important;
-      }
-      .menu-lg{
-        width: 38%;
-      }
-    .menu-lg button.log{
-        height: 33px;
-        padding: 0px 23px;
-        font-size: 16px;
-        margin: 8px 9px;
-    }
-    .form-student{
-      width: 100% !important;
-      font-size: 14px;
-      font-family: serif;
-      /* height: 20% !important; */
-      margin-top: 10px;
-    }
-    .form-student h3{
-        font-size: 21px;
-        text-align: center;
-        margin-bottom: 15px;
-        margin-top: 13px;
-    }
-    .form-student button.save{
-        margin-left: 98px !important;
-        margin-bottom: 5px;
-        width: 40% !important;
-        height: 33px !important;
-    }
-    .list-student h3{
-        font-size: 18px;
-    text-align: center;
-    margin-top: 12px;
-    }
-    .list-student table td{
-      font-size: 7px;
-    }
-    .nav-left button.accordion{
-      font-size: 17px;
-      font-family: initial;
-    }
-    .nav-left .panel li a{
-            font-size: 15px;
-            font-family: serif;
-            margin-left: 38px;
-    }
-    .form-student input#name{
-        margin-left: 28px !important;
-    }
-    .form-student input#email{
-        margin-left: 50px !important;
-    }
-    .form-student input#phone{
-        margin-left: 10px !important;
-    }
-    .form-student input#addr{
-        margin-left: 43px !important;
-    }
-    .form-student input#female{
-      margin-left: 10px;
-    }
-    .form-student input#name, input#email, input#phone, input#addr{
-      width: 40%;
-    }
-    .form-student span.error{
-      font-size: 12px;
-      margin-left: 6px;
-    }
-    .list-student table{
-      width: 100%;
-    }
-    #login{
-      width: 93% !important;
-    font-size: 14px;
-    }
-    .menu-lg label{
-    width: 130px !important;
-    height: 33px !important;
+      height: 29px !important;
+  }
+  .list-student h3{
+      font-size: 18px;
+  text-align: center;
+  margin-top: 12px;
+  }
+  .list-student table td{
+    font-size: 6px;
+  }
+  .nav-left button.accordion{
     font-size: 15px;
-    margin-top: 10px !important;
-    padding-top: 3px;
-    }
-    
-    button.result{
-      width: 40% !important;
-      margin-bottom: 4px;
-      margin-left: 98px;
-    }
-    button.search{
-      width: 40% !important;
-      margin-left: 98px;
-    }
-}
-@media (min-width: 768px) and (max-width: 1023px){
-    .menu{
-        font-size: 19px !important;
-        font-family: serif;
-      }
-      .menu ul{
-        margin: 0px;
-        padding: 0px;
-      }
-      .menu ul li{
-        padding: 0px 19px !important;
-      }
-      .menu-lg{
-        width: 39%;
-      }
-    .menu-lg button.log{
-      height: 33px;
-    padding: 0px 23px;
-    font-size: 16px;
-    margin: 8px 86px;
-    }
-    .form-student{
-      width: 100% !important;
-      font-size: 16px;
-      font-family: serif;
-       height: 360px !important; 
-    }
-    .form-student h3{
-        font-size: 21px;
-        text-align: center;
-        margin-bottom: 15px;
-        margin-top: 13px;
-    }
-    .form-student button.save{
-        margin-left: 112px !important;
-        margin-bottom: 6px;
-        width: 42% !important;
-        height: 33px !important;
-    }
-    .list-student h3{
-        font-size: 20px;
-        text-align: center;
-        margin-top: 12px;
-        font-family: serif;
-    }
-    .list-student table td{
-      font-size: 14px;
-    }
-    .nav-left button.accordion{
-          font-size: 17px;
     font-family: initial;
-    width: 100% !important;
-    padding: 17px 7px;
-    margin: 0px;
-    }
-    .nav-left .panel li a{
-          font-size: 14px;
-    font-family: serif;
-    margin-left: 1px;
-    }
-    .form-student input#name{
-        margin-left: 36px !important;
-    }
-    .form-student input#email{
-        margin-left: 60px !important;
-    }
-    .form-student input#phone{
-        margin-left: 14px !important;
-    }
-    .form-student input#addr{
-        margin-left: 51px !important;
-    }
-    .form-student input#female{
-      margin-left: 10px;
-    }
-    .form-student input#name, input#email, input#phone, input#addr{
-      width: 42%;
-    }
-    .form-student span.error{
-      font-size: 14px;
-      margin-left: 6px;
-    }
-    .list-student table{
-      width: 100%;
-    }
-    #login{
-      width: 53% !important;
-    font-size: 15px;
-    }
-    .menu-lg label{
-        width: 172px !important;
-    height: 33px !important;
-    font-size: 17px;
-    margin-top: 10px !important;
-    padding-top: 2px;
-    }
-    button.result{
-      width: 42% !important;
-      margin-bottom: 4px;
-      margin-left: 112px;
-    }
-    button.search{
-      width: 42% !important;
-      margin-left: 112px;
-    }
-}
-@media (min-width: 1024px) and (max-width: 1439px){
-    .menu{
-        font-size: 19px !important;
-        font-family: serif;
-      }
-      .menu ul{
-        margin: 0px;
-        padding: 0px;
-      }
-      .menu ul li{
-        padding: 0px 19px !important;
-      }
-      .menu-lg{
-        width: 39%;
-      }
-    .menu-lg button.log{
-      height: 33px;
-    padding: 0px 23px;
-    font-size: 16px;
-    margin: 8px 86px;
-    }
-    .form-student{
-      width: 100% !important;
-      font-size: 16px;
-      font-family: serif;
-      height: 325px !important;
-    }
-    .form-student h3{
-        font-size: 21px;
-        text-align: center;
-        margin-bottom: 15px;
-        margin-top: 13px;
-    }
-    .form-student button.save{
-        margin-left: 116px !important;
-        margin-bottom: 7px;
-        width: 40% !important;
-        height: 33px !important;
-    }
-    .list-student h3{
-        font-size: 21px;
-        text-align: center;
-        margin-top: 12px;
-        font-family: serif;
-        font-weight: bold;
-    }
-    .list-student table td{
-      font-size: 17px;
-      font-family: serif;
-    }
-    .nav-left button.accordion{
-          font-size: 17px;
-    font-family: initial;
-    width: 100% !important;
-    padding: 17px 7px;
-    margin: 0px;
-    }
-    .nav-left .panel li a{
+  }
+  .nav-left .panel li a{
           font-size: 15px;
           font-family: serif;
-          margin-left: 1px;
+  }
+  .form-student input#name{
+      margin-left: 19px !important;
+  }
+  .form-student input#email{ 
+      margin-left: 38px !important;
+  }
+  .form-student input#phone{  
+      margin-left: 3px !important;
+  }
+  .form-student input#addr{     
+      margin-left: 31px !important;
+  }
+  .form-student input#female{
+    margin-left: 10px;
+  }
+  .form-student input#name, input#email, input#phone, input#addr, input#mssv, input#lop, input#khoa{
+    width: 145px;
+  }
+  .form-student span.error{
+    font-size: 11px;
+  margin-left: 6px;
+  }
+  #login{
+    width: 92% !important;
+  font-size: 12px;
+  }
+  .menu-lg label{
+  width: 130px !important;
+  height: 33px !important;
+  font-size: 15px;
+  margin-top: 10px !important;
+  padding-top: 3px;
+  }
+ 
+  button.result{
+    width: 146px !important;
+    margin-bottom: 4px;
+    margin-left: 76px;
+  }
+  button.search{
+    width: 146px !important;
+    margin-left: 76px;
+  }
+  .form-student input#mssv{
+    margin-left: 19px;
+  }
+  .form-student input#lop{
+    margin-left: 45px;
+  }
+  .form-student input#khoa{
+    margin-left: 40px;
+  }
+  .form-student button.update{
+    margin-left: 75px;
+    width: 146px !important;
+    height: 29px !important;
+    margin-bottom: 4px;
+  }
+  .form-student{
+    width: 100% !important;
+    font-size: 10px;
+    margin-top: 10px;
+    height: 383px !important;
+  }
+}
+@media (min-width: 425px) and (max-width: 767px){
+  .menu{
+      font-size: 19px !important;
+      font-family: serif;
     }
-    .form-student input#name{
-        margin-left: 36px !important;
+    .menu ul{
+      margin: 0px;
+      padding: 0px;
     }
-    .form-student input#email{
-        margin-left: 60px !important;
+    .menu ul li{
+      padding: 0px 5px !important;
     }
-    .form-student input#phone{
-        margin-left: 14px !important;
+    .menu-lg{
+      width: 38%;
     }
-    .form-student input#addr{
-        margin-left: 51px !important;
-    }
-    .form-student input#female{
-      margin-left: 10px;
-    }
-    .form-student input#name, input#email, input#phone, input#addr{
-      width: 40%;
-    }
-    .form-student span.error{
+  .menu-lg button.log{
+      height: 33px;
+      padding: 0px 23px;
       font-size: 16px;
-      margin-left: 6px;
+      margin: 8px 9px;
+  }
+  .form-student h3{
+      font-size: 21px;
+      text-align: center;
+      margin-bottom: 15px;
+      margin-top: 13px;
+  }
+  .form-student button.save{
+      margin-left: 84px !important;
+      margin-bottom: 5px;
+      width: 40% !important;
+      height: 33px !important;
+  }
+  .list-student h3{
+      font-size: 18px;
+  text-align: center;
+  margin-top: 12px;
+  }
+  .list-student table td{
+    font-size: 7px;
+  }
+  .nav-left button.accordion{
+    font-size: 17px;
+    font-family: initial;
+  }
+  .nav-left .panel li a{
+          font-size: 15px;
+          font-family: serif;
+          margin-left: 38px;
+  }
+  .form-student input#name{
+      margin-left: 25px !important;
+  }
+  .form-student input#email{
+      margin-left: 44px !important;
+  }
+  .form-student input#phone{
+      margin-left: 10px !important;
+  }
+  .form-student input#addr{
+      margin-left: 43px !important;
+  }
+  .form-student input#female{
+    margin-left: 10px;
+  }
+  .form-student input#name, input#email, input#phone, input#addr, input#mssv, input#lop, input#khoa{
+    width: 40%;
+  }
+  .form-student span.error{
+    font-size: 12px;
+    margin-left: 6px;
+  }
+  .list-student table{
+    width: 100%;
+  }
+  #login{
+    width: 93% !important;
+  font-size: 14px;
+  }
+  .menu-lg label{
+  width: 130px !important;
+  height: 33px !important;
+  font-size: 15px;
+  margin-top: 10px !important;
+  padding-top: 3px;
+  }
+  
+  button.result{
+    width: 40% !important;
+    margin-bottom: 4px;
+    margin-left: 84px;
+  }
+  button.search{
+    width: 40% !important;
+    margin-left: 84px;
+  }
+  .form-student input#mssv{
+    margin-left: 26.2px;
+  }
+  .form-student input#lop{
+    margin-left: 52px;
+  }
+  .form-student input#khoa{
+    margin-left: 46px;
+  }
+  .form-student button.update{
+    margin-left: 84px;
+    width: 40% !important;
+    height: 33px !important;
+    margin-bottom: 4px;
+  }
+  .form-student{
+    width: 100% !important;
+    font-size: 10px;
+    margin-top: 10px;
+    height: 400px !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px){
+  .menu{
+      font-size: 19px !important;
+      font-family: serif;
     }
-    .list-student table{
-      width: 100%;
+    .menu ul{
+      margin: 0px;
+      padding: 0px;
     }
-    #login{
-      width: 53% !important;
-    font-size: 18px;
+    .menu ul li{
+      padding: 0px 19px !important;
     }
-    .menu-lg label{
-        width: 200px !important;
-        height: 37px !important;
+    .menu-lg{
+      width: 39%;
+    }
+  .menu-lg button.log{
+    height: 33px;
+  padding: 0px 23px;
+  font-size: 16px;
+  margin: 8px 86px;
+  }
+ 
+  .form-student h3{
+      font-size: 21px;
+      text-align: center;
+      margin-bottom: 15px;
+      margin-top: 13px;
+  }
+  .form-student button.save{
+      margin-left: 86px !important;
+      margin-bottom: 6px;
+      width: 20% !important;
+      height: 33px !important;
+  }
+  .list-student h3{
+      font-size: 20px;
+      text-align: center;
+      margin-top: 12px;
+      font-family: serif;
+  }
+  .list-student table td{
+    font-size: 14px;
+  }
+  .nav-left button.accordion{
         font-size: 17px;
-        margin-top: 10px !important;
-        padding-top: 4px;
+  font-family: initial;
+  width: 100% !important;
+  padding: 17px 7px;
+  margin: 0px;
+  }
+  .nav-left .panel li a{
+        font-size: 14px;
+  font-family: serif;
+  margin-left: 1px;
+  }
+  .form-student input#name{
+      margin-left: 29px !important;
+  }
+  .form-student input#email{
+      margin-left: 48px !important;
+  }
+  .form-student input#phone{
+      margin-left: 14px !important;
+  }
+  .form-student input#addr{
+      margin-left: 51px !important;
+  }
+  .form-student input#female{
+    margin-left: 10px;
+  }
+  .form-student input#name, input#email, input#phone, input#addr, input#mssv, input#lop, input#khoa{
+    width: 42%;
+  }
+  .form-student span.error{
+    font-size: 14px;
+    margin-left: 6px;
+  }
+  .list-student table{
+    width: 100%;
+  }
+  #login{
+    width: 53% !important;
+  font-size: 15px;
+  }
+  .menu-lg label{
+      width: 172px !important;
+  height: 33px !important;
+  font-size: 17px;
+  margin-top: 10px !important;
+  padding-top: 2px;
+  }
+  button.result{
+    width: 42% !important;
+    margin-bottom: 4px;
+    margin-left: 86px;
+  }
+  button.search{
+    width: 42% !important;
+    margin-left: 86px;
+  }
+  .form-student input#mssv{
+    margin-left: 30px;
+  }
+  .form-student input#lop{
+    margin-left: 55px;
+  }
+  .form-student input#khoa{
+    margin-left: 49px;
+  }
+  .form-student button.update{
+    margin-left: 2px;
+    width: 21.2% !important;
+    height: 33px !important;
+    margin-bottom: 4px;
+  }
+  .form-student{
+    width: 100% !important;
+    font-size: 10px;
+    margin-top: 10px;
+    height: 383px !important;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1439px){
+  .menu{
+      font-size: 19px !important;
+      font-family: serif;
     }
-   
-    button.result{
-      width: 21.5% !important;
-      margin-bottom: 4px;
-      margin-left: 116px;
+    .menu ul{
+      margin: 0px;
+      padding: 0px;
     }
-    button.search{
-      width: 18% !important;
+    .menu ul li{
+      padding: 0px 19px !important;
     }
+    .menu-lg{
+      width: 39%;
+    }
+  .menu-lg button.log{
+    height: 33px;
+  padding: 0px 23px;
+  font-size: 16px;
+  margin: 8px 86px;
+  }
+ 
+  .form-student h3{
+      font-size: 21px;
+      text-align: center;
+      margin-bottom: 15px;
+      margin-top: 13px;
+  }
+  .form-student button.save{
+      margin-left: 88px !important;
+      margin-bottom: 7px;
+      width: 21.4% !important;
+      height: 33px !important;
+  }
+  .list-student h3{
+      font-size: 21px;
+      text-align: center;
+      margin-top: 12px;
+      font-family: serif;
+      font-weight: bold;
+  }
+  .list-student table td{
+    font-size: 17px;
+    font-family: serif;
+  }
+  .nav-left button.accordion{
+        font-size: 17px;
+  font-family: initial;
+  width: 100% !important;
+  padding: 17px 7px;
+  margin: 0px;
+  }
+  .nav-left .panel li a{
+        font-size: 15px;
+        font-family: serif;
+        margin-left: 1px;
+  }
+  .form-student input#name{
+      margin-left: 28px !important;
+  }
+  .form-student input#email{
+      margin-left: 48px !important;
+  }
+  .form-student input#phone{
+      margin-left: 14px !important;
+  }
+  .form-student input#addr{
+      margin-left: 51px !important;
+  }
+  .form-student input#female{
+    margin-left: 10px;
+  }
+  .form-student input#name, input#email, input#phone, input#addr, input#mssv, input#lop, input#khoa{
+    width: 40%;
+  }
+  .form-student span.error{
+    font-size: 16px;
+    margin-left: 6px;
+  }
+  .list-student table{
+    width: 100%;
+  }
+  #login{
+    width: 53% !important;
+  font-size: 18px;
+  }
+  .menu-lg label{
+      width: 200px !important;
+      height: 37px !important;
+      font-size: 17px;
+      margin-top: 10px !important;
+      padding-top: 4px;
+  }
+ 
+  button.result{
+    width: 21.5% !important;
+    margin-bottom: 4px;
+    margin-left: 88px;
+  }
+  button.search{
+    width: 18% !important;
+  }
+  .form-student input#mssv{
+    margin-left: 29px;
+  }
+  .form-student input#lop{
+    margin-left: 56px;
+  }
+  .form-student input#khoa{
+    margin-left: 50px;
+  }
+  .form-student button.update{
+    margin-left: 2px;
+    width: 17.8% !important;
+    height: 33px !important;
+    margin-bottom: 4px;
+  }
+  .form-student{
+    width: 100% !important;
+    font-size: 10px;
+    margin-top: 10px;
+    height: 374px !important;
+  }
 }
 @media (min-width: 1440px) and (max-width: 1999px){
-    .menu{
-        font-size: 19px !important;
-        font-family: serif;
-      }
-      .menu ul{
-        margin: 0px;
-        padding: 0px;
-      }
-      .menu ul li{
-        padding: 0px 19px !important;
-      }
-      .menu-lg{
-        width: 39%;
-      }
-    .menu-lg button.log{
-      height: 33px;
-    padding: 0px 23px;
-    font-size: 16px;
-    margin: 8px 86px;
-    }
-    .form-student{
-      width: 100% !important;
-      font-size: 19px;
+  .menu{
+      font-size: 19px !important;
       font-family: serif;
-      height: 349px !important;
     }
-    .form-student h3{
-        font-size: 21px;
-        text-align: center;
-        margin-bottom: 15px;
-        margin-top: 13px;
+    .menu ul{
+      margin: 0px;
+      padding: 0px;
     }
-    .form-student button.save{
-        margin-left: 133px !important;
-        margin-bottom: 6px;
-        width: 40% !important;
-        height: 33px !important;
+    .menu ul li{
+      padding: 0px 19px !important;
     }
-    .list-student h3{
-        font-size: 18px;
-    text-align: center;
-    margin-top: 12px;
+    .menu-lg{
+      width: 39%;
     }
-    .list-student table td{
-      font-size: 15px;
-    }
-    .nav-left button.accordion{
-          font-size: 17px;
-    font-family: initial;
+  .menu-lg button.log{
+    height: 33px;
+  padding: 0px 23px;
+  font-size: 16px;
+  margin: 8px 86px;
+  }
+ 
+  .form-student h3{
+      font-size: 21px;
+      text-align: center;
+      margin-bottom: 15px;
+      margin-top: 13px;
+  }
+  .form-student button.save{
+      margin-left: 88px !important;
+      margin-bottom: 6px;
+      width: 21.6% !important;
+      height: 33px !important;
+  }
+  .list-student h3{
+      font-size: 18px;
+  text-align: center;
+  margin-top: 12px;
+  }
+  .list-student table td{
+    font-size: 15px;
+  }
+  .nav-left button.accordion{
+        font-size: 17px;
+  font-family: initial;
+  width: 100% !important;
+  padding: 17px 7px;
+  margin: 0px;
+  }
+  .nav-left .panel li a{
+        font-size: 14px;
+  font-family: serif;
+  margin-left: 1px;
+  }
+  .form-student input#name{
+      margin-left: 29px !important;
+  }
+  .form-student input#email{
+      margin-left: 50px !important;
+  }
+  .form-student input#phone{
+      margin-left: 15px !important;
+  }
+  .form-student input#addr{
+      margin-left: 60px !important;
+  }
+  .form-student input#female{
+    margin-left: 37px;
+  }
+  .form-student input#male{
+    margin-left: 76px !important;
+  }
+  .form-student input#name, input#email, input#phone, input#addr, input#mssv, input#lop, input#khoa{
+    width: 40%;
+  }
+  .form-student span.error{
+    font-size: 20px;
+    margin-left: 6px;
+  }
+  .list-student table{
+    width: 100%;
+  }
+  #login{
+    width: 53% !important;
+  font-size: 18px;
+  }
+  .menu-lg label{
+   width: 245px !important;
+  height: 37px !important;
+  font-size: 18px;
+  margin-top: 10px !important;
+  padding-top: 4px;
+  }
+  button.result{
+    width: 21.5% !important;
+    margin-bottom: 4px;
+    margin-left: 88px;
+  }
+  button.search{
+    width: 18% !important;
+  }
+  .form-student input#mssv{
+    margin-left: 30px;
+  }
+  .form-student input#lop{
+    margin-left: 57px;
+  }
+  .form-student input#khoa{
+    margin-left: 52px;
+  }
+  .form-student button.update{
+    margin-left: 2px;
+    width: 17.7% !important;
+    height: 33px !important;
+    margin-bottom: 4px;
+  }
+  .form-student{
     width: 100% !important;
-    padding: 17px 7px;
-    margin: 0px;
-    }
-    .nav-left .panel li a{
-          font-size: 14px;
-    font-family: serif;
-    margin-left: 1px;
-    }
-    .form-student input#name{
-        margin-left: 41px !important;
-    }
-    .form-student input#email{
-        margin-left: 70px !important;
-    }
-    .form-student input#phone{
-        margin-left: 15px !important;
-    }
-    .form-student input#addr{
-        margin-left: 60px !important;
-    }
-    .form-student input#female{
-      margin-left: 37px;
-    }
-    .form-student input#male{
-      margin-left: 76px !important;
-    }
-    .form-student input#name, input#email, input#phone, input#addr{
-      width: 40%;
-    }
-    .form-student span.error{
-      font-size: 20px;
-      margin-left: 6px;
-    }
-    .list-student table{
-      width: 100%;
-    }
-    #login{
-      width: 53% !important;
-    font-size: 18px;
-    }
-    .menu-lg label{
-     width: 245px !important;
-    height: 37px !important;
-    font-size: 18px;
-    margin-top: 10px !important;
-    padding-top: 4px;
-    }
-    button.result{
-      width: 21.5% !important;
-      margin-bottom: 4px;
-      margin-left: 133px;
-    }
-    button.search{
-      width: 18% !important;
-    }
+    font-size: 10px;
+    margin-top: 10px;
+    height: 400px !important;
+  }
 }
 
 .header{
-    background-color: #0d101c;
-    height: 55px;
-    /* clear: both; */
+  background-color: #0d101c;
+  height: 55px;
+  /* clear: both; */
 }
 
 .head-r .menu-lg {
-    float: right;
-    font-size: 19px;
-    height: 54px;
-    display: flex;
-    flex-direction: row-reverse;
+  float: right;
+  font-size: 19px;
+  height: 54px;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .menu-lg button {
-    width: 105px;
-    height: 40px;
-    border-radius: 8px;
-    outline: none;
-    background-color: #4cc7d4;
-    border: 1px solid #81c3e2;
-    cursor: pointer;
+  width: 105px;
+  height: 40px;
+  border-radius: 8px;
+  outline: none;
+  background-color: #4cc7d4;
+  border: 1px solid #81c3e2;
+  cursor: pointer;
 }
 
 
 button.result{
-  width: 221px;
-  height: 31px;
-  font-weight: bold;
-  cursor: pointer;
-  background-color: #afaaaa;
-  outline: none;
-  border: 1px solid black;
+width: 221px;
+height: 31px;
+font-weight: bold;
+cursor: pointer;
+background-color: #afaaaa;
+outline: none;
+border: 1px solid black;
 }
 button.search{
-  width: 210px;
-  height: 31px;
-  font-weight: bold;
-  cursor: pointer;
-  background-color: #afaaaa;
-  outline: none;
-  border: 1px solid black;
+width: 210px;
+height: 31px;
+font-weight: bold;
+cursor: pointer;
+background-color: #afaaaa;
+outline: none;
+border: 1px solid black;
 }
 .head-l .menu-lg {
-    float: right;
+  float: right;
 }
 
 .head-l .menu {
-    float: left;
-    font-size: 21px;
-    height: 50px;
+  float: left;
+  font-size: 21px;
+  height: 50px;
 }
 .menu-lg label{
-      color: white;
-    border: 1px solid white;
-    width: 170px;
-    height: 38px;
-    text-align: center;
-    margin-top: 8px;
+    color: white;
+  border: 1px solid white;
+  width: 170px;
+  height: 38px;
+  text-align: center;
+  margin-top: 8px;
 }
 
 .head-l .menu li {
-    display: inline-block;
-    padding: 0px 13px;
-    display: inline-block;
+  display: inline-block;
+  padding: 0px 13px;
+  display: inline-block;
 }
 .head-l .menu li a {
-    text-decoration: none;
-    position: relative;
-    color: white;
+  text-decoration: none;
+  position: relative;
+  color: white;
 }
 .head-l .menu li a:before{
-    content: attr(data-text);
-    border-bottom: 3px solid #ef4366;
-    color: #fff;
-    white-space: nowrap;
-    width: 0%;
-    overflow: hidden;
-    padding: 0px 0px;
-    transition: all 0.4s;
-    position: absolute;
-    left: 0;
-    top: -2px;
+  content: attr(data-text);
+  border-bottom: 3px solid #ef4366;
+  color: #fff;
+  white-space: nowrap;
+  width: 0%;
+  overflow: hidden;
+  padding: 0px 0px;
+  transition: all 0.4s;
+  position: absolute;
+  left: 0;
+  top: -2px;
 }
 .head-l .menu li a:hover:before{
-    width: 100%;
+  width: 100%;
 }
 
 
 .nav-left{
-  margin-top: 1px;
+margin-top: 1px;
 }
 
 
 .nav .nav-right{
-    /* float: right; */
-    /* width: 80%; */
-    /* background-color: #75727252; */
-    /* height: 100vh; */
-    /* margin-left: 0px; */
-    /* margin: 0px; */
+  /* float: right; */
+  /* width: 80%; */
+  /* background-color: #75727252; */
+  /* height: 100vh; */
+  /* margin-left: 0px; */
+  /* margin: 0px; */
 }
 
 .nav-right .form-student {
-    width: 45%;
-    border: 1px solid black;
-    height: 348px;
+  width: 45%;
+  border: 1px solid black;
+  height: 348px;
 }
 
 
 .form-student label{
-  margin-left: 12px;
+margin-left: 12px;
 }
 .form-student input#name {
-    margin-left: 35px;
+  margin-left: 35px;
 }
 
 .form-student input#email {
-    margin-left: 59px;
+  margin-left: 59px;
 }
 
 .form-student input#phone {
-    margin-left: 13px;
+  margin-left: 13px;
 }
 
 .form-student input#addr {
-    margin-left: 51px;
+  margin-left: 51px;
 }
 
 .form-student input {
-    margin-bottom: 7px;
+  margin-bottom: 7px;
 }
 
 .form-student input#male {
-    margin-left: 42px;
+  margin-left: 42px;
 }
 
 .form-student button.save {margin-left: 100px;width: 173px;height: 31px;font-weight: bold;cursor: pointer;background-color: #afaaaa;outline: none;border: 1px solid black;}
 
 .form-sdudent input#phone-number {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 
 .accordion {
-  background-color: #0be64e;
-  color: #444;
-  cursor: pointer;
-  padding: 15px 41px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  transition: 0.4s;
+background-color: #0be64e;
+color: #444;
+cursor: pointer;
+padding: 15px 41px;
+width: 100%;
+border: none;
+text-align: left;
+outline: none;
+font-size: 15px;
+transition: 0.4s;
 }
 
 .active, .accordion:hover {
-  background-color: #10d04b;
+background-color: #10d04b;
 }
 
 .panel {
-  padding: 0px 0px;
-  background-color: white;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.4s;
+padding: 0px 0px;
+background-color: white;
+max-height: 0;
+overflow: hidden;
+transition: all 0.4s;
 }
 
 .panel ul {
-    padding: 0px;
-    margin: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 
 .panel li {
-    list-style: none;
-    /* text-align: center; */
-    background-color: #656363;
-    text-align: left;
-    border-bottom: 1px solid black;
+  list-style: none;
+  /* text-align: center; */
+  background-color: #656363;
+  text-align: left;
+  border-bottom: 1px solid black;
 }
 
 .panel li:hover {
-    background-color: black;
-    cursor: pointer;
+  background-color: black;
+  cursor: pointer;
 }
 
 .panel li a {
-    text-decoration: none;
-    color: white;
-    /* font-size: 17px; */
+  text-decoration: none;
+  color: white;
+  /* font-size: 17px; */
 }
 
 .error{
-    color: red;
+  color: red;
 }
 
+.form-student button.update{
+  width: 173px;
+    height: 31px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #afaaaa;
+    outline: none;
+    border: 1px solid black;
+}

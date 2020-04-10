@@ -24,7 +24,7 @@
 	</div>
 	<div class="head-r">
 		<div class="menu-lg">
-			<label>Tên GV</label>
+			<!--<label>Tên GV</label>-->
 		</div>
 	</div>
 		</div>
@@ -55,6 +55,10 @@
 		<div class="form-student">
 			
 				<h3>THÔNG TIN SINH VIÊN</h3>
+				<label>Mã số SV</label>
+				<input type="text" name="mssv" id="mssv">
+				<span id="mssv-error" class="error"></span>
+				<br/>
 				<label>Họ và tên</label>
 				<input type="text" name="name" id="name">
 				<span id="name-error" class="error"></span>
@@ -70,9 +74,13 @@
 				<span id="phone-error" class="error"></span>
 				<br/>
 
-				<label>Địa chỉ</label>
-				<input type="text" name="address" id="addr">
-				<span id="addr-error" class="error"></span>
+				<label>Lớp</label>
+				<input type="text" name="lop" id="lop">
+				<span id="lop-error" class="error"></span>
+				<br/>
+				<label>Khoa</label>
+				<input type="text" name="khoa" id="khoa">
+				<span id="khoa-error" class="error"></span>
 				<br/>
 
 				<label>Giới tính</label>
@@ -80,25 +88,38 @@
 				<input type="radio" name="gender" id="female" value="2">Nữ
 				<span id="gender-error" class="error"></span>
 				<br/>
-				<button onclick="save()" class="save">Lưu lại</button><br>
+				<button onclick="save()" class="save">Thêm Sinh Viên</button>
+				<button class="update">Cập Nhật Thông Tin</button>
+				<br>
 				<button class="result">Xuất Kết Quả</button>
 				<button class="search">Tìm Kiếm</button>
 				
 			
 		</div>
-		<div class="list-student" id="list-student">
+		<div class="list-student" id="list_student">
 			<h3>Danh sách sinh viên</h3>
 			<table id="gr-students" border="1" cellpadding="10" cellspacing="0">
 				<tr>
-					<td>STT</td>
-					<td>Họ Tên</td>
-					<td>Email</td>
-					<td>Điện Thoại</td>
+					<td>MSSV</td>
+					<td>Họ và tên</td>
 					<td>Giới tính</td>
-					<td>Địa Chỉ</td>
-					<td>Hình Ảnh</td>
-					<td>Chức Năng</td>
+					<td>Email</td>
+					<td>Số điện thoại</td>
+					<td>Lớp</td>
+					<td>Khoa</td>
 					</tr>
+				<% list_student.forEach(function(sinhvien){ %>
+				<tr>
+					<td><%=sinhvien.MSSV %></td>
+					<td><%=sinhvien.HoVaTen %></td>
+					<td><%=sinhvien.GioiTinh %></td>
+					<td><%=sinhvien.Email %></td>
+					<td><%=sinhvien.SDT %></td>
+					<td><%=sinhvien.Lop %></td>
+					<td><%=sinhvien.Khoa %></td>
+				
+					</tr>
+					<% }); %>
 			</table>
 		</div>
 		</div>
@@ -108,17 +129,6 @@
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
 <script src='https://cdn.jsdelivr.net/g/lodash@4(lodash.min.js+lodash.fp.min.js)'></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
