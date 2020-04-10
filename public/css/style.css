@@ -1,0 +1,235 @@
+body{
+    padding: 0px;
+    margin: 0px;
+}
+    
+.header{
+    background-color: #0d101c;
+    height: 55px;
+}
+
+.head-r .menu-lg {
+    float: right;
+    font-size: 20px;
+}
+
+.menu-lg li:hover {
+    background-color: gray;
+    transition: all 0.5s;
+}
+
+.menu-lg li a:hover {
+    color: white;
+}
+
+.menu-lg li a {
+    text-decoration: none;
+    color: white;
+}
+
+.menu-lg li {
+    display: inline-block;
+    padding: 9px 14px;
+    border: 1px solid #ffffff87;
+    border-radius: 9px;
+    background-color: transparent;
+}
+
+.head-l .menu-lg {
+    float: right;
+}
+
+.head-l .menu {
+    float: left;
+    font-size: 22px;
+    height: 50px;
+}
+
+.head-r {
+}
+
+.head-l .menu li {
+    display: inline-block;
+    padding: 0px 13px;
+    display: inline-block;
+}
+
+
+
+
+.nav{
+    height: 100vh;
+    background-image: url("img/banner.png");
+    background-size: cover;
+}
+
+.nav .nav-l {
+    float: left;
+}
+
+.nav .nav-r {
+    float: right;
+    position: relative;
+    top: 20%;
+    left: -5%;
+    width: 38%;
+}
+
+.menu-ct li {
+    display: inline-block;
+    padding: 5px 20px;
+    border: 1px solid black;
+    background-color: #00640080;
+    border-radius: 19px;
+}
+
+.menu-ct li:hover {
+    background-color: green;
+    transition: ease 0.6s;
+    border: 1px solid black;
+}
+
+.menu-ct li a:hover {
+    color: white;
+}
+
+.menu-ct ul {
+    font-size: 29px;
+}
+
+.menu-ct li a {
+    text-decoration: none;
+    color: white;
+}
+
+.content .ql {
+    font-size: 21px;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 17px;
+}
+
+.content .bd {font-size: 28px;}
+
+.nav-r .content p.ht {
+    font-size: 45px;
+    color: black;
+    font-weight: bold;
+    font-style: oblique;
+}
+.head-l .menu li a {
+    text-decoration: none;
+    position: relative;
+    color: white;
+}
+.head-l .menu li a:before{
+    content: attr(data-text);
+    border-bottom: 3px solid #ef4366;
+    color: #fff;
+    white-space: nowrap;
+    width: 0%;
+    overflow: hidden;
+    padding: 1px 0;
+    transition: all 0.4s;
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+.head-l .menu li a:hover:before{
+    width: 100%;
+}
+
+.footer .first-ft{
+    height: 325px;
+    background-color: #0d0e0f;
+}
+.footer .last-ft{
+    height: 50px;
+    background-color: black;
+}
+
+.last-ft p {
+    color: lightblue;
+    font-size: 17px;
+    text-align: center;
+    transform: translate(10px, 15px);
+}
+
+.lh-1{
+    float: left;
+    width: 30%;
+    margin-top: 20px;
+}
+
+p.ct-all {
+    color: white;
+    font-size: 21px;
+}
+
+.lh-1 p {
+    padding-left: 100px;
+}
+
+.lh-2 p.fl a:hover {
+    color: #00ff89bf;
+    padding-left: 7px;
+    transition: linear 0.3s;
+}
+
+.lh-2 p.fl a {
+    text-decoration: none;
+    color: #959595;
+}
+
+p.ct2 {
+    color: #959595;
+}
+.lh-2{
+    float: left;
+    width: 30%;
+    margin-top: 20px;
+}
+
+.lh-2 p {
+    padding-left: 65px;
+}
+.lh-3{
+    float: right;
+    width: 40%;
+    margin-top: 20px;
+}
+
+.lh-3 input[type="submit"] {
+    padding: 10px 32px;
+    border-radius: 15px;
+    border: 1px solid black;
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
+.lh-3 input[type="submit"]:hover {
+    background-color: #60d4e0;
+    transition: linear 0.3s;
+    cursor: pointer;
+    border: 1px solid lightcyan;
+}
+
+.lh-3 textarea {
+    padding-top: 5px;
+    padding-left: 5px;
+    box-shadow: 0px 0px 7px 3px darkslategray;
+}
+
+
+
+.lh-3 p.nd {
+    font-style: italic;
+    font-size: 17px;
+    color: #959595;
+}
+
+
+.all{
+    height: 100vh;
+    background-color: #00000036;
+}

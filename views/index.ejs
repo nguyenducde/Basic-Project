@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="./css/style-main.css">
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- PHẦN HEADER   !-->
+<div class="header">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+				<div class="head-l">
+		<div class="menu">
+			<ul style="margin-top: 15px;">
+				<li><a href="#1" data-text="Trang Chủ">Trang Chủ</a></li>
+				<li><a href="#1" data-text="Tin Tức">Tin Tức</a></li>
+				<li><a href="#1" data-text="Liên Hệ">Liên Hệ</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="head-r">
+			<button><a href="https://luongtuyenquang.github.io/handsome" target="_blank">Nhóm QĐT</a></button>	
+	</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- PHẦN NAV   !-->
+<div class="nav">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+				<div class="nav-l">
+		
+				</div>
+
+	<div class="nav-r">
+		<div class="content">
+			<p class="ht">Học tốt hơn cùng nhau</p>
+			<div class="ql">
+				Quản lý lớp học của bạn. An toàn. Miễn phí
+			</div>
+			<div class="bd">
+				Bạn là....
+			</div>
+		</div>
+		<div class="menu-ct">
+			<ul style="padding-left: 0px;">
+				<li onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><a href="#1">Teacher</a></li>
+				<li onclick="document.getElementById('id02').style.display='block'" style="width:auto;"><a href="#1">Student</a></li>
+			</ul>
+		</div>
+	</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- PHẦN FOOTER   !-->
+<div class="footer">
+	<div class="first-ft">
+		
+			<div class="lh-1">
+			<p class="ct-all">Contact Info</p>
+			<p class="add ct2">Address: ABC</p>
+			<p class="phone ct2">Phone: 0911111111</p>
+		</div>
+		<div class="lh-2">
+			<p class="ct-all">Follow Us</p>
+			<p class="fl"><a href="https://www.facebook.com/" target="_blank">FaceBook</a></p>
+			<p class="fl"><a href="#1">Gmail</a></p>
+			<p class="fl"><a href="#1">Twitter</a></p>
+		</div>
+		<div class="lh-3">
+			<p class="ct-all">FeedBack</p>
+			<p class="nd">Bạn đang có thắc mắc hoặc muốn góp ý với chúng tôi</p>
+			<p class="nd">Hãy để lại nội dung bên dưới...</p>
+			<textarea cols="40" rows="4" placeholder="Nhập nội dung"></textarea><br>
+			<input type="submit" name="" value="Gửi">
+		</div>
+		</div>
+	<div class="last-ft">
+		<div class="container-fluid">
+			
+				
+					<p>&copy; 2020 - All rights Reserved | Designer: Lương Tuyên Quang</p>
+				
+			
+		</div>
+	</div>
+</div>
+
+
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="/teacher" method="post" id="login">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input class="username" type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input class="pass" type="password" placeholder="Enter Password" name="psw"  required>
+        
+      <button class="log" type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+</script>
+</body>
+</html>

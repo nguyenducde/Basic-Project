@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quản Lý Sinh Viên</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="./css/style-tc.css">
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+	<!-- <script type="text/javascript" src="js/student.js"></script> -->
+</head>
+<body onload="renderListStudent()">
+<div class="header">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+				<div class="head-l">
+		<div class="menu">
+			<ul style="margin-top: 15px;">
+				<li><a href="http://localhost:4000/" data-text="Trang Chủ">Trang Chủ</a></li>
+				<li><a href="#1" data-text="Tin Tức">Tin Tức</a></li>
+				<li><a href="#1" data-text="Liên Hệ">Liên Hệ</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="head-r">
+		<div class="menu-lg">
+			<label>Tên GV</label>
+		</div>
+	</div>
+		</div>
+	</div>
+</div>
+
+<div class="nav">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+				<div class="nav-left">
+	<button class="accordion" id="manage">Quản Lý</button>
+	<button class="accordion">Điểm Danh</button>
+		<div class="panel">
+		  <li><a href="teacher_tructiep">Trực Tiếp</a></li>
+		  <li><a href="teacher_face">Nhận Diện Khuôn Mặt</a></li>
+		  <li><a href="teacher_qr">Mã QR</a></li>
+		</div>
+	<button class="accordion">Đăng Xuất</button>
+		<div class="panel">
+		  <p>Chức mừng bạn đã bị khóa acc vĩnh viễn</p>
+		</div>
+	</div>
+	</div>
+
+	<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+	<div class="nav-right">
+		<div class="form-student">
+			
+				<h3>THÔNG TIN SINH VIÊN</h3>
+				<label>Họ và tên</label>
+				<input type="text" name="name" id="name">
+				<span id="name-error" class="error"></span>
+				<br/>
+
+				<label>Email</label>
+				<input type="text" name="email" id="email">
+				<span id="email-error" class="error"></span>
+				<br/>
+
+				<label>Số điện thoại</label>
+				<input type="text" name="phone" id="phone">
+				<span id="phone-error" class="error"></span>
+				<br/>
+
+				<label>Địa chỉ</label>
+				<input type="text" name="address" id="addr">
+				<span id="addr-error" class="error"></span>
+				<br/>
+
+				<label>Giới tính</label>
+				<input type="radio" name="gender" id="male" value="1">Name
+				<input type="radio" name="gender" id="female" value="2">Nữ
+				<span id="gender-error" class="error"></span>
+				<br/>
+				<button onclick="save()" class="save">Lưu lại</button><br>
+				<button class="result">Xuất Kết Quả</button>
+				<button class="search">Tìm Kiếm</button>
+				
+			
+		</div>
+		<div class="list-student" id="list-student">
+			<h3>Danh sách sinh viên</h3>
+			<table id="gr-students" border="1" cellpadding="10" cellspacing="0">
+				<tr>
+					<td>STT</td>
+					<td>Họ Tên</td>
+					<td>Email</td>
+					<td>Điện Thoại</td>
+					<td>Giới tính</td>
+					<td>Địa Chỉ</td>
+					<td>Hình Ảnh</td>
+					<td>Chức Năng</td>
+					</tr>
+			</table>
+		</div>
+		</div>
+		</div>
+
+
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script src='https://cdn.jsdelivr.net/g/lodash@4(lodash.min.js+lodash.fp.min.js)'></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+$(document).ready(function(){
+	$('#manage').click(function(){
+		$('.nav-right').animate({
+			height: 'toggle'
+		});
+	});
+});
+
+
+
+
+</script>
+</body>
+</html>

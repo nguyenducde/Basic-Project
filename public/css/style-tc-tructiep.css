@@ -1,0 +1,517 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    background-image: linear-gradient( 109.6deg,  rgba(204,228,247,1) 11.2%, rgba(204,228,247,1) 11.2% );
+    height: 100vh;
+    font-family: serif !important;
+}
+@media (min-width: 320px) and (max-width: 374px){
+    .menu{
+        font-size: 13px !important;
+        font-family: serif;
+      }
+      .menu ul{
+        margin: 0px;
+        padding: 0px;
+      }
+      .menu ul li{
+        padding: 0px 5px !important;
+      }
+      .menu-lg{
+        width: 39%;
+      }
+    .menu-lg button.log{
+        height: 33px;
+        padding: 0px 16px;
+        font-size: 15px;
+        margin: 6px 0px;
+    }
+    .nav-left button.accordion{
+      font-size: 14px;
+    font-family: initial;
+
+    }
+    .nav-left .panel li a{
+            font-size: 13px;
+    font-family: serif;
+    }
+    fieldset{
+      height: 267px !important;
+      margin-top: 10px !important;
+    }
+    .form-direct legend{
+      font-size: 19px;
+    width: 39% !important;
+    }
+    .form-direct label{
+      left: 10px !important;
+      font-size: 17px !important;
+    }
+    .form-direct select, .form-direct input{
+      left: 37% !important;
+    }
+    .space .url{
+      width: 163px !important;
+      height: 24px;
+      font-size: 11px;
+    }
+
+   
+}
+@media (min-width: 375px) and (max-width: 424px){
+    .menu{
+        font-size: 15px !important;
+        font-family: serif;
+      }
+      .menu ul{
+        margin: 0px;
+        padding: 0px;
+      }
+      .menu ul li{
+        padding: 0px 5px !important;
+      }
+      .menu-lg{
+        width: 39%;
+      }
+    .menu-lg button.log{
+        height: 33px;
+        padding: 0px 16px;
+        font-size: 15px;
+        margin: 8px 9px;
+    }
+    .nav-left button.accordion{
+      font-size: 15px;
+      font-family: initial;
+    }
+    .nav-left .panel li a{
+            font-size: 14px;
+            font-family: serif;
+    }
+   fieldset{
+      height: 276px !important;
+      margin-top: 10px !important;
+    }
+    .form-direct legend{
+      font-size: 19px;
+    width: 39% !important;
+    }
+    .form-direct label{
+      left: 10px !important;
+      font-size: 17px !important;
+    }
+    .form-direct select, .form-direct input{
+      left: 31% !important;
+      width: 172px;
+    }
+    .space .url{
+      width: 58%;
+    }
+    .space .url{
+      width: 172px !important;
+      height: 25px;
+      font-size: 12px;
+    }
+
+}
+@media (min-width: 425px) and (max-width: 767px){
+    .menu{
+        font-size: 19px !important;
+        font-family: serif;
+      }
+      .menu ul{
+        margin: 0px;
+        padding: 0px;
+      }
+      .menu ul li{
+        padding: 0px 5px !important;
+      }
+      .menu-lg{
+        width: 38%;
+      }
+    .menu-lg button.log{
+        height: 33px;
+        padding: 0px 23px;
+        font-size: 16px;
+        margin: 8px 9px;
+    }
+    .nav-left button.accordion{
+      font-size: 17px;
+      font-family: initial;
+    }
+    .nav-left .panel li a{
+            font-size: 15px;
+            font-family: serif;
+            margin-left: 38px;
+    }
+    fieldset{
+      height: 303px !important;
+      margin-top: 10px !important;
+    }
+    .form-direct legend{
+      font-size: 20px;
+      width: 39% !important;
+    }
+    .form-direct label{
+      left: 20px !important;
+      font-size: 17px !important;
+    }
+    .form-direct select, .form-direct input{
+      left: 111px !important;
+      width: 214px;
+    }
+    .space .url{
+      width: 215px !important;
+      height: 25px;
+      font-size: 12px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1023px){
+    .menu{
+        font-size: 19px !important;
+        font-family: serif;
+      }
+      .menu ul{
+        margin: 0px;
+        padding: 0px;
+      }
+      .menu ul li{
+        padding: 0px 19px !important;
+      }
+      .menu-lg{
+        width: 39%;
+      }
+    .menu-lg button.log{
+      height: 33px;
+    padding: 0px 23px;
+    font-size: 16px;
+    margin: 8px 86px;
+    }
+    .nav-left button.accordion{
+          font-size: 17px;
+    font-family: initial;
+    width: 100% !important;
+    padding: 17px 7px;
+    margin: 0px;
+    }
+    .nav-left .panel li a{
+          font-size: 14px;
+    font-family: serif;
+    margin-left: 1px;
+    }
+     fieldset{
+      height: 303px !important;
+      margin-top: 10px !important;
+    }
+    .form-direct legend{
+      font-size: 20px;
+      width: 39% !important;
+    }
+    .form-direct label{
+      left: 20px !important;
+      font-size: 17px !important;
+    }
+    .form-direct select, .form-direct input{
+      left: 111px !important;
+      width: 260px;
+    }
+    .form-direct .done{
+      left: 29% !important;
+    }
+    .space .url{
+      width: 260px !important;
+      height: 25px;
+      font-size: 13px;
+    }
+}
+@media (min-width: 1024px) and (max-width: 1439px){
+    .menu{
+        font-size: 19px !important;
+        font-family: serif;
+      }
+      .menu ul{
+        margin: 0px;
+        padding: 0px;
+      }
+      .menu ul li{
+        padding: 0px 19px !important;
+      }
+      .menu-lg{
+        width: 39%;
+      }
+    .menu-lg button.log{
+      height: 33px;
+    padding: 0px 23px;
+    font-size: 16px;
+    margin: 8px 86px;
+    }
+    .nav-left button.accordion{
+          font-size: 17px;
+    font-family: initial;
+    width: 100% !important;
+    padding: 17px 7px;
+    margin: 0px;
+    }
+    .nav-left .panel li a{
+          font-size: 15px;
+          font-family: serif;
+          margin-left: 1px;
+    }
+     fieldset{
+      height: 313px !important;
+      margin-top: 10px !important;
+    }
+    .form-direct legend{
+      font-size: 22px;
+      width: 24% !important;
+    }
+    .form-direct label{
+      left: 31% !important;
+      font-size: 21px !important;
+    }
+    .form-direct select, .form-direct input{
+      left: 46% !important;
+      width: 330px;
+      margin-top: 4px;
+    }
+    .form-direct .done{
+      left: 50% !important;
+    }
+    .space .url{
+      width: 331px !important;
+      height: 25px;
+      font-size: 14px;
+    }
+}
+@media (min-width: 1440px) and (max-width: 1999px){
+    .menu{
+        font-size: 19px !important;
+        font-family: serif;
+      }
+      .menu ul{
+        margin: 0px;
+        padding: 0px;
+      }
+      .menu ul li{
+        padding: 0px 19px !important;
+      }
+      .menu-lg{
+        width: 39%;
+      }
+    .menu-lg button.log{
+      height: 33px;
+    padding: 0px 23px;
+    font-size: 16px;
+    margin: 8px 86px;
+    }
+    .nav-left button.accordion{
+          font-size: 17px;
+    font-family: initial;
+    width: 100% !important;
+    padding: 17px 7px;
+    margin: 0px;
+    }
+    .nav-left .panel li a{
+          font-size: 14px;
+    font-family: serif;
+    margin-left: 1px;
+    }
+    fieldset{
+      height: 314px !important;
+      margin-top: 10px !important;
+    }
+    .form-direct legend{
+      font-size: 23px;
+      width: 16% !important;
+    }
+    .form-direct label{
+      left: 32% !important;
+      font-size: 22px !important;
+    }
+    .form-direct select, .form-direct input{
+      left: 42% !important;
+      width: 330px;
+      margin-top: 5px;
+    }
+    .form-direct .done{
+      left: 49% !important;
+    }
+    .space .url{
+      width: 331px !important;
+      height: 25px;
+      font-size: 14px;
+    }
+}
+
+.header{
+    background-color: #0d101c;
+    height: 55px;
+    /* clear: both; */
+}
+
+.head-r .menu-lg {
+    float: right;
+    font-size: 19px;
+    height: 54px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.menu-lg button {
+    width: 105px;
+    height: 40px;
+    border-radius: 8px;
+    outline: none;
+    background-color: #4cc7d4;
+    border: 1px solid #81c3e2;
+    cursor: pointer;
+}
+
+.space .url{
+  width: 30.3%;
+}
+.head-l .menu-lg {
+    float: right;
+}
+
+.head-l .menu {
+    float: left;
+    font-size: 21px;
+    height: 50px;
+}
+
+.head-r {
+}
+
+.head-l .menu li {
+    display: inline-block;
+    padding: 0px 13px;
+    display: inline-block;
+}
+.head-l .menu li a {
+    text-decoration: none;
+    position: relative;
+    color: white;
+}
+.head-l .menu li a:before{
+    content: attr(data-text);
+    border-bottom: 3px solid #ef4366;
+    color: #fff;
+    white-space: nowrap;
+    width: 0%;
+    overflow: hidden;
+    padding: 0px 0px;
+    transition: all 0.4s;
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+.head-l .menu li a:hover:before{
+    width: 100%;
+}
+
+
+
+
+
+.nav .nav-right{
+    /* float: right; */
+    /* width: 80%; */
+    /* background-color: #75727252; */
+    /* height: 100vh; */
+    /* margin-left: 0px; */
+    /* margin: 0px; */
+}
+.form-direct fieldset{
+  border:1px solid black;
+  position: relative;
+  height: 320px;
+}
+.form-direct legend{
+  width: 23%;
+  text-align: center;
+}
+.form-direct label{
+  left: 30%;
+  position: absolute;
+  font-size: 19px;
+  font-family: serif;
+}
+.form-direct select, .form-direct input{
+  position: absolute;
+  left: 40%;
+}
+.form-direct .space{
+  margin-bottom: 10px;
+}
+.form-direct .done{
+      position: absolute;
+      left: 42%;
+      top: 84%;
+}
+.form-direct .done button{
+      width: 100px;
+      height: 36px;
+      font-weight: bold;
+      background-color: #2b2b2b;
+      color: white; 
+      font-family: serif; 
+      outline: none; 
+      border-radius: 9px;  
+      border: none;
+}
+
+
+
+.accordion {
+  background-color: #0be64e;
+  color: black;
+  cursor: pointer;
+  padding: 15px 41px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #10d04b;
+}
+
+.panel {
+  padding: 0px 0px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s;
+}
+
+.panel ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+.panel li {
+    list-style: none;
+    /* text-align: center; */
+    background-color: #656363;
+    text-align: left;
+    border-bottom: 1px solid black;
+}
+
+.panel li:hover {
+    background-color: black;
+    cursor: pointer;
+}
+
+.panel li a {
+    text-decoration: none;
+    color: white;
+    /* font-size: 17px; */
+}
+
+.error{
+    color: red;
+}
+

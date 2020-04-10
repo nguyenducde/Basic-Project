@@ -1,0 +1,663 @@
+body{
+    padding: 0px;
+    margin: 0px;
+    background-image: linear-gradient( 109.6deg,  rgba(204,228,247,1) 11.2%, rgba(204,228,247,1) 11.2% );
+   height: 100vh;
+   font-family: serif !important
+}
+@media (min-width: 320px) and (max-width: 374px){
+    .menu{
+        font-size: 13px !important;
+        font-family: serif;
+      }
+      .menu ul{
+        margin: 0px;
+        padding: 0px;
+      }
+      .menu ul li{
+        padding: 0px 5px !important;
+      }
+      .menu-lg{
+        width: 39%;
+      }
+    .menu-lg button.log{
+        height: 33px;
+        padding: 0px 16px;
+        font-size: 15px;
+        margin: 6px 0px;
+    }
+    .nav-left button.accordion{
+      font-size: 14px;
+    font-family: initial;
+
+    }
+    .nav-left .panel li a{
+            font-size: 14px;
+    font-family: serif;
+    }
+    fieldset{
+      width: 70% !important;
+      left: 16%;
+    }
+    .list-face{
+      width: 100% !important;
+    }
+    .nav-right{
+      display: block !important; 
+    }
+    .list-face legend{
+          font-size: 14px;
+          width: 36% !important;
+    } 
+    .list-face .face{
+      width: 100%;
+    }
+    .url{
+      width: 100% !important;
+    margin-top: 16px;
+    }
+    .url button.qr{
+      margin-left: 84px;
+    margin-top: 4px;
+    }
+}
+@media (min-width: 375px) and (max-width: 424px){
+    .menu{
+        font-size: 15px !important;
+        font-family: serif;
+      }
+      .menu ul{
+        margin: 0px;
+        padding: 0px;
+      }
+      .menu ul li{
+        padding: 0px 5px !important;
+      }
+      .menu-lg{
+        width: 39%;
+      }
+    .menu-lg button.log{
+        height: 33px;
+        padding: 0px 16px;
+        font-size: 15px;
+        margin: 8px 9px;
+    }
+    .nav-left button.accordion{
+      font-size: 15px;
+      font-family: initial;
+    }
+    .nav-left .panel li a{
+            font-size: 15px;
+            font-family: serif;
+    }
+    fieldset{
+      width: 65% !important;
+      left: 16%;
+    }
+    .list-face legend{
+          font-size: 15px;
+          width: 35% !important;
+    } 
+    .list-face{
+      width: 100% !important;
+    }
+    .nav-right{
+      display: block !important; 
+    }
+    .list-face legend{
+          font-size: 14px;
+          width: 36% !important;
+    } 
+    .list-face .face{
+      width: 100%;
+    }
+    .url{
+      width: 100% !important;
+    margin-top: 16px;
+    }
+    .url button.qr{
+      margin-left: 84px;
+    margin-top: 4px;
+    }
+    .url label{
+       margin-left: 18px;
+    }
+    .url input{
+       width: 75% !important;
+    }
+}
+@media (min-width: 425px) and (max-width: 767px){
+    .menu{
+        font-size: 19px !important;
+        font-family: serif;
+      }
+      .menu ul{
+        margin: 0px;
+        padding: 0px;
+      }
+      .menu ul li{
+        padding: 0px 5px !important;
+      }
+      .menu-lg{
+        width: 38%;
+      }
+    .menu-lg button.log{
+        height: 33px;
+        padding: 0px 23px;
+        font-size: 16px;
+        margin: 8px 9px;
+    }
+    .nav-left button.accordion{
+      font-size: 17px;
+      font-family: initial;
+    }
+    .nav-left .panel li a{
+            font-size: 15px;
+            font-family: serif;
+            margin-left: 38px;
+    }
+     fieldset{
+      width: 55% !important;
+      left: 24%;
+    }
+    .list-face legend{
+          font-size: 15px;
+          width: 32% !important;
+    } 
+    .list-face{
+      width: 100% !important;
+    }
+    .nav-right{
+      display: block !important; 
+    }
+    .list-face legend{
+          font-size: 14px;
+          width: 36% !important;
+    } 
+    .list-face .face{
+      width: 100%;
+    }
+    .url{
+      width: 100% !important;
+    margin-top: 16px;
+    }
+    .url button.qr{
+      margin-left: 37%;
+    margin-top: 4px;
+    }
+    .url label{
+       margin-left: 29px;
+    }
+    .url input{
+       width: 71% !important;
+    }
+}
+@media (min-width: 768px) and (max-width: 1023px){
+    .menu{
+        font-size: 19px !important;
+        font-family: serif;
+      }
+      .menu ul{
+        margin: 0px;
+        padding: 0px;
+      }
+      .menu ul li{
+        padding: 0px 19px !important;
+      }
+      .menu-lg{
+        width: 39%;
+      }
+    .menu-lg button.log{
+      height: 33px;
+    padding: 0px 23px;
+    font-size: 16px;
+    margin: 8px 86px;
+    }
+   .nav-left button.accordion{
+          font-size: 17px;
+    font-family: initial;
+    width: 100% !important;
+    padding: 17px 7px;
+    margin: 0px;
+    }
+    .nav-left .panel li a{
+          font-size: 14px;
+    font-family: serif;
+    margin-left: 1px;
+    }
+    fieldset{
+     width: 71% !important;
+    left: 6%;
+    }
+    .list-face legend{
+          font-size: 17px;
+    width: 40% !important;
+    } 
+    .list-face .face{
+      height: 80% !important;
+    }
+    .list-face legend{
+          font-size: 15px;
+          width: 32% !important;
+    } 
+    .list-face{
+      width: 78% !important;
+    }
+    .list-face legend{
+          font-size: 14px;
+          width: 36% !important;
+    } 
+    .list-face .face{
+      width: 100%;
+    }
+    .url{
+      width: 100% !important;
+    margin-top: 25px;
+    }
+    .url button.qr{
+      margin-left: 26%;
+    margin-top: 4px;
+    }
+  
+    .url input{
+       width: 71% !important;
+    }
+}
+@media (min-width: 1024px) and (max-width: 1439px){
+    .menu{
+        font-size: 19px !important;
+        font-family: serif;
+      }
+      .menu ul{
+        margin: 0px;
+        padding: 0px;
+      }
+      .menu ul li{
+        padding: 0px 19px !important;
+      }
+      .menu-lg{
+        width: 39%;
+      }
+    .menu-lg button.log{
+      height: 33px;
+    padding: 0px 23px;
+    font-size: 16px;
+    margin: 8px 86px;
+    }
+    .nav-left button.accordion{
+          font-size: 17px;
+    font-family: initial;
+    width: 100% !important;
+    padding: 17px 7px;
+    margin: 0px;
+    }
+    .nav-left .panel li a{
+          font-size: 15px;
+          font-family: serif;
+          margin-left: 1px;
+    }
+   
+    fieldset{
+      width: 77% !important;
+      left: 7%;
+    }
+    .list-face legend{
+          font-size: 21px;
+    width: 40% !important;
+    } 
+    .list-face .face{
+      height: 80% !important;
+    }
+     .list-face .face{
+      height: 80% !important;
+    }
+    .list-face legend{
+          font-size: 15px;
+          width: 32% !important;
+    } 
+    .list-face{
+      width: 78% !important;
+    }
+    .list-face legend{
+          font-size: 14px;
+          width: 36% !important;
+    } 
+    .list-face .face{
+      width: 100%;
+    }
+    .url{
+      width: 100% !important;
+    margin-top: 25px;
+    }
+    .url button.qr{
+      margin-left: 26%;
+    margin-top: 4px;
+    }
+  
+    .url input{
+       width: 71% !important;
+    }
+}
+
+@media (min-width: 1440px) and (max-width: 1999px){
+    .menu{
+        font-size: 19px !important;
+        font-family: serif;
+      }
+      .menu ul{
+        margin: 0px;
+        padding: 0px;
+      }
+      .menu ul li{
+        padding: 0px 19px !important;
+      }
+      .menu-lg{
+        width: 39%;
+      }
+    .menu-lg button.log{
+      height: 33px;
+    padding: 0px 23px;
+    font-size: 16px;
+    margin: 8px 86px;
+    }
+    .nav-left button.accordion{
+          font-size: 17px;
+    font-family: initial;
+    width: 100% !important;
+    padding: 17px 7px;
+    margin: 0px;
+    }
+    .nav-left .panel li a{
+          font-size: 14px;
+    font-family: serif;
+    margin-left: 1px;
+    }
+    
+    fieldset{
+      width: 29% !important;
+      left: 6%;
+    }
+    .list-face legend{
+          font-size: 24px;
+          width: 36% !important;
+    } 
+    .list-face .face{
+
+height: 80% !important;
+
+}
+     fieldset{
+      width: 77% !important;
+      left: 7%;
+    }
+    .list-face legend{
+          font-size: 21px;
+    width: 40% !important;
+    } 
+    .list-face .face{
+      height: 80% !important;
+    }
+     .list-face .face{
+      height: 80% !important;
+    }
+    .list-face legend{
+          font-size: 15px;
+          width: 32% !important;
+    } 
+    .list-face{
+      width: 78% !important;
+    }
+    .list-face legend{
+          font-size: 14px;
+          width: 36% !important;
+    } 
+    .list-face .face{
+      width: 100%;
+    }
+    .url{
+      width: 100% !important;
+    margin-top: 25px;
+    }
+    .url button.qr{
+      margin-left: 26%;
+    margin-top: 4px;
+    }
+  
+    .url input{
+       width: 71% !important;
+    }
+}
+/*@media only screen and (min-width: 768px) and (max-width: 1023px){
+    .form-student{
+        width: 145%;
+    }
+    .form-student{
+        width: 60% !important;
+        height: 44% !important;
+    }
+}*/
+.header{
+    background-color: #0d101c;
+    height: 55px;
+    /* clear: both; */
+}
+
+.head-r .menu-lg {
+    float: right;
+    font-size: 19px;
+    height: 54px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.menu-lg button {
+    width: 105px;
+    height: 40px;
+    border-radius: 8px;
+    outline: none;
+    background-color: #4cc7d4;
+    border: 1px solid #81c3e2;
+    cursor: pointer;
+}
+
+
+.head-l .menu-lg {
+    float: right;
+}
+
+.head-l .menu {
+    float: left;
+    font-size: 21px;
+    height: 50px;
+}
+
+.head-r {
+}
+
+.head-l .menu li {
+    display: inline-block;
+    padding: 0px 13px;
+    display: inline-block;
+}
+.head-l .menu li a {
+    text-decoration: none;
+    position: relative;
+    color: white;
+}
+.head-l .menu li a:before{
+    content: attr(data-text);
+    border-bottom: 3px solid #ef4366;
+    color: #fff;
+    white-space: nowrap;
+    width: 0%;
+    overflow: hidden;
+    padding: 0px 0px;
+    transition: all 0.4s;
+    position: absolute;
+    left: 0;
+    top: -2px;
+}
+.head-l .menu li a:hover:before{
+    width: 100%;
+}
+.nav-right{
+  width: 100%;
+    display: flex;
+    height: 90vh;
+} 
+
+
+.list-face{
+  width: 50%;
+  
+}
+.url{
+  width: 50%;
+}
+.url button.qr{
+      outline: none;
+    cursor: pointer;
+    width: 120px;
+    background-color: #afaaaa;
+    border: 1px solid black;
+    color: black;
+    font-weight: bold;
+}
+.url input{
+  height: 25px;
+    width: 240px;
+}
+.list-face legend{
+
+width: 33%;
+
+text-align: center;
+}
+.list-face .face{
+  border: 1px solid black;
+  position: absolute;
+  width: 90%;
+  height: 83%;
+  left: 5%;
+}
+.list-face fieldset{
+  border: 1px solid black;
+  height: 38vh;
+  width: 75%;
+  margin-top: 10px;
+  position: relative;
+  /* left: 17%; */
+}
+
+
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 15px 41px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  color: black !important;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  padding: 0px 0px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s;
+}
+
+.panel ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+.panel li {
+    list-style: none;
+    /* text-align: center; */
+    background-color: #9c9898;
+    text-align: left;
+    border-bottom: 1px solid black;
+}
+
+.panel li:hover {
+    background-color: black;
+    cursor: pointer;
+}
+
+.panel li a {
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+}
+
+.error{
+    color: red;
+}
+
+
+
+
+
+.accordion {
+  background-color: #0be64e;
+  color: #444;
+  cursor: pointer;
+  padding: 15px 41px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #10d04b;
+}
+
+.panel {
+  padding: 0px 0px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s;
+}
+
+.panel ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+.panel li {
+    list-style: none;
+    /* text-align: center; */
+    background-color: #656363;
+    text-align: left;
+    border-bottom: 1px solid black;
+}
+
+.panel li:hover {
+    background-color: black;
+    cursor: pointer;
+}
+
+.panel li a {
+    text-decoration: none;
+    color: white;
+    /* font-size: 17px; */
+}
+
+.error{
+    color: red;
+}
