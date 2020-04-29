@@ -6,6 +6,8 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="./css/style-tc-face.css">
 	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+	<script defer src="./js/face-api.min.js"></script>
+	<script defer src="./js/script.js"></script>
 	<!-- <script type="text/javascript" src="js/student.js"></script> -->
 </head>
 <body>
@@ -42,7 +44,7 @@
 		<div class="panel">
 		  <li><a href="teacher_tructiep">Trực Tiếp</a></li>
 		  <li><a href="#1" id="manage">Nhận Diện Khuôn Mặt</a></li>
-		  <li><a href="teacher_qr">Mã QR</a></li>
+
 		</div>
 	<button class="accordion">Đăng Xuất</button>
 		<div class="panel">
@@ -56,21 +58,30 @@
 		<div class="list-face">
 			<form action="#">
 				<fieldset>
-					<legend>Nhận Diện Khuôn Mặt</legend>
-					<div class="face">
-						
-					</div>
+					<legend>Nhận Diện Khuôn Mặt</legend>	
+					
+					<video  id="video" width="720" height="560" autoplay muted></video>
+					<style> canvas {
+						  position: absolute;
+    top: 97px;
+    margin-left: 218px;
+
+					  }</style>
+				
 				</fieldset>
 
 			</form>
 		</div>
 		<div class="start">
-			<button>Tạo</button>
+			<button onclick="Play()">Tạo</button>
+		
+
+			
 		</div>
 		</div>
 		</div>
 
-
+		
 		</div>
 	</div>
 </div>

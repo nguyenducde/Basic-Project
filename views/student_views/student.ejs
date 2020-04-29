@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sinh Viên</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="./css/style-sv.css">
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+	<!-- <script type="text/javascript" src="js/student.js"></script> -->
+</head>
+<body>
+<div class="header">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+				<div class="head-l">
+		<div class="menu">
+			<ul style="margin-top: 15px;">
+				<li><a href="#1" data-text="Trang Chủ">Trang Chủ</a></li>
+				<li><a href="#1" data-text="Tin Tức">Tin Tức</a></li>
+				<li><a href="#1" data-text="Liên Hệ">Liên Hệ</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="head-r">
+		
+	</div>
+		</div>
+	</div>
+</div>
+
+<div class="nav">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+				<div class="nav-left">
+	<button class="accordion" id="manage">Thông Tin</button>
+	<button class="accordion">Điểm Danh</button>
+		
+	<button class="accordion" >Đăng Xuất</button>
+		<div class="panel">
+		  <p>Bạn còn nợ 5 tỷ. Vui lòng đóng tiền học phí cho sếp Quang rồi tiếp tục học</p>
+		</div>
+	</div>
+	</div>
+
+	<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+	<div class="nav-right">
+		<div class="form-student">
+			
+				<h3>THÔNG TIN SINH VIÊN</h3>
+				<table border="1" cellpadding="15" cellspacing="0">
+					<tr>
+						<th>Mã sinh viên:</th>
+						<td> Rỗng</td>
+					</tr>
+					<tr>
+						<th>Họ tên:</th>
+						<td> Rỗng</td>
+					</tr>
+					<tr>
+						<th>Ngày sinh:</th>
+						<td> Rỗng</td>
+					</tr>
+					<tr>
+						<th>Giới tính:</th>
+						<td> Rỗng</td>
+					</tr>
+					<tr>
+						<th>Số điện thoai:</th>
+						<td> Rỗng</td>
+					</tr>
+					<tr>
+						<th>Lớp:</th>
+						<td> Rỗng</td>
+					</tr>
+					<tr>
+						<th>Khoa:</th>
+						<td> Rỗng</td>
+					</tr>
+					<tr>
+						<th>Địa chỉ:</th>
+						<td> Rỗng</td>
+					</tr>
+				</table>
+				
+			
+		</div>
+		
+		</div>
+		</div>
+
+
+		</div>
+	</div>
+</div>
+
+
+
+<script src='https://cdn.jsdelivr.net/g/lodash@4(lodash.min.js+lodash.fp.min.js)'></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+	var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+$(document).ready(function(){
+	$('#manage').click(function(){
+		$('.nav-right').animate({
+			height: 'toggle'
+		});
+	});
+});
+
+
+
+
+</script>
+</body>
+</html>

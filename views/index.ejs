@@ -33,6 +33,13 @@
 
 <!-- PHẦN NAV   !-->
 <div class="nav">
+	
+	<% for(let i=0;i<errors.length;i++){%>
+		<strong class="alert alert-danger"> <%=errors[i]%></strong>
+	  <%}%>
+	  
+
+
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -52,8 +59,8 @@
 		</div>
 		<div class="menu-ct">
 			<ul style="padding-left: 0px;">
-				<li onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><a href="#1">Teacher</a></li>
-				<li onclick="document.getElementById('id02').style.display='block'" style="width:auto;"><a href="#1">Student</a></li>
+				<li onclick="document.getElementById('id01').style.display='block'" style="width:auto;"><a href="#">Giáo Viên</a></li>
+				<li onclick="document.getElementById('id02').style.display='block'" style="width:auto;"><a href="#">Sinh Viên</a></li>
 			</ul>
 		</div>
 	</div>
@@ -105,33 +112,60 @@
     </div>
 
     <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input class="username" type="text" placeholder="Enter Username" name="uname" required>
+      <label for="uname"><b>Tên tài khoản</b></label>
+      <input class="username" type="text" placeholder="Nhập tên tài khoản" name="uname" required>
 
-      <label for="psw"><b>Password</b></label>
-      <input class="pass" type="password" placeholder="Enter Password" name="psw"  required>
+      <label for="psw"><b>Mật khẩu</b></label>
+      <input class="pass" type="password" placeholder="Nhập mật khẩu" name="psw"  required>
         
-      <button class="log" type="submit">Login</button>
+      <button class="log" type="submit">Đăng nhập</button>
       <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
+        <input type="checkbox" checked="checked" name="remember"> Lưu mật khẩu
       </label>
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Thoát</button>
+      <span class="psw">Quên <a href="#">mật khẩu ?</a></span>
     </div>
   </form>
 </div>
-
+<div id="id02" class="modal">
+  
+	<form class="modal-content animate" action="/student" method="post" id="login">
+		<div class="imgcontainer">
+		<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+	  </div>
+  
+	  <div class="container">
+		<label for="username"><b>Tên tài khoản</b></label>
+		<input class="username" type="text" placeholder="Nhập tên tài khoản" name="username" required>
+  
+		<label for="password"><b>Mật khẩu</b></label>
+		<input class="pass" type="password" placeholder="Nhập mật khẩu" name="password"  required>
+		  
+		<button class="log" type="submit">Đăng nhập</button>
+		<label>
+		  <input type="checkbox" checked="checked" name="remember"> Lưu mật khẩu
+		</label>
+	  </div>
+  
+	  <div class="container" style="background-color:#f1f1f1">
+		<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Thoát</button>
+		<span class="psw">Quên <a href="#">mật khẩu ?</a></span>
+	  </div>
+	</form>
+  </div>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 	var modal = document.getElementById('id01');
+	var modalid2=document.getElementById('id02');
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
-        modal.style.display = "none";
+		modal.style.display = "none";
+		modalid2.style.display = "none";
     }
 }
 

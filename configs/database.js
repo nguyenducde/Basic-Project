@@ -1,0 +1,1 @@
+module.exports.url='mongodb://nguyenducde:lalang123@cluster0-shard-00-00-pxb4j.mongodb.net:27017,cluster0-shard-00-01-pxb4j.mongodb.net:27017,cluster0-shard-00-02-pxb4j.mongodb.net:27017/DiemDanhDB?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority'

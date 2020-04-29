@@ -356,7 +356,7 @@ body{
 .nav .nav-r{
       width: 43% !important;
       left: 29% !important;
-      top: 118px !important;
+      top: 54px !important;
       border-radius: 17px;
 }
 .nav-r p.ht{
@@ -441,9 +441,10 @@ body{
 .nav .nav-r{
       width: 43% !important;
       left: 30% !important;
-      top: 118px !important;
+      top: 25% !important;
       border-radius: 17px;
       height: 456px !important;
+      background-attachment: fixed;
 }
 .nav-r p.ht{
       font-size: 40px !important;
@@ -846,4 +847,17 @@ span.psw {
 }
 #login{
 width: 50%;
+}
+.alert{
+  margin-bottom: 0px !important;
+}
+.alert-danger{
+  
+left: 77%;
+  
+top: 15px;
+  
+border-radius: 14px !important;
+  
+height: 50px;
 }

@@ -1,5 +1,7 @@
 var mongoose = require('mongoose');
-var sinhvienSchema=new mongoose.Schema({
+
+
+var studentSchema=new mongoose.Schema({
   MSSV:{type:Number,index:true,unique:true},
   HoVaTen:String,
   GioiTinh:String,
@@ -7,8 +9,9 @@ var sinhvienSchema=new mongoose.Schema({
  SDT:String,
  Lop:String,
  Khoa:String,
- HinhAnh:String,
+IDTaiKhoan:{type:mongoose.Schema.Types.ObjectId,ref:'Accounts'}
  
 });
-var SinhVien=mongoose.model('SinhVienS',sinhvienSchema,'SinhVien');
-module.exports=SinhVien;
+
+var Students=mongoose.model('Students',studentSchema,'SinhVien');
+module.exports=Students;

@@ -1,17 +1,11 @@
 
-
 const video = document.getElementById('video')
-
 Promise.all([
   console.log(faceapi.nets),
- 
   faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
   faceapi.nets.ssdMobilenetv1.loadFromUri('/models'),
   faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
   faceapi.nets.faceRecognitionNet.loadFromUri('/models')
-
-
-
 ]).then(startVideo)
 
 function startVideo() {
@@ -28,17 +22,12 @@ video.addEventListener('play', () => {
   const displaySize = { width: video.width, height: video.height }
   faceapi.matchDimensions(canvas, displaySize)
   //đưa cái dữ liệu đó thay cho cái label này
-  const labels = ['Nguyễn Đức Đề','Nguyễn Đức Bảo Lâm']
+  const labels = ['Nguyễn Đức Bảo Lâm']
   setInterval(async () => {
     const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptors()
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-
-
-
    ////////////////////////////////////////////
-   
-
 const labeledFaceDescriptors = await Promise.all(
   labels.map(async label => {
     // fetch image data from urls and convert blob to HTMLImage element
@@ -71,8 +60,7 @@ results.forEach((bestMatch, i) => {
   faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
   drawBox.draw(canvas)
 }) 
-
-  }, 1000)
+  }, 50)
 })
 //logic
 //Cải thiện tốc độ bằng cách nào
