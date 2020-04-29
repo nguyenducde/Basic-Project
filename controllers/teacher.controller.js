@@ -10,7 +10,7 @@ module.exports.getLogin = function (req, res) {
   return res.render('./teacher_views/teacher');
  }
  if(req.isAuthenticated('local-teacherLogin')&&req.user.LoaiTaiKhoan=="Sinh Vien"){
-  return res.render('./student_views/student');
+  return res.redirect('/student');
  }
  else{
   req.flash('error', 'Vui lòng đăng nhập lại');
