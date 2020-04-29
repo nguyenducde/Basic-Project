@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 //Set Passport
 app.use(session({
   secret: "mysecret",
-  cookie: { maxAge: 1000*60*50 },
+  cookie: { maxAge: 1000*60 },
         //Save session to database 
   // store: new (require('express-sessions'))({
   //     storage: 'mongodb',

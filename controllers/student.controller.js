@@ -6,7 +6,10 @@ const flash = require('connect-flash');
 
 module.exports.getLogin = function (req, res) {
  
- if(req.isAuthenticated('local-studentLogin')){
+ if(req.isAuthenticated('local-studentLogin')&&req.user.LoaiTaiKhoan=="Sinh Vien"){
+  return res.render('./student_views/student');
+ }
+ if(req.isAuthenticated('local-studentLogin')&&req.user.LoaiTaiKhoan=="Giao Vien"){
   return res.render('./student_views/student');
  }
  else{
@@ -21,15 +24,16 @@ module.exports.postLogin = passport.authenticate('local-studentLogin', {
   });
 
 module.exports.logOut=async function(req,res){
-  passport.authenticate('local-studentLogin', { session: false }),
- res.redirect('/');
+  req.session.destroy(function (err) {
+    res.redirect('/'); //Inside a callback… bulletproof!
+  });
 }
   
 
 //Check auth
 module.exports.isNotLogined_next = async function (req, res, next) {
-  passport.authenticate('local-teacherLogin', { session: false });
+
   if (!req.isAuthenticated('local-studentLogin')) return next();
-  if(req.isAuthenticated('local-studentLogin')) return res.render('./student_views/student');
+  if(req.isAuthenticated('local-studentLogin')) return next();
  
 }
