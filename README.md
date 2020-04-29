@@ -8,8 +8,8 @@ Git clone https://github.com/nguyenducde/ProjectDiemDanhV3.git to Desktop
  
   Account teacher:
           username:1000GV
-          password:nguyenducde
+          ||password:nguyenducde
           
   Account student:
           username:1710144
-          password:nguyenducde
+          ||password:nguyenducde
