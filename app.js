@@ -96,7 +96,9 @@ async function gsrun(cl)
 app.use(indexRouter);
 app.use(teacherRouter);
 app.use(studentRouter);
-
+app.get('/qr',(req,res)=>{
+  res.render('./student_views/qr');
+})
 
 //Get passport
 require('./configs/passport')(passport);

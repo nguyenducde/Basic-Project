@@ -24,6 +24,7 @@
     "google-spreadsheet": "^3.0.11",
     "googleapis": "^49.0.0",
     "http-errors": "^1.7.3",
+    "instascan": "^1.0.0",
     "mongoose": "^5.9.10",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",

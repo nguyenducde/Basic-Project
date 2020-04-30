@@ -9,7 +9,7 @@ module.exports.getLogin = function (req, res) {
  if(req.isAuthenticated('local-teacherLogin')&&req.user.LoaiTaiKhoan=="Giao Vien"){
   return res.render('./teacher_views/teacher');
  }
- if(req.isAuthenticated('local-teacherLogin')&&req.user.LoaiTaiKhoan=="Sinh Vien"){
+ if(req.isAuthenticated('local-studentLogin')&&req.user.LoaiTaiKhoan=="Sinh Vien"){
   return res.redirect('/student');
  }
  else{
