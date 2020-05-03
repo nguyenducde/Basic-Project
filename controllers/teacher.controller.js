@@ -14,7 +14,7 @@ module.exports.getLogin = function (req, res) {
  }
  else{
   req.flash('error', 'Vui lòng đăng nhập lại');
-   res.redirect('/');
+ return   res.redirect('/');
  }
 }
 module.exports.postLogin = passport.authenticate('local-teacherLogin', {
@@ -31,7 +31,7 @@ module.exports.logOut=async function(req,res){
   
 
 //Check auth
-module.exports.isNotLogined_next = async function (req, res, next) {
+module.exports.isNotLogin_next = async function (req, res, next) {
   if (!req.isAuthenticated('local-teacherLogin')) return next();
   if(req.isAuthenticated('local-teacherLogin')) return next();
 }

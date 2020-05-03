@@ -1,20 +1,23 @@
 var passport=require('passport')
-var mongoose=require('mongoose');
-var servicesAccount=require('../services/account')
 const flash = require('connect-flash');
-
+var serviceStudents=require('../services/student')
+var students=require('../models/model_student');
 
 module.exports.getLogin = function (req, res) {
  
  if(req.isAuthenticated('local-studentLogin')&&req.user.LoaiTaiKhoan=="Sinh Vien"){
-  return res.render('./student_views/student');
+  return  students.findOne({MSSV:req.user.IDTaiKhoan},(err,result)=>{
+     if(result){
+       //console.log(result);
+    return   res.render('./student_views/student',{profile:result});}  
+ });
  }
  if(req.isAuthenticated('local-teacherLogin')&&req.user.LoaiTaiKhoan=="Giao Vien"){
   return res.redirect('/teacher')
  }
  else{
   req.flash('error', 'Vui lòng đăng nhập lại');
-   res.redirect('/');
+  return  res.redirect('/');
  }
 }
 module.exports.postLogin = passport.authenticate('local-studentLogin', {
@@ -25,7 +28,7 @@ module.exports.postLogin = passport.authenticate('local-studentLogin', {
 
 module.exports.logOut=async function(req,res){
   req.session.destroy(function (err) {
-    res.redirect('/'); //Inside a callback… bulletproof!
+  return   res.redirect('/'); //Inside a callback… bulletproof!
   });
 }
   

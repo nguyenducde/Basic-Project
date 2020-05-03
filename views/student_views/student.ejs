@@ -49,41 +49,43 @@
 		<div class="form-student">
 			
 				<h3>THÔNG TIN SINH VIÊN</h3>
+				
+					
+						
 				<table border="1" cellpadding="15" cellspacing="0">
 					<tr>
 						<th>Mã sinh viên:</th>
-						<td> Rỗng</td>
+						<td> <%= profile.MSSV %></td>
 					</tr>
 					<tr>
 						<th>Họ tên:</th>
-						<td> Rỗng</td>
+						<td> <%= profile.HoVaTen %></td>
 					</tr>
-					<tr>
-						<th>Ngày sinh:</th>
-						<td> Rỗng</td>
-					</tr>
+				
 					<tr>
 						<th>Giới tính:</th>
-						<td> Rỗng</td>
+						<td> <%= profile.GioiTinh %></td>
 					</tr>
 					<tr>
 						<th>Số điện thoai:</th>
-						<td> Rỗng</td>
+						<td> <%= profile.SDT %></td>
 					</tr>
 					<tr>
 						<th>Lớp:</th>
-						<td> Rỗng</td>
+						<td> <%= profile.Lop %></td>
 					</tr>
 					<tr>
 						<th>Khoa:</th>
-						<td> Rỗng</td>
+						<td> <%= profile.Khoa%></td>
 					</tr>
 					<tr>
-						<th>Địa chỉ:</th>
-						<td> Rỗng</td>
+						<th>Email:</th>
+						<td> <%= profile.Email %></td>
 					</tr>
 				</table>
 				
+				<label>Điểm danh</label>
+				<input type="radio" name="gender" id="male" value="1">Name
 			
 		</div>
 		

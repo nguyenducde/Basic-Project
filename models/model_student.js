@@ -2,14 +2,14 @@ var mongoose = require('mongoose');
 
 
 var studentSchema=new mongoose.Schema({
-  MSSV:{type:Number,index:true,unique:true},
+  MSSV:{type:String,index:true,unique:true},
   HoVaTen:String,
   GioiTinh:String,
- Email:String,
- SDT:String,
+ Email:{type:String,unique:true},
+ SDT:{type:String,unique:true},
  Lop:String,
  Khoa:String,
-IDTaiKhoan:{type:mongoose.Schema.Types.ObjectId,ref:'Accounts'}
+//IDTaiKhoan:{type:mongoose.Schema.Types.ObjectId,ref:'Accounts'}
  
 });
 

@@ -13,14 +13,27 @@ const flash = require('connect-flash');
 var studentRouter=require('./routers/student.router');
 var teacherRouter=require('./routers/teacher.router');
 var indexRouter=require('./routers/index.router');
-// var account=require('./models/model_account');
+// var students=require('./models/model_student');
+
+
+
 // var object={
-//   IDTaiKhoan:"1000GV",
-//   PassWord:"nguyenducde",
-//   LoaiTaiKhoan:"Giao Vien"
+//   MSSV:"1710144",
+//   HoVaTen:"Nguyễn Đức Đề",
+//   GioiTinh:"Nam",
+//  Email:"1710144@dlu.edu.vn",
+//  SDT:"0365187553",
+//  Lop:"CTK41",
+//  Khoa:"Công nghệ thông tin",
 // }
-// account.insertMany(object,(err,done)=>{
-//   console.log(done);
+// students.insertMany(object,(err,done)=>{
+//   if(done){
+//     console.log(done);
+
+//   }
+//   else{
+//     console.log(err);
+//   }
 // });
 
 var app=express();
@@ -37,7 +50,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 //Set Passport
 app.use(session({
   secret: "mysecret",
-  cookie: { maxAge: 1000*60 },
+  cookie: { maxAge: 1000*60*5 },
         //Save session to database 
   // store: new (require('express-sessions'))({
   //     storage: 'mongodb',
@@ -97,8 +110,9 @@ app.use(indexRouter);
 app.use(teacherRouter);
 app.use(studentRouter);
 app.get('/qr',(req,res)=>{
-  res.render('./student_views/qr');
+ return  res.render('./student_views/qr');
 })
+
 
 //Get passport
 require('./configs/passport')(passport);

@@ -5,7 +5,7 @@ var teacherSchema=new mongoose.Schema({
   HoVaTen:String,
   SDT:String,
   Khoa:String,
-  IDTaiKhoan:{type:mongoose.Schema.Types.ObjectId,ref:'Accounts'}
+  //IDTaiKhoan:{type:mongoose.Schema.Types.ObjectId,ref:'Accounts'}
 
 });
 var Teacher=mongoose.model('Teachers',teacherSchema,'GiaoVien');
