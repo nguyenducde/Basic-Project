@@ -10,7 +10,7 @@ Git clone https://github.com/nguyenducde/ProjectDiemDanhV3.git to Desktop
 |--------------|-------|------|
 | Teacher | 1000GV | nguyenducde| 
 | Student | 1710145 | nguyenducde| 
-|  | 1710144| nguyenducde | 
+| Student | 1710144| nguyenducde | 
 
   
   
