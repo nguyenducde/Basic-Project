@@ -13,20 +13,21 @@ const flash = require('connect-flash');
 var studentRouter=require('./routers/student.router');
 var teacherRouter=require('./routers/teacher.router');
 var indexRouter=require('./routers/index.router');
+var event=require('./models/module_event');
 // var students=require('./models/model_student');
-
-
+// var accounts=require('./models/model_account');
+var evetnobject={
+  IDSuKien:"IDGIV",
+  TenSuKien:"Toán cao cấp",
+  MSSV:"1710144"
+}
 
 // var object={
-//   MSSV:"1710144",
-//   HoVaTen:"Nguyễn Đức Đề",
-//   GioiTinh:"Nam",
-//  Email:"1710144@dlu.edu.vn",
-//  SDT:"0365187553",
-//  Lop:"CTK41",
-//  Khoa:"Công nghệ thông tin",
+//   IDTaiKhoan:"GV1999",
+//   PassWord:"nguyenducde",
+//   LoaiTaiKhoan:"Giao Vien"
 // }
-// students.insertMany(object,(err,done)=>{
+// event.insertMany(evetnobject,(err,done)=>{
 //   if(done){
 //     console.log(done);
 
@@ -112,6 +113,7 @@ app.use(studentRouter);
 app.get('/qr',(req,res)=>{
  return  res.render('./student_views/qr');
 })
+
 
 
 //Get passport
