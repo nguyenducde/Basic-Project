@@ -1,6 +1,7 @@
 var noti=require('../models/model_noti');
 var event=require('../models/module_event');
 var diemdanh=require('../models/model_diemdanh');
+var infoAc=require('../models/model_infoActivity')
 module.exports.createNewActivity = async function (i){
     let act = new noti(i);
     await act.save({}, err => {
@@ -8,7 +9,7 @@ module.exports.createNewActivity = async function (i){
     });
   }
   module.exports.getAllMyActivities = async function (a) {
-    let all = await noti.find({auth: a});
+    let all = await infoAc.find({MSGV: a});
     return all;
   }
 
@@ -17,8 +18,6 @@ module.exports.createNewActivity = async function (i){
     if(countall > 0) return null;
     return c;
   }
-  module.exports.findListEvent = function (c) {
-    let all =  event.find({TenSuKien:c});
-    return all;
-  }
-
+ module.exports.findNameEvent=function(c){
+   let all=event.find({TenSuKien:c})
+ }

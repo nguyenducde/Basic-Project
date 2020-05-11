@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 var notiSchema=new mongoose.Schema({
 TenSuKien:String,
-ThoiGian:String,
+ThoiGian:Date,
 MSGV:String,
 MSSV:String
 })

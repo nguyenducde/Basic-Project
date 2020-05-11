@@ -2,7 +2,7 @@ var passport=require('passport')
 const httpMsgs=require("http-msgs");
 var students=require('../models/model_student');
 var event=require('../models/module_event');
-var serviceStudents=require('../services/student');
+
 
 
 
@@ -43,48 +43,3 @@ module.exports.isNotLogined_next = async function (req, res, next) {
 }
 
 //work noti
-
-
-module.exports.getNotiDiemDanh=function(req,res){
-  var tenSuKien=req.query.text;
-   event.find({TenSuKien:tenSuKien},(err,result)=>{
-   if(result){
-    httpMsgs.sendJSON(req,res,{
-      data:tenSuKien
-     });  
-     
-     noti.insertMany({TenSuKien:tenSuKien});
-   
-   }
-  })
-}
-module.exports.getDiemDanh=function(req,res){
-  if(req.isAuthenticated('local-studentLogin')){
-    noti.find((err,resSukien)=>{
-      console.log(resSukien)
-      resSukien.forEach(element => {
-        event.find({TenSuKien:element.TenSuKien},(err,result)=>{
-          if(result) {
-            console.log(result);
-            result.forEach(itemSuKien=>{
-              if(itemSuKien.MSSV==req.user.IDTaiKhoan){
-                nameNoti=itemSuKien.TenSuKien;
-                check=true;
-                res.render('./student_views/student_diemdanh',{check,nameNoti});
-              }
-              else {
-                check=false;
-              }
-            }) 
-          }
-        })
-      });
-    });
-  
-  }
-  else{
-    req.flash('error', 'Vui lòng đăng nhập lại');
-  return  res.redirect('/');
-  }
-}
-
