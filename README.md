@@ -8,7 +8,7 @@ Git clone https://github.com/nguyenducde/ProjectDiemDanhV3.git to Desktop
  This project has authenticated fix when logging in
  | Accout | Username| Password| 
 |--------------|-------|------|
-| Teacher | 1000GV | nguyenducde| 
+| Teacher | GV1999 | nguyenducde| 
 | Student | 1710145 | nguyenducde| 
 | Student | 1710144| nguyenducde | 
 
