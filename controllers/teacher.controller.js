@@ -1,9 +1,8 @@
 var passport=require('passport')
-var mongoose=require('mongoose');
-var services=require('../services/teacher')
 const flash = require('connect-flash');
-
-
+var serviceNoti=require('../services/noti.js');
+var noti=require('../models/model_noti');
+var event=require('../models/module_event')
 module.exports.getLogin = function (req, res) {
 
  if(req.isAuthenticated('local-teacherLogin')&&req.user.LoaiTaiKhoan=="Giao Vien"){
@@ -18,7 +17,7 @@ module.exports.getLogin = function (req, res) {
  }
 }
 module.exports.postLogin = passport.authenticate('local-teacherLogin', {
-    successRedirect : '/teacher',
+    successRedirect : '/teacher_tructiep',
     failureRedirect : '/',
     failureFlash : true
   });
@@ -35,3 +34,41 @@ module.exports.isNotLogin_next = async function (req, res, next) {
   if (!req.isAuthenticated('local-teacherLogin')) return next();
   if(req.isAuthenticated('local-teacherLogin')) return next();
 }
+module.exports.isLogined_next = async function (req, res, next) {
+  if (req.isAuthenticated('local-teacherLogin')) return next();
+  return res.redirect('/');
+}
+//Work noti
+module.exports.postCreateActivity = async function(req, res) {
+ let name=req.body.name;
+ let datetime=req.body.code;
+//  let info = {
+//   TenSuKien:name,
+//   ThoiGian:datetime,
+//   MSGV:req.user.IDTaiKhoan,
+//   MSSV:re[i].MSSV
+// };
+// console.log(re[i].MSSV);
+
+// noti.insertMany(info);
+event.find({TenSuKien:name}).forEach(function(myDoc) { 
+  console.log(myDoc.MSSV)
+ } 
+)
+
+  res.redirect('/teacher_tructiep');
+}
+module.exports.getHome = async function (req, res) {
+
+  let activities = await serviceNoti.getAllMyActivities(req.user.IDTaiKhoan);
+  
+  res.render('./teacher_views/teacher_tructiep', {
+    user: req.user,
+    act: activities,
+    
+    mess: req.flash('mess'),
+    
+   // actRD: activitiesReady
+  });
+}
+

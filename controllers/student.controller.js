@@ -3,7 +3,7 @@ const httpMsgs=require("http-msgs");
 var students=require('../models/model_student');
 var event=require('../models/module_event');
 var serviceStudents=require('../services/student');
-var noti=require('../models/model_noti');
+
 
 
 module.exports.getLogin = function (req, res) {
@@ -43,6 +43,8 @@ module.exports.isNotLogined_next = async function (req, res, next) {
 }
 
 //work noti
+
+
 module.exports.getNotiDiemDanh=function(req,res){
   var tenSuKien=req.query.text;
    event.find({TenSuKien:tenSuKien},(err,result)=>{
@@ -85,3 +87,4 @@ module.exports.getDiemDanh=function(req,res){
   return  res.redirect('/');
   }
 }
+

@@ -17,11 +17,16 @@ var event=require('./models/module_event');
 // var students=require('./models/model_student');
 // var accounts=require('./models/model_account');
 var evetnobject={
-  IDSuKien:"IDGIV",
+  IDSuKien:"TCC",
   TenSuKien:"Toán cao cấp",
-  MSSV:"1710144"
+MSSV:"1710144",
+MSGV:"GVTCC"
 }
-
+event.find({TenSuKien:"Toán cao cấp"},(err,re)=>{
+  re.forEach(Element=>{
+    console.log(Element.MSSV)
+  })
+})
 // var object={
 //   IDTaiKhoan:"GV1999",
 //   PassWord:"nguyenducde",
@@ -51,7 +56,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 //Set Passport
 app.use(session({
   secret: "mysecret",
-  cookie: { maxAge: 1000*60*5 },
+  cookie: { maxAge: 1000*60*5000 },
         //Save session to database 
   // store: new (require('express-sessions'))({
   //     storage: 'mongodb',

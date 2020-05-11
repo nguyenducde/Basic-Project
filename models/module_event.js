@@ -2,9 +2,10 @@ var mongoose = require('mongoose');
 
 
 var eventSchema=new mongoose.Schema({
-  IDSuKien:String,
-  TenSuKien:String,
-  MSSV:{type:String,index:true,unique:true}
+  IDSuKien:{type:String,require:true},
+  TenSuKien:{type:String,require:true},
+  MSSV:{type:String,require:true},
+  MSGV:{type:String,require:true}
 //IDTaiKhoan:{type:mongoose.Schema.Types.ObjectId,ref:'Accounts'}
  
 });

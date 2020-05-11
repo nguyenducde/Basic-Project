@@ -1,0 +1,14 @@
+
+<script>
+  $(document).ready(function() {
+    $(function () {$('[data-toggle="tooltip"]').tooltip()});
+  });
+  
+
+</script>
+<!-- Notify -->
+<% if(mess&&mess!=''){ %>
+<script>
+  $.notify("<%- mess %>", "success");
+</script>  
+<% } %>
