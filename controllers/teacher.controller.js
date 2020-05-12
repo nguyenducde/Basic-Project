@@ -47,7 +47,7 @@ let checkNameEvent=serviceNoti.findNameEvent(name);
 if(checkNameEvent==undefined)
 {
   req.flash("Tên sự kiện không phù hợp")
-  res.redirect('/teacher_tructiep');
+ return res.redirect('/teacher_tructiep');
 }
 else{
   infoAc.insertMany({
@@ -69,15 +69,16 @@ else{
     })
   })
 }
-  res.redirect('/teacher_tructiep');
+return  res.redirect('/teacher_tructiep');
 }
 module.exports.getHome = async function (req, res) {
 
   let activities = await serviceNoti.getAllMyActivities(req.user.IDTaiKhoan);
-  
-  res.render('./teacher_views/teacher_tructiep', {
+  let listJoin=await serviceNoti.getListJoin(req.user.IDTaiKhoan);
+  return res.render('./teacher_views/teacher_tructiep', {
     user: req.user,
     act: activities,
+    listStudent:listJoin,
     mess: req.flash('mess'),
     
    // actRD: activitiesReady

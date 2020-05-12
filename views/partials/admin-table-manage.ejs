@@ -6,10 +6,11 @@
     <thead>
       <tr class="d-flex">
         <th class="col-1">STT</th>
-        <th class="col-3">Tên hoạt động</th>
+        <th class="col-2">Tên hoạt động</th>
         <th class="col-2">Tham dự</th>
         <th class="col-2">Điểm danh</th>
-        <th class="col-4" colspan="4">Thao tác</th>
+        <th class="col-2"> Hết hạn</th>
+        <th class="col-2" colspan="4">Thao tác</th>
       </tr>
     </thead>
     <tbody>
@@ -17,9 +18,10 @@
       <% for(var i=0;i<l;i++){ %>
       <tr class="d-flex <% if(!act[i].isHaveFile) { %>alert-danger<% } %>">
         <th class="col-1"><%- i+1 %></th>
-        <th class="col-3"><%- act[i].TenSuKien %></th>
-        <th class="col-2"><%-  %></th>
-        <th class="col-3"><%-  %> / <%-  %></th>
+        <th class="col-2"><%- act[i].TenSuKien %></th>
+        <th class="col-2"><%- listStudent.length  %></th>
+        <th class="col-2"><%-  %> / <%-listStudent.length  %></th>
+        <th class="col-2"><%-act[i].ThoiGian.getHours() %>:<%-act[i].ThoiGian.getMinutes() %>  <%-act[i].ThoiGian.getDate() %>-<%-act[i].ThoiGian.getMonth() + 1 %>-<%-act[i].ThoiGian.getFullYear() %>  </th>
       
         <th class="col-1"><i class="fas fa-eye text-primary" data-toggle="modal" data-target="#viewActModal" onclick="AJAX_viewActModal('<%- act[i].code %>')"></i></th>
         <th class="col-1"><i class="fas fa-edit text-success" data-toggle="modal" data-target="#editActModal" onclick="AJAX_editActModal('<%- act[i].code %>')"></i></th>

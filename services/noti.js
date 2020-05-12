@@ -20,4 +20,10 @@ module.exports.createNewActivity = async function (i){
   }
  module.exports.findNameEvent=function(c){
    let all=event.find({TenSuKien:c})
+   return all;
  }
+ //Work in student
+ module.exports.getListJoin=function(c){
+  let all=event.find({MSGV:c})
+  return all;
+}
