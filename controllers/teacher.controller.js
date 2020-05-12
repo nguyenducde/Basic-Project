@@ -99,12 +99,13 @@ module.exports.AJAX_createNewCodeAct = async function (req, res) {
 
 module.exports.AJAX_delActByCode=async function(req,res){
   let c=req.query.c;
-  let i=await serviceNoti.delActByCode(c,req.user.MSGV);
+  let i=await serviceNoti.delActByCode(c,req.user.IDTaiKhoan);
+  console.log(i);
   return res.send(i);
 }
 
 module.exports.AJAX_reloadAct=async function(req,res){
-  let a=await noti.getAllMyActivities(req.user.MSGV);
+  let a=await serviceNoti.getAllMyActivities(req.user.MSGV);
   return res.send(a);
 }
 
@@ -119,4 +120,8 @@ function randomNum(num) {
 }
 
 function add0(n) {return (n<=9)?'0'+n:n;}
-function removeCharInStr(c,s){var o='';for(var i=0;i<s.length;i++)o+=(s[i]!=c)?s[i]:'';return o;}
+function removeCharInStr(c,s){
+  var o='';
+  for(var i=0;i<s.length;i++)
+  o+=(s[i]!=c)?s[i]:'';
+  return o;}

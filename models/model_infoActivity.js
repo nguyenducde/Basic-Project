@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 
 var infoSchema=new mongoose.Schema({
-    IDHoatDong:String,
+IDHoatDong:String,
 TenSuKien:String,
 ThoiGian:Date,
 MSGV:String,

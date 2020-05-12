@@ -29,7 +29,8 @@
       $('#delActModal').modal('hide');
       $.ajax({type:'POST',
       url:`/ajax-del-activity?c=${c}`
-      ,success:function(res){if(res){$.notify(`Hoạt động <b>${res}</b> đã được xóa thành công`, "success");
+      ,success:function(res){
+        if(res){$.notify(`Hoạt động <b>${res}</b> đã được xóa thành công`, "success");
       AJAX_reloadAct();
       }else{
         $.notify('Không tìm thấy thông tin về hoạt động cần xóa!','error');

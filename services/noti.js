@@ -27,5 +27,8 @@ module.exports.createNewActivity = async function (i){
   return all;
 }
 module.exports.delActByCode=async function(c,a){
-  let act=await noti.findOneAndDelete({IDHoatDong:c,MSGV:a});
-  if(act)return act.name;return null;}
+
+  let act=await infoAc.findOneAndDelete({IDHoatDong:c,MSGV:a});
+  let actInfoActi=await noti.remove({IDHoatDong:c,MSGV:a});
+  if(act)return act.TenSuKien;
+  return null;}
