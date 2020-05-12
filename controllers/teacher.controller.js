@@ -42,7 +42,7 @@ module.exports.isLogined_next = async function (req, res, next) {
 //Work noti
 module.exports.postCreateActivity = async function(req, res) {
  let name=req.body.name;
- let datetime=req.body.code;
+ let datetime=req.body.time;
 let checkNameEvent=serviceNoti.findNameEvent(name);
 if(checkNameEvent==undefined)
 {
@@ -51,6 +51,7 @@ if(checkNameEvent==undefined)
 }
 else{
   infoAc.insertMany({
+    IDHoatDong:removeCharInStr('-',req.body.code),
     TenSuKien:name,
     ThoiGian:datetime,
     MSGV:req.user.IDTaiKhoan})
@@ -60,6 +61,7 @@ else{
   event.find({TenSuKien:name},(err,result)=>{
     result.forEach(element=>{
       let info = {
+        IDHoatDong: removeCharInStr('-',req.body.code),
         TenSuKien:name,
         ThoiGian:datetime,
         MSGV:req.user.IDTaiKhoan,
@@ -84,4 +86,37 @@ module.exports.getHome = async function (req, res) {
    // actRD: activitiesReady
   });
 }
+module.exports.AJAX_createNewCodeAct = async function (req, res) {
+  let now = new Date();
+  let code = add0(now.getDate())+add0(now.getMonth()+1)+''+now.getFullYear()+''+randomNum(4)+''+randomNum(4);
+  var check;
+  do {
+    check = await serviceNoti.isCodeNotExist_code(code,req.user.IDTaiKhoan);
+  } while (!check);
+  return res.send(check);
+}
 
+
+module.exports.AJAX_delActByCode=async function(req,res){
+  let c=req.query.c;
+  let i=await serviceNoti.delActByCode(c,req.user.MSGV);
+  return res.send(i);
+}
+
+module.exports.AJAX_reloadAct=async function(req,res){
+  let a=await noti.getAllMyActivities(req.user.MSGV);
+  return res.send(a);
+}
+
+function randomNum(num) {
+  var result           = '';
+  var characters       = '0123456789';
+  var charactersLength = characters.length;
+  for ( var i = 0; i < num; i++ ) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+function add0(n) {return (n<=9)?'0'+n:n;}
+function removeCharInStr(c,s){var o='';for(var i=0;i<s.length;i++)o+=(s[i]!=c)?s[i]:'';return o;}

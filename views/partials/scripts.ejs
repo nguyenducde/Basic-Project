@@ -1,12 +1,16 @@
 
 <script>
-  $(document).ready(function() {
+ $(document).ready(function() {
+    $('#ajaxNewCodeAct').click(function(){AJAX_NewCodeActFunc();});
     $(function () {$('[data-toggle="tooltip"]').tooltip()});
   });
+  function AJAX_NewCodeActFunc(){$('#ajaxNewCodeAct').html('<i class="fas fa-circle-notch fa-spin"></i>Đang tạo');$('#ajaxNewCodeAct').attr('disabled',true);$.ajax({type:'POST',url:'ajax-new-code-activity',success:function(res){if(res){$('#codeActCreateAct').val(convToCodeAct(res));$('#ajaxNewCodeAct').html('<i class="fas fa-circle-notch"></i> Tạo mới');$('#ajaxNewCodeAct').attr('disabled',false);}else{$('#ajaxNewCodeAct').html('<i class="fas fa-exclamation-triangle"></i> Đã có lỗi! Thử lại');$('#ajaxNewCodeAct').attr('disabled',false);alert('Không thấy kết quả nào được trả về! Vui lòng thử lại sau.');}},error:function(xhr,status,err) {$('#ajaxNewCodeAct').html('<i class="fas fa-exclamation-triangle"></i> Đã có lỗi! Thử lại');$('#ajaxNewCodeAct').attr('disabled', false);alert(err);}});}
+  function convToCodeAct(s){var o='';for(var i=0;i<s.length;i++){o+=(i==3||i==7||i==11)?s[i]+'-':s[i];}return o;} 
+  
   function AJAX_reloadAct(){
     $.ajax({
     type:'POST',
-    url:`/admin/ajax-reload-activity`,
+    url:`/ajax-reload-activity`,
     success:function(d){if(d){
     $.notify('Dữ liệu đã được tải lại', 'success');
     var cont='';
@@ -16,15 +20,15 @@
         if(d[i].isHaveFile){cont+=`<th class="col-1" data-toggle="tooltip" title="Tải xuống file danh sách tham gia"><a href="../files/xlsx/${d[i].code}.xlsx" style="text-decoration:none" download><i class="fas fa-file-download" ></i></a></th>`;}
         else{cont+=`<th class="col-1" data-toggle="tooltip" title="Tải lên file danh sách tham gia"><i class="fas fa-file-upload" data-toggle="modal" data-target="#uploadFileActModal" onclick="AJAX_checkAct_uploadFileCheckin('${d[i].code}')"></i></th>`;}
         cont+=`<th class="col-1"><i class="fas fa-eye text-primary"></i></th><th class="col-1"><i class="fas fa-edit text-success" data-toggle="modal" data-target="#editActModal" onclick="AJAX_editActModal('${d[i].code}')" ></i></th><th class="col-1"><i class="fas fa-trash-alt text-danger" data-toggle="modal" data-target="#delActModal" onclick="authenticateDelAct('${d[i].code}')"></i></th></tr> `;}cont+=` </tbody></table></div>`;}else{cont+=` <b>Bạn chưa có hoạt động nào!</b><br><button class="btn btn-outline-primary" data-toggle="modal" data-target="#createNewActModal" onclick="AJAX_NewCodeActFunc()">Tạo hoạt động mới</button> `}$('#data_activities').html(cont);}else{alert('Hết thời gian chờ, không tìm thấy kết quả trả về!');
-        window.location.href="/admin";}}
+        window.location.href="/teacher_tructiep";}}
         ,error: function(xhr, status, err) {
           alert('Hệ thống tạm thời bị lỗi! Vui lòng thử lại sau!\n'+err);
-        window.location.href="/admin";}});}
+        window.location.href="/teacher_tructiep";}});}
   
   function AJAX_delActByCode(c){
       $('#delActModal').modal('hide');
       $.ajax({type:'POST',
-      url:`/admin/ajax-del-activity?c=${c}`
+      url:`/ajax-del-activity?c=${c}`
       ,success:function(res){if(res){$.notify(`Hoạt động <b>${res}</b> đã được xóa thành công`, "success");
       AJAX_reloadAct();
       }else{
@@ -32,7 +36,7 @@
         setTimeout(`window.location.href="/teacher_tructiep"`,5000);}},
         error:function(xhr,status,err){
           alert('Hệ thống tạm thời bị lỗi! Vui lòng thử lại sau!\n'+err);
-          window.location.href="/admin";
+          window.location.href="/teacher_tructiep";
   }});}
   
   function authenticateDelAct(c){

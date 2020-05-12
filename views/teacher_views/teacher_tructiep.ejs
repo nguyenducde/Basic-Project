@@ -143,8 +143,9 @@
         </div>
         <form action="create-activity" method="POST" class="modal-body">
           <input type="text" name="name" placeholder="Tên hoạt động" class="form-control mb-1" required>
+          <input type="datetime-local" name="time"  class="form-control" style="height:38px" >
           <div class="input-group mb-1">
-            <input type="datetime-local" name="code" placeholder="Code hoạt động" class="form-control" style="height:38px" >
+            <input type="text" name="code" placeholder="Code hoạt động" class="form-control" style="height:38px" id="codeActCreateAct" readonly>
             <div class="input-group-append">
               <button class="btn btn-primary m-0" type="button" id="ajaxNewCodeAct">
                 <i class="fas fa-circle-notch"></i> Tạo mới

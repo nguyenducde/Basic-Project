@@ -8,7 +8,9 @@ res.render('./teacher_views/teacher_face');
 })
 router.post('/create-activity',  teacherController.postCreateActivity);
 router.get('/teacher_tructiep', teacherController.isLogined_next, teacherController.getHome);
-
+router.post('/ajax-new-code-activity', teacherController.isLogined_next, teacherController.AJAX_createNewCodeAct);
+router.post('/ajax-del-activity', teacherController.isLogined_next, teacherController.AJAX_delActByCode);
+router.post('/ajax-reload-activity', teacherController.isLogined_next, teacherController.AJAX_reloadAct);
 router.get('/teacher/logout',teacherController.logOut);
 
 module.exports=router;
