@@ -29,6 +29,16 @@ module.exports.createNewActivity = async function (i){
 module.exports.delActByCode=async function(c,a){
 
   let act=await infoAc.findOneAndDelete({IDHoatDong:c,MSGV:a});
-  let actInfoActi=await noti.remove({IDHoatDong:c,MSGV:a});
+  let actInfoActi=await noti.deleteMany({IDHoatDong:c,MSGV:a});
   if(act)return act.TenSuKien;
-  return null;}
+  return null;
+}
+module.exports.GetActStudent=async function(c,a){
+  let all=await noti.find({MSSV:c});
+  return all;
+}
+//Export to excel
+module.exports.exportExcel=async function(c,a){
+  let all=await diemdanh.find();
+  return all;
+}

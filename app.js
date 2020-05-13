@@ -1,8 +1,6 @@
 const express = require('express');
 var createError = require('http-errors');
 const path = require('path');
-const {google} = require('googleapis');
-const keys=require('./keys.json');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
@@ -72,45 +70,13 @@ app.use(session({
   unset: 'destroy',
 }));
 
+//Use authencation
 app.use(passport.initialize());
 app.use(passport.session()); 
 app.use(flash());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//Set Google Sheet
-/*
-const client=new google.auth.JWT(
-keys.client_email,null,keys.private_key,['https://www.googleapis.com/auth/spreadsheets']
-);
-
-  client.authorize(function(err,tokens){
-        if(err)
-        {
-            console.log(err);
-            return;
-        }
-        else{
-           console.log("Kết nối GoogleSheets thành công");
-           gsrun(client);
-        }
-    })
-
-
-async function gsrun(cl)
-{
-    const gsapi=google.sheets({version:'v4',auth:cl});
-   const opt={
-       //id gg sheets
-       spreadsheetId:'1dmvytgNyj8KVAn81mf_Kep0hDwJbsxGkrcEBFqmxz74',
-       range:'B2:C10'
-   };
-  let data= await gsapi.spreadsheets.values.get (opt);
-
-  //console.log(data.data.values);
-}
-
-*/
 //Use router
 app.use(indexRouter);
 app.use(teacherRouter);
@@ -118,8 +84,6 @@ app.use(studentRouter);
 app.get('/qr',(req,res)=>{
  return  res.render('./student_views/qr');
 })
-
-
 
 //Get passport
 require('./configs/passport')(passport);
