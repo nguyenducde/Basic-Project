@@ -46,8 +46,10 @@ module.exports.isLogined_next = async function (req, res, next) {
 module.exports.postCreateActivity = async function(req, res) {
   let name=req.body.name;
   let datetime=req.body.time;
+  let lop=req.body.lop;
+  let hocky=req.body.hocki;
   let checkNameEvent=serviceNoti.findNameEvent(name);
-  if(checkNameEvent==undefined)
+  if(checkNameEvent==null)
   {
     req.flash("Tên sự kiện không phù hợp")
   return res.redirect('/teacher_tructiep');
@@ -56,6 +58,8 @@ module.exports.postCreateActivity = async function(req, res) {
       infoAc.insertMany({
       IDHoatDong:removeCharInStr('-',req.body.code),
       TenSuKien:name,
+      Lop:lop,
+      HocKy:hocky,
       ThoiGian:datetime,
       MSGV:req.user.IDTaiKhoan})
     // console.log(re[i].MSSV);
@@ -66,6 +70,8 @@ module.exports.postCreateActivity = async function(req, res) {
         let info = {
           IDHoatDong: removeCharInStr('-',req.body.code),
           TenSuKien:name,
+          Lop:lop,
+          HocKy:hocky,
           ThoiGian:datetime,
           MSGV:req.user.IDTaiKhoan,
           MSSV:element.MSSV
@@ -112,37 +118,39 @@ module.exports.AJAX_reloadAct=async function(req,res){
   return res.send(a);
 }
 //Export DiemDanh to excel
-module.exports.AJAX_saveExcel=async function(re,res){
-  var all=await serviceNoti.exportExcel();
-  // var workbook = new Excel.Workbook();
+module.exports.AJAX_saveExcel=async function(req,res){
 
-  //   // Some information about the Excel Work Book.
-  //   workbook.creator = 'Mayank Sanghvi';
-  //   workbook.lastModifiedBy = '';
-  //   workbook.created = new Date().getTime();;
-  //   workbook.modified = new Date();
+  var all=await serviceNoti.exportExcel(c);
+  var workbook = new Excel.Workbook();
+
+    // Some information about the Excel Work Book.
+    workbook.creator = 'Mayank Sanghvi';
+    workbook.lastModifiedBy = '';
+    workbook.created = new Date().getTime();;
+    workbook.modified = new Date();
 
 
-  //   // Create a sheet
-  //   var sheet = workbook.addWorksheet('Sheet1');
-  //   // A table header
-  //   sheet.columns = [
-  //       { header: 'Id', key: 'id' },
-  //       { header: 'Course', key: 'course' },
-  //       { header: 'URL.', key: 'url' }
-  //   ]
+    // Create a sheet
+    var sheet = workbook.addWorksheet('Sheet1');
+    // A table header
+    sheet.columns = [
+        { header: 'Id', key: 'IDHoatDong' },
+        { header: 'Tên Hoạt động', key: 'TenSuKien' },
+        { header: 'Thời Gian', key: 'ThoiGian' },
+        { header: 'Họ Và Tên', key: 'HoVaTen' },
+    ]
 
-  //   // Add rows in the above header
-  //   sheet.addRow({id: 1, course: 'HTML', url:'https://vlemonn.com/tutorial/html' });
-  //   sheet.addRow({id: 2, course: 'Java Script', url: 'https://vlemonn.com/tutorial/java-script'});
-  //   sheet.addRow({id: 3, course: 'Electron JS', url: 'https://vlemonn.com/tutorial/electron-js'});
-  //   sheet.addRow({id: 4, course: 'Node JS', url: 'https://vlemonn.com/tutorial/node-js'});
+    // Add rows in the above header
+    sheet.addRow({id: 1, course: 'HTML', url:'https://vlemonn.com/tutorial/html' });
+    sheet.addRow({id: 2, course: 'Java Script', url: 'https://vlemonn.com/tutorial/java-script'});
+    sheet.addRow({id: 3, course: 'Electron JS', url: 'https://vlemonn.com/tutorial/electron-js'});
+    sheet.addRow({id: 4, course: 'Node JS', url: 'https://vlemonn.com/tutorial/node-js'});
 
-  //   // Save Excel on Hard Disk
-  //   workbook.xlsx.writeFile("My First Excel.xlsx")
-  //   .then(function() {
+    // Save Excel on Hard Disk
+    workbook.xlsx.writeFile("My First Excel.xlsx")
+    .then(function() {
        
-  //   });
+    });
   
 
 

@@ -11,8 +11,12 @@ router.get('/teacher_tructiep', teacherController.isLogined_next, teacherControl
 router.post('/ajax-new-code-activity', teacherController.isLogined_next, teacherController.AJAX_createNewCodeAct);
 router.post('/ajax-del-activity', teacherController.isLogined_next, teacherController.AJAX_delActByCode);
 router.post('/ajax-reload-activity', teacherController.isLogined_next, teacherController.AJAX_reloadAct);
-router.get('/excel',teacherController.isLogined_next,teacherController.AJAX_saveExcel);
+router.post('/excel',teacherController.isLogined_next,teacherController.AJAX_saveExcel);
 router.get('/teacher/logout',teacherController.logOut);
 
 module.exports=router;
 
+//pitvn0007@pitvn5.onmicrosoft.com
+//pitvn0021@pitvn5.onmicrosoft.com
+
+//

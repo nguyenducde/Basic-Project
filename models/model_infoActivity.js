@@ -4,6 +4,8 @@ var mongoose = require('mongoose');
 var infoSchema=new mongoose.Schema({
 IDHoatDong:String,
 TenSuKien:String,
+Lop:String,
+HocKy:String,
 ThoiGian:Date,
 MSGV:String,
 //IDTaiKhoan:{type:mongoose.Schema.Types.ObjectId,ref:'Accounts'}

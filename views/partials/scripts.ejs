@@ -36,7 +36,14 @@
   
   function authenticateDelAct(c){
     $('#delActBtn').attr('onclick',`AJAX_delActByCode('${c}')`);}
- 
+ function AJAX_dlFileExcel(c){
+  $('#dlFile').modal('hide');
+  $.ajax({type:'POST',
+      url:`/excel?c=${c}`
+      ,success:function (res){
+     alert("Thành công")
+      }
+ })}
 </script>
 <!-- Notify -->
 <% if(mess&&mess!=''){ %>

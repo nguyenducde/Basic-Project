@@ -22,7 +22,7 @@
         <th class="col-1"><%- listStudent.length  %></th>
         <th class="col-2"><%-  %> / <%-listStudent.length  %></th>
         <th class="col-2"><%-act[i].ThoiGian.getHours() %>:<%-act[i].ThoiGian.getMinutes() %>  <%-act[i].ThoiGian.getDate() %>-<%-act[i].ThoiGian.getMonth() + 1 %>-<%-act[i].ThoiGian.getFullYear() %>  </th>
-        <th class="col-1"><i class="fas fa-file-download text-primary " data-toggle="modal" data-target="#viewActModal" onclick="AJAX_viewActModal('<%- act[i].IDHoatDong %>')"></i></th>
+        <th class="col-1"><i class="fas fa-file-download text-primary " data-toggle="modal" data-target="#dlFile" onclick="AJAX_dlFileExcel('<%- act[i].IDHoatDong %>')"></i></th>
         <th class="col-1"><i class="fas fa-edit text-success" data-toggle="modal" data-target="#editActModal" onclick="AJAX_editActModal('<%- act[i].IDHoatDong %>')"></i></th>
         <th class="col-1"><i class="fas fa-trash-alt text-danger" data-toggle="modal" data-target="#delActModal" onclick="authenticateDelAct('<%- act[i].IDHoatDong %>')"></i></th>
         <th class="col-1"><i class="fas fa fa-refresh text-info" data-toggle="modal" data-target="#refreshAC" onclick="RefreshAc('<%- act[i].IDHoatDong %>')"></i></th>

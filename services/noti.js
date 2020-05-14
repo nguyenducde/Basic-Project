@@ -38,7 +38,7 @@ module.exports.GetActStudent=async function(c,a){
   return all;
 }
 //Export to excel
-module.exports.exportExcel=async function(c,a){
-  let all=await diemdanh.find();
+module.exports.exportExcel=async function(c){
+  let all=await diemdanh.find({IDHoatDong:c});
   return all;
 }

@@ -143,6 +143,11 @@
         </div>
         <form action="create-activity" method="POST" class="modal-body">
           <input type="text" name="name" placeholder="Tên hoạt động" class="form-control mb-1" required>
+          <input type="text" name="lop" placeholder="Lớp" class="form-control mb-1" required>
+          <select name="hocki" placeholder="Học Kỳ" class="form-control mb-1" required>
+            <option value="Học Kỳ 1">Học Kỳ 1</option>
+            <option value="Học Kỳ 2">Học Kỳ 2</option>
+          </select>
           <input type="datetime-local" name="time"  class="form-control" style="height:38px" >
           <div class="input-group mb-1">
             <input type="text" name="code" placeholder="Code hoạt động" class="form-control" style="height:38px" id="codeActCreateAct" readonly>
@@ -157,25 +162,8 @@
       </div>
     </div>
   </div>
-  <!-- Modal - Xem hoạt động -->
-  <div class="modal fade" id="viewActModal" tabindex="-1" role="dialog" aria-labelledby="viewActModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="viewActModalLabel">Xem hoạt động</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <span class="text-primary" id="viewActProgress"></span><br>
-          <b>Tên hoạt động: </b><span id="name_viewAct"></span><br>
-          <b>Số lượng tham gia : </b><span id="numTPI_viewAct"></span> người<br>
-          <b>Số lượng điểm danh: </b><span id="numCheckin_viewAct"></span> người<br>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- Modal - Download file excel -->
+
   <!-- Modal - Sửa hoạt động -->
   <div class="modal fade" id="editActModal" tabindex="-1" role="dialog" aria-labelledby="editActModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
