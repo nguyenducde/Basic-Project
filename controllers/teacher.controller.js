@@ -67,6 +67,7 @@ module.exports.postCreateActivity = async function(req, res) {
     // noti.insertMany(info);
     event.find({TenSuKien:name},(err,result)=>{
       result.forEach(element=>{
+        //
         let info = {
           IDHoatDong: removeCharInStr('-',req.body.code),
           TenSuKien:name,
