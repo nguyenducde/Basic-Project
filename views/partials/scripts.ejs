@@ -47,8 +47,9 @@ function AJAX_dlFileExcel(c){
       xhrFields: { responseType: "blob" },
       data: {}
       ,success:function (data) { 
+        var date=new Date();
         let blob = new Blob([data], {type: 'vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8'});
-       saveAs(blob, 'DiemDanh.xlsx');
+       saveAs(blob, "Điểm danh lúc " +date.getHours()+" giờ "+date.getMinutes() + " ngày "+date.getDate()+"-"+date.getMonth()+"-"+date.getFullYear()+".xlsx");
       }
  })}
 
