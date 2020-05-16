@@ -22,6 +22,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "express-sessions": "^1.0.6",
+    "file-saver": "^2.0.2",
     "google-spreadsheet": "^3.0.11",
     "googleapis": "^49.0.0",
     "http-errors": "^1.7.3",

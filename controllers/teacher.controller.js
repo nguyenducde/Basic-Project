@@ -1,6 +1,6 @@
 var passport=require('passport')
 const flash = require('connect-flash');
-var serviceNoti=require('../services/noti.js');
+var serviceActivity=require('../services/activity.js');
 var noti=require('../models/model_noti');
 var event=require('../models/module_event');
 var infoAc=require('../models/model_infoActivity')
@@ -48,7 +48,7 @@ module.exports.postCreateActivity = async function(req, res) {
   let datetime=req.body.time;
   let lop=req.body.lop;
   let hocky=req.body.hocki;
-  let checkNameEvent=serviceNoti.findNameEvent(name);
+  let checkNameEvent=serviceActivity.findNameEvent(name);
   if(checkNameEvent==null)
   {
     req.flash("Tên sự kiện không phù hợp")
@@ -85,8 +85,8 @@ module.exports.postCreateActivity = async function(req, res) {
 }
 module.exports.getHome = async function (req, res) {
 
-  let activities = await serviceNoti.getAllMyActivities(req.user.IDTaiKhoan);
-  let listJoin=await serviceNoti.getListJoin(req.user.IDTaiKhoan);
+  let activities = await serviceActivity.getAllMyActivities(req.user.IDTaiKhoan);
+  let listJoin=await serviceActivity.getListJoin(req.user.IDTaiKhoan);
   return res.render('./teacher_views/teacher_tructiep', {
     user: req.user,
     act: activities,
@@ -101,7 +101,7 @@ module.exports.AJAX_createNewCodeAct = async function (req, res) {
   let code = add0(now.getDate())+add0(now.getMonth()+1)+''+now.getFullYear()+''+randomNum(4)+''+randomNum(4);
   var check;
   do {
-    check = await serviceNoti.isCodeNotExist_code(code,req.user.IDTaiKhoan);
+    check = await serviceActivity.isCodeNotExist_code(code,req.user.IDTaiKhoan);
   } while (!check);
   return res.send(check);
 }
@@ -109,54 +109,81 @@ module.exports.AJAX_createNewCodeAct = async function (req, res) {
 
 module.exports.AJAX_delActByCode=async function(req,res){
   let c=req.query.c;
-  let i=await serviceNoti.delActByCode(c,req.user.IDTaiKhoan);
+  let i=await serviceActivity.delActByCode(c,req.user.IDTaiKhoan);
   console.log(i);
   return res.send(i);
 }
 
 module.exports.AJAX_reloadAct=async function(req,res){
-  let a=await serviceNoti.getAllMyActivities(req.user.MSGV);
+  let a=await serviceActivity.getAllMyActivities(req.user.MSGV);
   return res.send(a);
 }
 //Export DiemDanh to excel
 module.exports.AJAX_saveExcel=async function(req,res){
-
-  var all=await serviceNoti.exportExcel(c);
+  var all=await serviceActivity.exportExcel(req.query.c);
   var workbook = new Excel.Workbook();
 
+  workbook.creator = 'Me';
+  workbook.lastModifiedBy = 'Her';
+  workbook.created = new Date(1985, 8, 30);
+  workbook.modified = new Date();
+  workbook.lastPrinted = new Date(2016, 9, 27);
+  workbook.properties.date1904 = true;
+
+  workbook.views = [
+      {
+          x: 0, y: 0, width: 10000, height: 20000,
+          firstSheet: 0, activeTab: 1, visibility: 'visible'
+      }
+  ];
+  var worksheet = workbook.addWorksheet('My Sheet');
+  worksheet.columns = [
+      { header: 'Id', key: 'id', width: 10 },
+      { header: 'Name', key: 'name', width: 32 },
+      { header: 'D.O.B.', key: 'dob', width: 10, outlineLevel: 1, type: 'date', formulae: [new Date(2016, 0, 1)] }
+  ];
+
+  worksheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) });
+  worksheet.addRow({ id: 2, name: 'Jane Doe', dob: new Date(1965, 1, 7) });
+
+  res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
+  workbook.xlsx.write(res)
+      .then(function (data) {
+          res.end();
+          console.log('File write done........');
+      });
+}
+function testSave()
+{
+  
+    var workbook = new Excel.Workbook();
     // Some information about the Excel Work Book.
     workbook.creator = 'Mayank Sanghvi';
     workbook.lastModifiedBy = '';
-    workbook.created = new Date().getTime();;
+    //workbook.created = new Date().getTime();;
     workbook.modified = new Date();
-
 
     // Create a sheet
     var sheet = workbook.addWorksheet('Sheet1');
     // A table header
     sheet.columns = [
-        { header: 'Id', key: 'IDHoatDong' },
+        { header: 'STT', key: 'IDHoatDong' },
         { header: 'Tên Hoạt động', key: 'TenSuKien' },
-        { header: 'Thời Gian', key: 'ThoiGian' },
         { header: 'Họ Và Tên', key: 'HoVaTen' },
+        { header: 'Thời Gian', key: 'ThoiGian' },
+     
     ]
-
     // Add rows in the above header
-    sheet.addRow({id: 1, course: 'HTML', url:'https://vlemonn.com/tutorial/html' });
-    sheet.addRow({id: 2, course: 'Java Script', url: 'https://vlemonn.com/tutorial/java-script'});
-    sheet.addRow({id: 3, course: 'Electron JS', url: 'https://vlemonn.com/tutorial/electron-js'});
-    sheet.addRow({id: 4, course: 'Node JS', url: 'https://vlemonn.com/tutorial/node-js'});
-
+    for (let i = 0; i < all.length; i++) {
+      
+      sheet.addRow({IDHoatDong: i, TenSuKien: all[i].TenSuKien,HoVaTen:all[i].HoVaTen, ThoiGian:all[i].ThoiGian });
+    }
     // Save Excel on Hard Disk
     workbook.xlsx.writeFile("My First Excel.xlsx")
     .then(function() {
-       
+       res.send(all.TenSuKien)
     });
-  
-
-
-  
-  
 }
 function randomNum(num) {
   var result           = '';

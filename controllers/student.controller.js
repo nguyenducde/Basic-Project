@@ -2,7 +2,7 @@ var passport=require('passport')
 const httpMsgs=require("http-msgs");
 var students=require('../models/model_student');
 var event=require('../models/module_event');
-var serviceNoti=require('../services/noti.js');
+var serviceNoti=require('../services/activity');
 
 
 

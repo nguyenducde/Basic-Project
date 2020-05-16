@@ -1,4 +1,6 @@
 
+
+
 <script>
  $(document).ready(function() {
     $('#ajaxNewCodeAct').click(function(){AJAX_NewCodeActFunc();});
@@ -34,16 +36,46 @@
           window.location.href="/teacher_tructiep";
   }});}
   
-  function authenticateDelAct(c){
+function authenticateDelAct(c){
     $('#delActBtn').attr('onclick',`AJAX_delActByCode('${c}')`);}
- function AJAX_dlFileExcel(c){
+    
+function AJAX_dlFileExcel(c){
   $('#dlFile').modal('hide');
   $.ajax({type:'POST',
       url:`/excel?c=${c}`
       ,success:function (res){
-     alert("Thành công")
+        $.notify('Tải file thành công');
+      //   const objectToCsv=function(data){
+      //         const csvRows=[];
+      //         //get the headers
+      //         const header=Object.keys(data[0]);
+              
+      //       //loop over the rows
+      //       for(const row of data){
+      //         const values=headers.map(header=>{
+      //         const escaped=(''+row[header]).replace(/"/g, '\\"');
+      //         return '"${row[header]}"';
+      //         });
+      //         csvRows.push(headers.join(','));
+      //         return csvRows.join('\n');
+      //       }
+      //   }
+      //  const csvData=objectToCsv(data);
+        
       }
  })}
+
+function SaveFile(){
+    const blob=new Blob([,{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}]);
+    const url=window.URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.setAttribute('hidden','');
+    a.setAttribute('href',url);
+    a.setAttribute('download','download.xlsx');
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
 </script>
 <!-- Notify -->
 <% if(mess&&mess!=''){ %>
