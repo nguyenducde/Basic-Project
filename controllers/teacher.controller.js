@@ -5,7 +5,8 @@ var noti=require('../models/model_noti');
 var event=require('../models/module_event');
 var infoAc=require('../models/model_infoActivity')
 const Excel = require('exceljs');
-var mongoXlsx = require('mongo-xlsx');
+var fs = require("fs");
+var path = require("path");
 
 module.exports.getLogin = function (req, res) {
  if(req.isAuthenticated('local-teacherLogin')&&req.user.LoaiTaiKhoan=="Giao Vien"){
@@ -123,68 +124,45 @@ module.exports.AJAX_saveExcel=async function(req,res){
   var all=await serviceActivity.exportExcel(req.query.c);
   var workbook = new Excel.Workbook();
 
-  workbook.creator = 'Me';
-  workbook.lastModifiedBy = 'Her';
-  workbook.created = new Date(1985, 8, 30);
-  workbook.modified = new Date();
-  workbook.lastPrinted = new Date(2016, 9, 27);
-  workbook.properties.date1904 = true;
+	// workbook.creator = 'Me';
+	// workbook.lastModifiedBy = 'Her';
+	// workbook.created = new Date(1985, 8, 30);
+	// workbook.modified = new Date();
+	// workbook.lastPrinted = new Date(2016, 9, 27);
+	// workbook.properties.date1904 = true;
 
-  workbook.views = [
-      {
-          x: 0, y: 0, width: 10000, height: 20000,
-          firstSheet: 0, activeTab: 1, visibility: 'visible'
-      }
-  ];
-  var worksheet = workbook.addWorksheet('My Sheet');
-  worksheet.columns = [
-      { header: 'Id', key: 'id', width: 10 },
-      { header: 'Name', key: 'name', width: 32 },
-      { header: 'D.O.B.', key: 'dob', width: 10, outlineLevel: 1, type: 'date', formulae: [new Date(2016, 0, 1)] }
-  ];
+	// workbook.views = [
+	// 	{
+	// 		x: 0, y: 0, width: 10000, height: 20000,
+	// 		firstSheet: 0, activeTab: 1, visibility: 'visible'
+	// 	}
+	// ];
+	// Create a sheet
+  var sheet = workbook.addWorksheet('Sheet1');
+  // A table header
+  sheet.columns = [
+      { header: 'STT', key: 'IDHoatDong' },
+      { header: 'Tên Hoạt động', key: 'TenSuKien' },
+      { header: 'Họ Và Tên', key: 'HoVaTen' },
+      { header: 'Thời Gian', key: 'ThoiGian' },
+   
+  ]
+  // Add rows in the above header
+  for (let i = 0; i < all.length; i++) {
+    
+    sheet.addRow({IDHoatDong: i, TenSuKien: all[i].TenSuKien,HoVaTen:all[i].HoVaTen, ThoiGian:all[i].ThoiGian });
+  }
 
-  worksheet.addRow({ id: 1, name: 'John Doe', dob: new Date(1970, 1, 1) });
-  worksheet.addRow({ id: 2, name: 'Jane Doe', dob: new Date(1965, 1, 7) });
-
-  res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-  res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
-  workbook.xlsx.write(res)
-      .then(function (data) {
-          res.end();
-          console.log('File write done........');
-      });
+	res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+	res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
+	workbook.xlsx.write(res)
+		.then(function (data) {
+			res.end();
+			console.log('File write done........');
+		});
+ 
 }
-function testSave()
-{
-  
-    var workbook = new Excel.Workbook();
-    // Some information about the Excel Work Book.
-    workbook.creator = 'Mayank Sanghvi';
-    workbook.lastModifiedBy = '';
-    //workbook.created = new Date().getTime();;
-    workbook.modified = new Date();
 
-    // Create a sheet
-    var sheet = workbook.addWorksheet('Sheet1');
-    // A table header
-    sheet.columns = [
-        { header: 'STT', key: 'IDHoatDong' },
-        { header: 'Tên Hoạt động', key: 'TenSuKien' },
-        { header: 'Họ Và Tên', key: 'HoVaTen' },
-        { header: 'Thời Gian', key: 'ThoiGian' },
-     
-    ]
-    // Add rows in the above header
-    for (let i = 0; i < all.length; i++) {
-      
-      sheet.addRow({IDHoatDong: i, TenSuKien: all[i].TenSuKien,HoVaTen:all[i].HoVaTen, ThoiGian:all[i].ThoiGian });
-    }
-    // Save Excel on Hard Disk
-    workbook.xlsx.writeFile("My First Excel.xlsx")
-    .then(function() {
-       res.send(all.TenSuKien)
-    });
-}
 function randomNum(num) {
   var result           = '';
   var characters       = '0123456789';
