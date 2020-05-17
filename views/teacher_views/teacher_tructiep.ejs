@@ -3,7 +3,7 @@
 
 <head>
   <title>Điểm danh | Giáo Viên</title>
-  <%- include ("../partials/admin-head") %>
+  <%- include ("../partials/teacher-head") %>
 </head>
 
 <body class="">
@@ -95,13 +95,13 @@
                 <button class="btn btn-warning mt-0 mb-1" onclick="AJAX_reloadAct()">Tải lại dữ liệu</button>
               </div>
               <div class="card-body" id="data_activities">
-                <%- include ("../partials/admin-table-manage") %>
+                <%- include ("../partials/teacher-table-manage") %>
                
               </div>
             </div>
             <div class="card mb-2">
               <div class="card-body" id="checkinActArea">
-
+                <%- include ("../partials/teacher-checkin-area") %>
                 
               </div>
             </div>
@@ -293,7 +293,7 @@
       </div>
     </div>
   </div>
-  <%- include ("../partials/admin-footer") %>
+  <%- include ("../partials/teacher-footer") %>
   <%- include ("../partials/scripts") %>
 
   

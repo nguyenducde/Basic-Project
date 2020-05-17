@@ -85,15 +85,16 @@ module.exports.postCreateActivity = async function(req, res) {
   return  res.redirect('/teacher_tructiep');
 }
 module.exports.getHome = async function (req, res) {
-
+  let studentAttendance=0;
   let activities = await serviceActivity.getAllMyActivities(req.user.IDTaiKhoan);
   let listJoin=await serviceActivity.getListJoin(req.user.IDTaiKhoan);
+ 
   return res.render('./teacher_views/teacher_tructiep', {
     user: req.user,
     act: activities,
     listStudent:listJoin,
     mess: req.flash('mess'),
-    
+    studentAt:studentAttendance
    // actRD: activitiesReady
   });
 }
@@ -150,7 +151,7 @@ module.exports.AJAX_saveExcel=async function(req,res){
   // Add rows in the above header
   for (let i = 0; i < all.length; i++) {
     
-    sheet.addRow({IDHoatDong: i, TenSuKien: all[i].TenSuKien,HoVaTen:all[i].HoVaTen, ThoiGian:all[i].ThoiGian });
+    sheet.addRow({IDHoatDong: i+1, TenSuKien: all[i].TenSuKien,HoVaTen:all[i].HoVaTen, ThoiGian:all[i].ThoiGian });
   }
 
 	res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
@@ -162,7 +163,14 @@ module.exports.AJAX_saveExcel=async function(req,res){
 		});
  
 }
+//Refresh student attendance
+module.exports.AJAX_refresh=async function(req,res){
+  var studentAttendance=await serviceActivity.refresh(req.query.c);
+  let activities = await serviceActivity.getAllMyActivities(req.user.IDTaiKhoan);
+  let listJoin=await serviceActivity.getListJoin(req.user.IDTaiKhoan);
+return res.redirect('/teacher_tructiep')
 
+}
 function randomNum(num) {
   var result           = '';
   var characters       = '0123456789';

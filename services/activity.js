@@ -42,3 +42,8 @@ module.exports.exportExcel=async function(c){
   let all=await diemdanh.find({IDHoatDong:c});
   return all;
 }
+//Refesh student điểm danh
+module.exports.refresh=async function(c){
+  let all=await diemdanh.find({IDHoatDong:c});
+  return all;
+}

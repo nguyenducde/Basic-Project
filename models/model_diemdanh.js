@@ -5,7 +5,8 @@ var DiemDanhSchema=new mongoose.Schema({
 IDHoatDong:String,
 TenSuKien:String,
 ThoiGian:Date,
-HoVaTen:String
+HoVaTen:String,
+MSSV:String
 //IDTaiKhoan:{type:mongoose.Schema.Types.ObjectId,ref:'Accounts'}
  
 });

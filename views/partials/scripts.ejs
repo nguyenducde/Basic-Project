@@ -41,7 +41,7 @@ function authenticateDelAct(c){
 
 //Dowload file excel  
 function AJAX_dlFileExcel(c){
-  $('#dlFile').modal('hide');
+$('#dlFile').modal('hide');
   $.ajax({type:'POST',
       url:`/excel?c=${c}`,
       xhrFields: { responseType: "blob" },
@@ -52,7 +52,17 @@ function AJAX_dlFileExcel(c){
        saveAs(blob, "Điểm danh lúc " +date.getHours()+" giờ "+date.getMinutes() + " ngày "+date.getDate()+"-"+date.getMonth()+"-"+date.getFullYear()+".xlsx");
       }
  })}
-
+//Refresh 
+function RefreshAc(c){
+  $('#refresh').modal('hide');
+  $.ajax({
+    type:'POST',
+    url:`/refreshAt?c=${c}`,
+    success:function(){
+   $.notify( 'Tải dữ liệu sinh viên điểm danh thành công')
+    }
+})
+}
 </script>
 <!-- Notify -->
 <% if(mess&&mess!=''){ %>
