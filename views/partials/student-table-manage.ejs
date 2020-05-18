@@ -22,7 +22,7 @@
           <th class="col-3"><%-UserStudent[i].ThoiGian.getHours() %>:<%-UserStudent[i].ThoiGian.getMinutes() %></th>
           <th class="col-3">
             <button type="submit" id="completed-task" class="fabutton">
-              <i class="fa fa-square-o fa-lg" data-toggle="modal" data-target="#submitDiemDanh" onclick="submitAT('<%-UserStudent[i].IDHoatDong %>')"></i>
+              <i class="fa fa-square-o fa-lg alert-primary" data-toggle="modal" data-target="#submitDiemDanh" onclick="submitAT('<%-UserStudent[i].IDHoatDong %>')"></i>
             </button></th>
         </tr>
         <% } %>

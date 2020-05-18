@@ -15,11 +15,11 @@
     url:`/ajax-reload-activity`,
     success:function(d){if(d){
     $.notify('Dữ liệu đã được tải lại', 'success');
-    window.location.href="/teacher_tructiep";
+    window.location.href="/teacher-tructiep";
   }}
         ,error: function(xhr, status, err) {
           alert('Hệ thống tạm thời bị lỗi! Vui lòng thử lại sau!\n'+err);
-        window.location.href="/teacher_tructiep";}});}
+        window.location.href="/teacher-tructiep";}});}
   
   function AJAX_delActByCode(c){
       $('#delActModal').modal('hide');
@@ -30,10 +30,10 @@
       AJAX_reloadAct();
       }else{
         $.notify('Không tìm thấy thông tin về hoạt động cần xóa!','error');
-        setTimeout(`window.location.href="/teacher_tructiep"`,5000);}},
+        setTimeout(`window.location.href="/teacher-tructiep"`,5000);}},
         error:function(xhr,status,err){
           alert('Hệ thống tạm thời bị lỗi! Vui lòng thử lại sau!\n'+err);
-          window.location.href="/teacher_tructiep";
+          window.location.href="/teacher-tructiep";
   }});}
   
 function authenticateDelAct(c){
