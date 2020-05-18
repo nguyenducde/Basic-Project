@@ -49,12 +49,15 @@ module.exports.isLogined_next = async function (req, res, next) {
 //Get infomation student by MSSV,DateTime
 module.exports.getActStudent = async function (req, res, next) {
   var time=new Date();
-  var check=false;
+
   let act_Student=await serviceNoti.GetActStudent(req.user.IDTaiKhoan)
   act_Student.forEach(Element=>{
    if(Element.ThoiGian.getTime()>time.getTime()){
-    check=true;
-    return   res.render('./student_views/student-diemdanh',{check});
+
+      return   res.render('./student_views/student-diemdanh',{
+      UserStudent:act_Student
+
+      });
    }
   })
 }

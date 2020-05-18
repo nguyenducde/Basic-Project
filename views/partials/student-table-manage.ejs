@@ -1,4 +1,6 @@
-<b>Tìm thấy hoạt động điểm danh phù hợp</b>
+<% if (UserStudent.length > 0) { %>
+  <% var l=UserStudent.length; %>
+  <b>Tìm thấy <%- l %> thông báo điểm danh</b>
 <div class="table-responsive">
   <table class="table text-center table-bordered table-hover">
     <thead>
@@ -12,18 +14,23 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="d-flex alert-success">
-        <th class="col-1"></th>
-        <th class="col-2"></th>
-        <th class="col-3"></th>
-        <th class="col-3"></th>
-        <th class="col-3">
-          <button type="submit" id="completed-task" class="fabutton">
-            <i class="fa fa-square-o fa-lg" data-toggle="modal" data-target="#submitDiemDanh" onclick="submitAT('<%- %>')"></i>
-          </button></th>
-      </tr>
-    
-      
+      <% for(var i=0;i<l;i++){ %>
+        <tr class="d-flex alert-success">
+          <th class="col-1"><%- i+1 %></th>
+          <th class="col-2"><%- UserStudent[i].TenSuKien %></th>
+          <th class="col-3"> <%-UserStudent[i].ThoiGian.getDate() %>-<%-UserStudent[i].ThoiGian.getMonth() + 1 %>-<%-UserStudent[i].ThoiGian.getFullYear() %></th>
+          <th class="col-3"><%-UserStudent[i].ThoiGian.getHours() %>:<%-UserStudent[i].ThoiGian.getMinutes() %></th>
+          <th class="col-3">
+            <button type="submit" id="completed-task" class="fabutton">
+              <i class="fa fa-square-o fa-lg" data-toggle="modal" data-target="#submitDiemDanh" onclick="submitAT('<%-UserStudent[i].IDHoatDong %>')"></i>
+            </button></th>
+        </tr>
+        <% } %>
     </tbody>
   </table>
 </div>
+
+<% } else { %>
+  <b>Bạn không có thông báo điểm danh!</b><br>
+  <% } %>
+

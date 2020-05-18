@@ -57,16 +57,6 @@
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="fas fa-search"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
             <ul class="navbar-nav">
               <li class="nav-item btn-rotate dropdown">
                 <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -158,6 +148,35 @@
       </footer>
     </div>
   </div>
+   <!-- Modal - Cài đặt người dùng -->
+   <div class="modal fade" id="settingUserModal" tabindex="-1" role="dialog" aria-labelledby="settingUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="settingUserModalLabel">Người dùng</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5 class="text-secondary">Cập nhật thông tin</h5>
+          <b class="text-primary">Họ và tên:</b>
+          <input type="text" placeholder="Họ và tên" class="form-control" value="<%- %>" id="nameUserEdit">
+          <button class="btn btn-primary" onclick="AJAX_updateNameUser()">Cập nhật</button>
+          <hr>
+          <h5 class="text-secondary">Cập nhật mật khẩu</h5>
+          <b class="text-primary">Mật khẩu cũ:</b>
+          <input type="password" placeholder="Mật khẩu cũ" id="oldPass" class="form-control">
+          <b class="text-primary">Mật khẩu mới:</b>
+          <input type="password" placeholder="Mật khẩu mới" id="newPass" class="form-control">
+          <button class="btn btn-danger">Cập nhật mật khẩu</button>
+        </div>
+        <div class="modal-footer">
+          <a href="/admin/logout" style="text-decoration: none;" class="btn btn-danger">Đăng xuất</a>
+        </div>
+      </div>
+    </div>
+  </div
   <%- include ("../partials/teacher-footer") %>
 </body>
 </html>
