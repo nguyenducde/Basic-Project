@@ -1,0 +1,30 @@
+
+<script>
+ $(document).ready(function() {
+    $(function () {$('[data-toggle="tooltip"]').tooltip()});
+  });
+  
+function submitAT(c){
+    $('#submitDiemDanh').modal('hide');
+  $.ajax({
+    type:'POST',
+    url:`/createDiemDanh?c=${c}`,
+    success:function(checkDiemDanh){
+      if(checkDiemDanh.length>0){
+        $.notify( 'Bạn đã điểm danh rùi !');
+      }
+      else{
+        $.notify( 'Điểm danh thành công');
+      }
+  
+
+    }
+})
+}
+  </script>
+<!-- Notify -->
+<% if(mess&&mess!=''){ %>
+    <script>
+      $.notify("<%- mess %>", "success");
+    </script>  
+    <% } %>

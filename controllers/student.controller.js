@@ -2,7 +2,7 @@ var passport=require('passport')
 const httpMsgs=require("http-msgs");
 var students=require('../models/model_student');
 var event=require('../models/module_event');
-var serviceNoti=require('../services/activity');
+var serviceActivity=require('../services/activity');
 
 
 
@@ -50,28 +50,38 @@ module.exports.isLogined_next = async function (req, res, next) {
 module.exports.getActStudent = async function (req, res, next) {
   var time=new Date();
 
-  let act_Student=await serviceNoti.GetActStudent(req.user.IDTaiKhoan)
+  let act_Student=await serviceActivity.GetActStudent(req.user.IDTaiKhoan)
   act_Student.forEach(Element=>{
    if(Element.ThoiGian.getTime()>time.getTime()){
 
       return   res.render('./student_views/student-diemdanh',{
-      UserStudent:act_Student
-
+      UserStudent:act_Student,
+      mess: req.flash('mess')
       });
    }
   })
 }
 //Save DiemDanh in databases
 module.exports.saveDiemDanh=async function (req, res){
-  var code=req.query.code;
+  var code=req.query.c;
   let getNoti=await serviceActivity.findNoti(code);
+  let getNameStudent=await serviceActivity.findNameStudent(req.user.IDTaiKhoan);
   //Check student đã điểm danh hay chưa
-  let checkDiemDanh=await serviceActivity.checkDone(code,getNoti.MSSV,getNoti.TenSuKien,getNoti.ThoiGian);
+  let checkDiemDanh=await serviceActivity.checkDone(code,req.user.IDTaiKhoan,getNoti.TenSuKien,getNoti.ThoiGian);
   if(checkDiemDanh.length>0){
-
-    //Not save database
+    //not save database
+    return res.send(checkDiemDanh);
   }
   else{
+    let object ={
+      IDHoatDong:code,
+      TenSuKien:getNoti.TenSuKien,
+      ThoiGian:getNoti.ThoiGian,
+      HoVaTen:getNameStudent.HoVaTen,
+      MSSV:req.user.IDTaiKhoan
+    }
     //save database
+    await serviceActivity.insertDiemDanh(object)
+   return  res.send(checkDiemDanh);
   }
 }

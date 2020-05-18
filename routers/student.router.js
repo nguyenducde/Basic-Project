@@ -5,7 +5,7 @@ var studentController=require('../controllers/student.controller');
 
 router.get('/student',studentController.isNotLogined_next,studentController.getLogin);
 router.post('/student',studentController.isNotLogined_next,studentController.postLogin);
-router.post('/student/createDiemDanh',studentController.isLogined_next,)
+router.post('/createDiemDanh',studentController.isLogined_next,studentController.saveDiemDanh);
 router.get('/student/logout',studentController.logOut);
 router.get('/student-diemdanh',studentController.isLogined_next,studentController.getActStudent);
 
