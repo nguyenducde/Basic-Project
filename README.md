@@ -1,5 +1,5 @@
-# ProjectDiemDanhV3
-Git clone https://github.com/nguyenducde/ProjectDiemDanhV3.git to Desktop
+# ProjectDiemDanh
+Git clone https://github.com/nguyenducde/DiemDanh-Express-Mongodb.git Desktop
 
  -> Go to file ProjectDiemDanhV3 and open the terminal type **npm run dev** or type **node ./bin/www**
  
