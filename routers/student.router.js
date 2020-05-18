@@ -7,6 +7,6 @@ router.get('/student',studentController.isNotLogined_next,studentController.getL
 router.post('/student',studentController.isNotLogined_next,studentController.postLogin);
 router.post('/student/createDiemDanh',studentController.isLogined_next,)
 router.get('/student/logout',studentController.logOut);
-router.get('/student_diemdanh',studentController.isLogined_next,studentController.getActStudent);
+router.get('/student-diemdanh',studentController.isLogined_next,studentController.getActStudent);
 
 module.exports =router;

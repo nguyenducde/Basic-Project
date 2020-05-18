@@ -21,7 +21,7 @@ module.exports.getLogin = function (req, res) {
  }
 }
 module.exports.postLogin = passport.authenticate('local-teacherLogin', {
-    successRedirect : '/teacher_tructiep',
+    successRedirect : '/teacher-tructiep',
     failureRedirect : '/',
     failureFlash : true
   });
@@ -53,7 +53,7 @@ module.exports.postCreateActivity = async function(req, res) {
   if(checkNameEvent==null)
   {
     req.flash("Tên sự kiện không phù hợp")
-  return res.redirect('/teacher_tructiep');
+  return res.redirect('/teacher-tructiep');
   }
   else{
       infoAc.insertMany({
@@ -82,14 +82,14 @@ module.exports.postCreateActivity = async function(req, res) {
       })
     })
   }
-  return  res.redirect('/teacher_tructiep');
+  return  res.redirect('/teacher-tructiep');
 }
 module.exports.getHome = async function (req, res) {
   let studentAttendance=0;
   let activities = await serviceActivity.getAllMyActivities(req.user.IDTaiKhoan);
   let listJoin=await serviceActivity.getListJoin(req.user.IDTaiKhoan);
  
-  return res.render('./teacher_views/teacher_tructiep', {
+  return res.render('./teacher_views/teacher-tructiep', {
     user: req.user,
     act: activities,
     listStudent:listJoin,
@@ -168,7 +168,7 @@ module.exports.AJAX_refresh=async function(req,res){
   var studentAttendance=await serviceActivity.refresh(req.query.c);
   let activities = await serviceActivity.getAllMyActivities(req.user.IDTaiKhoan);
   let listJoin=await serviceActivity.getListJoin(req.user.IDTaiKhoan);
-return res.redirect('/teacher_tructiep')
+return res.redirect('/teacher-tructiep')
 
 }
 function randomNum(num) {

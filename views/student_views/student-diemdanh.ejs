@@ -2,8 +2,10 @@
 <html lang="en">
 
 <head>
-  <title>Thông tin | Sinh  Viên</title>
+  <title>Điểm Danh | Sinh  Viên</title>
+  <%- include ("../partials/html-head") %>
   <%- include ("../partials/teacher-head") %>
+ 
 </head>
 
 <body class="">
@@ -49,7 +51,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo"> Thông tin sinh viên</a>
+            <a class="navbar-brand" href="#pablo"> Điểm danh</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -95,41 +97,10 @@
       </nav>
       <div class="content">
         <div class="row">
-          <div class="col-sm-10">
-            <div class="card mb-1">
+          <div class="col-sm-12">
+            <div class="card mb-2">
               <div class="card-body" id="data_activities">
-              
-				<table class="table table-bordered">
-					<tr>
-						<th>Mã sinh viên:</th>
-						<td> <%= profile.MSSV %></td>
-					</tr>
-					<tr>
-						<th>Họ tên:</th>
-						<td> <%= profile.HoVaTen %></td>
-					</tr>
-				
-					<tr>
-						<th>Giới tính:</th>
-						<td> <%= profile.GioiTinh %></td>
-					</tr>
-					<tr>
-						<th>Số điện thoai:</th>
-						<td> <%= profile.SDT %></td>
-					</tr>
-					<tr>
-						<th>Lớp:</th>
-						<td> <%= profile.Lop %></td>
-					</tr>
-					<tr>
-						<th>Khoa:</th>
-						<td> <%= profile.Khoa%></td>
-					</tr>
-					<tr>
-						<th>Email:</th>
-						<td> <%= profile.Email %></td>
-					</tr>
-				</table>
+                <%- include ("../partials/student-table-manage") %>
               </div>
             </div>
           </div>

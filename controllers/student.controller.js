@@ -54,7 +54,7 @@ module.exports.getActStudent = async function (req, res, next) {
   act_Student.forEach(Element=>{
    if(Element.ThoiGian.getTime()>time.getTime()){
     check=true;
-    return   res.render('./student_views/student_diemdanh',{check});
+    return   res.render('./student_views/student-diemdanh',{check});
    }
   })
 }
