@@ -47,6 +47,7 @@ $('#dlFile').modal('hide');
       xhrFields: { responseType: "blob" },
       data: {}
       ,success:function (data) { 
+        $.notify( 'Tải file excel thành công')
         var date=new Date();
         let blob = new Blob([data], {type: 'vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8'});
        saveAs(blob, "Điểm danh lúc " +date.getHours()+" giờ "+date.getMinutes() + " ngày "+date.getDate()+"-"+date.getMonth()+"-"+date.getFullYear()+".xlsx");

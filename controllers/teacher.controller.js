@@ -132,20 +132,25 @@ module.exports.AJAX_saveExcel=async function(req,res){
 	// workbook.lastPrinted = new Date(2016, 9, 27);
 	// workbook.properties.date1904 = true;
 
-	// workbook.views = [
-	// 	{
-	// 		x: 0, y: 0, width: 10000, height: 20000,
-	// 		firstSheet: 0, activeTab: 1, visibility: 'visible'
-	// 	}
-	// ];
-	// Create a sheet
-  var sheet = workbook.addWorksheet('Sheet1');
+  workbook.views = [
+    {
+      x: 0, y: 0, width: 25000, height: 10000,
+      firstSheet: 0, activeTab: 1, visibility: 'visible'
+    }
+  ]
+  
+
+  // Create a sheet
+  var sheet = workbook.addWorksheet('Sheet1',{
+    pageSetup:{paperSize: 9, orientation:'landscape',verticalCentered:true}
+  }, {properties:{tabColor:{argb:'FF00FF00'}}});
+  
   // A table header
   sheet.columns = [
-      { header: 'STT', key: 'IDHoatDong' },
-      { header: 'Tên Hoạt động', key: 'TenSuKien' },
-      { header: 'Họ Và Tên', key: 'HoVaTen' },
-      { header: 'Thời Gian', key: 'ThoiGian' },
+      { header: 'STT', key: 'IDHoatDong',width: 10 },
+      { header: 'Tên Hoạt động', key: 'TenSuKien',width: 25 },
+      { header: 'Họ Và Tên', key: 'HoVaTen' ,width: 40},
+      { header: 'Thời Gian', key: 'ThoiGian',width: 30 },
    
   ]
   // Add rows in the above header
@@ -163,6 +168,7 @@ module.exports.AJAX_saveExcel=async function(req,res){
 		});
  
 }
+
 //Refresh student attendance
 module.exports.AJAX_refresh=async function(req,res){
   var studentAttendance=await serviceActivity.refresh(req.query.c);
