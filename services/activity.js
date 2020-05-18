@@ -37,6 +37,11 @@ module.exports.GetActStudent=async function(c,a){
   let all=await noti.find({MSSV:c});
   return all;
 }
+//Find student join
+module.exports.findStudentJoin=async function(c,a){
+  let all=await diemdanh.find({MSGV:c,ThoiGian:a});
+  return all;
+}
 //Export to excel
 module.exports.exportExcel=async function(c){
   let all=await diemdanh.find({IDHoatDong:c});
