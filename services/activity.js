@@ -2,6 +2,8 @@ var noti=require('../models/model_noti');
 var event=require('../models/module_event');
 var diemdanh=require('../models/model_diemdanh');
 var infoAc=require('../models/model_infoActivity')
+
+//----------------------Activity Teacher--------------------------------- 
 module.exports.createNewActivity = async function (i){
     let act = new noti(i);
     await act.save({}, err => {
@@ -50,5 +52,17 @@ module.exports.exportExcel=async function(c){
 //Refesh student điểm danh
 module.exports.refresh=async function(c){
   let all=await diemdanh.find({IDHoatDong:c});
+  return all;
+}
+
+
+//----------------------Activity Student--------------------------------- 
+//Check student đã điểm danh chưa
+module.exports.checkDone=async function(code,id,ten,thoigian){
+  let all=await diemdanh.findOne({IDHoatDong:code,MSSV:id,TenSuKien:ten,ThoiGian:thoigian});
+  return all;
+}
+module.exports.findNoti =async function (code) {
+  let all =await noti.findOne({IDHoatDong: code});
   return all;
 }

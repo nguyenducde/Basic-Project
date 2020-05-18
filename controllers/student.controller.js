@@ -45,7 +45,7 @@ module.exports.isLogined_next = async function (req, res, next) {
   if (req.isAuthenticated('local-teacherLogin')) return next();
   return res.redirect('/');
 }
-//work noti
+
 //Get infomation student by MSSV,DateTime
 module.exports.getActStudent = async function (req, res, next) {
   var time=new Date();
@@ -57,4 +57,18 @@ module.exports.getActStudent = async function (req, res, next) {
     return   res.render('./student_views/student_diemdanh',{check});
    }
   })
+}
+//Save DiemDanh in databases
+module.exports.saveDiemDanh=async function (req, res){
+  var code=req.query.code;
+  let getNoti=await serviceActivity.findNoti(code);
+  //Check student đã điểm danh hay chưa
+  let checkDiemDanh=await serviceActivity.checkDone(code,getNoti.MSSV,getNoti.TenSuKien,getNoti.ThoiGian);
+  if(checkDiemDanh.length>0){
+
+    //Not save database
+  }
+  else{
+    //save database
+  }
 }
