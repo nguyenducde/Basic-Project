@@ -15,5 +15,5 @@ Git clone https://github.com/nguyenducde/DiemDanh-Express-Mongodb.git Desktop
   
   
  ### **Website Demo:**
-https://afternoon-ocean-05456.herokuapp.com/
+https://git.heroku.com/project-diemdanh.git
 # DiemDanh-Express-Mongodb
