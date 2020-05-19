@@ -54,7 +54,10 @@ module.exports.refresh=async function(c){
   let all=await diemdanh.find({IDHoatDong:c});
   return all;
 }
-
+module.exports.getDiemDanh=async function(){
+  let all=await diemdanh.find({});
+  return all;
+}
 
 //----------------------Activity Student--------------------------------- 
 //Check student đã điểm danh chưa

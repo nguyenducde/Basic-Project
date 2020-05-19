@@ -88,13 +88,14 @@ module.exports.getHome = async function (req, res) {
   let studentAttendance=0;
   let activities = await serviceActivity.getAllMyActivities(req.user.IDTaiKhoan);
   let listJoin=await serviceActivity.getListJoin(req.user.IDTaiKhoan);
- 
+ let listDiemDanh=await serviceActivity.getDiemDanh();
   return res.render('./teacher_views/teacher-tructiep', {
     user: req.user,
     act: activities,
     listStudent:listJoin,
     mess: req.flash('mess'),
-    studentAt:studentAttendance
+    studentAt:studentAttendance,
+    listStudentDiemDanh:listDiemDanh
    // actRD: activitiesReady
   });
 }

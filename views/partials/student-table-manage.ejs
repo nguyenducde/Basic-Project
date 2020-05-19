@@ -14,21 +14,20 @@
       </tr>
     </thead>
     <tbody>
-
       <% for(var i=0;i<l;i++){ %>
-        <% if (UserStudent[i].ThoiGian.getTime() > new Date().getTime() ) { %>
-        <tr class="d-flex alert-success">
-          <th class="col-1"><%- i+1 %></th>
-          <th class="col-2"><%- UserStudent[i].TenSuKien %></th>
-          <th class="col-3"> <%-UserStudent[i].ThoiGian.getDate() %>-<%-UserStudent[i].ThoiGian.getMonth() + 1 %>-<%-UserStudent[i].ThoiGian.getFullYear() %></th>
-          <th class="col-3"><%-UserStudent[i].ThoiGian.getHours() %>:<%-UserStudent[i].ThoiGian.getMinutes() %></th>
-          <th class="col-3">
-            <button type="submit" id="completed-task" class="fabutton">
-              <i class="fab fa-hornbill fa-2x fa-spin alert-primary" data-toggle="modal" data-target="#submitDiemDanh" onclick="submitAT('<%-UserStudent[i].IDHoatDong %>')"></i>
-            </button></th>
-            
-        </tr>
-        <% } %>
+          <% if (UserStudent[i].ThoiGian.getTime() > new Date().getTime() ) { %>
+            <tr class="d-flex alert-success">
+              <th class="col-1"><%- i+1 %></th>
+              <th class="col-2"><%- UserStudent[i].TenSuKien %></th>
+              <th class="col-3"> <%-UserStudent[i].ThoiGian.getDate() %>-<%-UserStudent[i].ThoiGian.getMonth() + 1 %>-<%-UserStudent[i].ThoiGian.getFullYear() %></th>
+              <th class="col-3"><%-UserStudent[i].ThoiGian.getHours() %>:<%-UserStudent[i].ThoiGian.getMinutes() %></th>
+              <th class="col-3">
+                <button type="submit" id="completed-task" class="fabutton">
+                  <i class="fab fa-hornbill fa-2x fa-spin alert-primary" data-toggle="modal" data-target="#submitDiemDanh" onclick="submitAT('<%-UserStudent[i].IDHoatDong %>')"></i>
+                </button></th>
+            </tr>
+       
+           <% } %>
         <% } %>
     </tbody>
   </table>
