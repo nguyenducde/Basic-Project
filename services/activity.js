@@ -66,12 +66,7 @@ module.exports.findNoti =async function (code) {
   let all =await noti.findOne({IDHoatDong: code});
   return all;
 }
-module.exports.insertDiemDanh=async function (object){
-  await diemdanh.save({object}, err => {
-    if(err) throw err;
-  });
-}
 module.exports.findNameStudent=async function (name){
-  let all=await students.findOne({name});
+  let all=await students.findOne({MSSV:name});
   return all;
 }

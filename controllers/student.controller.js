@@ -3,7 +3,7 @@ const httpMsgs=require("http-msgs");
 var students=require('../models/model_student');
 var event=require('../models/module_event');
 var serviceActivity=require('../services/activity');
-
+var diemdanh=require('../models/model_diemdanh')
 
 
 module.exports.getLogin = function (req, res) {
@@ -51,21 +51,25 @@ module.exports.getActStudent = async function (req, res, next) {
   var time=new Date();
 
   let act_Student=await serviceActivity.GetActStudent(req.user.IDTaiKhoan)
-  act_Student.forEach(Element=>{
-   if(Element.ThoiGian.getTime()>time.getTime()){
-
+ 
       return   res.render('./student_views/student-diemdanh',{
       UserStudent:act_Student,
       mess: req.flash('mess')
       });
-   }
-  })
+   
 }
 //Save DiemDanh in databases
 module.exports.saveDiemDanh=async function (req, res){
   var code=req.query.c;
   let getNoti=await serviceActivity.findNoti(code);
   let getNameStudent=await serviceActivity.findNameStudent(req.user.IDTaiKhoan);
+  let object ={
+    IDHoatDong:code,
+    TenSuKien:getNoti.TenSuKien,
+    ThoiGian:getNoti.ThoiGian,
+    HoVaTen:getNameStudent.HoVaTen,
+    MSSV:req.user.IDTaiKhoan
+  }
   //Check student đã điểm danh hay chưa
   let checkDiemDanh=await serviceActivity.checkDone(code,req.user.IDTaiKhoan,getNoti.TenSuKien,getNoti.ThoiGian);
   if(checkDiemDanh.length>0){
@@ -73,15 +77,17 @@ module.exports.saveDiemDanh=async function (req, res){
     return res.send(checkDiemDanh);
   }
   else{
-    let object ={
+    
+    //save database
+    diemdanh.insertMany({
       IDHoatDong:code,
       TenSuKien:getNoti.TenSuKien,
       ThoiGian:getNoti.ThoiGian,
       HoVaTen:getNameStudent.HoVaTen,
       MSSV:req.user.IDTaiKhoan
-    }
-    //save database
-    await serviceActivity.insertDiemDanh(object)
+    },(err,result)=>{
+      console.log(result);
+    });
    return  res.send(checkDiemDanh);
   }
 }
