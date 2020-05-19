@@ -6,9 +6,10 @@ Git clone https://github.com/nguyenducde/DiemDanh-Express-Mongodb.git Desktop
 ##Authenticated by **module passport.js**
 
  This project has authenticated fix when logging in
- | Accout | Username| Password| 
+ | Account | Username| Password| 
 |--------------|-------|------|
 | Teacher | GV1999 | nguyenducde| 
+| Teacher | GV2000 | nguyenducde| 
 | Student | 1710145 | nguyenducde| 
 | Student | 1710144| nguyenducde | 
 
