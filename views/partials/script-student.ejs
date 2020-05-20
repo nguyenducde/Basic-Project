@@ -6,7 +6,7 @@
   
 function submitAT(c){
     $('#submitDiemDanh').modal('hide');
-  $.ajax({
+    $.ajax({
     type:'POST',
     url:`/createDiemDanh?c=${c}`,
     success:function(checkDiemDanh){
