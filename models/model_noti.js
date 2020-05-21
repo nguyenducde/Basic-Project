@@ -8,7 +8,8 @@ Lop:String,
 HocKy:String,
 ThoiGian:Date,
 MSGV:String,
-MSSV:String
+MSSV:String,
+MK:String
 })
 
 var Noti=mongoose.model('Notis',notiSchema,'ThongBao');

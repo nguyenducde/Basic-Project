@@ -15,8 +15,8 @@ module.exports.createNewActivity = async function (i){
     return all;
   }
   module.exports.isCodeNotExist_code = async function (c,a) {
-    let countall = await noti.find({IDHoatDong: c,MSGV:a}).count();
-    if(countall > 0) return null;
+    let countDocumentsall = await noti.find({IDHoatDong: c,MSGV:a}).countDocuments();
+    if(countDocumentsall > 0) return null;
     return c;
   }
  module.exports.findNameEvent=function(c){

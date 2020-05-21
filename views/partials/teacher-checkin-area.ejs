@@ -10,7 +10,6 @@ function RefreshAc(c){
     url:`/refreshAt?c=${c}`,
     success:function(data) {
       $.notify( 'Xem danh sinh viên đã điểm danh thành công')
-
       $('#showStudent').html(function() {
        
         var child = data.map((x, index) => {
@@ -18,8 +17,7 @@ function RefreshAc(c){
             `<td class="col-1">` + (parseInt(index)+1)  + `</td>`+ 
             `<td class="col-2">` +  x.MSSV + `</td>`+ 
             `<td class="col-3">` +  x.HoVaTen + `</td>`+ 
-            `<td class="col-3">` +  x.TenSuKien + `</td>`+ 
-           
+            `<td class="col-3">` +  x.TenSuKien+ `</td>`+ 
              `</tr >`
         })
 
@@ -31,9 +29,11 @@ function RefreshAc(c){
                     `</tr>`;
          var title = `<thead class="thead-light">` + childTitle + `</thead>`;
 
-        var father = "Danh sách sinh viên đà điểm danh "+"<br>"+`<table class="table text-center table-bordered table-hover">` +title+ child + `</table>`;
-        // // var father = `<table class="table-bordered">" + child1 + "</table>";
-
+        var father = "<b>"+"Danh sách sinh viên đà điểm danh" +"</b>"+
+        "<br>"+
+        `<table class="table text-center table-bordered table-hover">` +
+            title+ child + 
+        `</table>`;
         return father;
         
       });

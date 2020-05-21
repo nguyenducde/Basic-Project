@@ -61,6 +61,7 @@ module.exports.getActStudent = async function (req, res, next) {
 //Save DiemDanh in databases
 module.exports.saveDiemDanh=async function (req, res){
   var code=req.query.c;
+  var pass=req.body.password;
   let getNoti=await serviceActivity.findNoti(code);
   let getNameStudent=await serviceActivity.findNameStudent(req.user.IDTaiKhoan);
   let object ={
@@ -72,12 +73,16 @@ module.exports.saveDiemDanh=async function (req, res){
   }
   //Check student đã điểm danh hay chưa
   let checkDiemDanh=await serviceActivity.checkDone(code,req.user.IDTaiKhoan,getNoti.TenSuKien,getNoti.ThoiGian);
-  if(checkDiemDanh.length>0){
+  if(getNoti.MK!=pass){
+    check=true;
+    return res.send(check);
+  }
+  else if(checkDiemDanh.length>0||getNoti.MK!=pass){
     //not save database
     return res.send(checkDiemDanh);
   }
-  else{
-    
+  else if(checkDiemDanh.length<=0&&getNoti.MK==pass)
+  {
     //save database
     diemdanh.insertMany({
       IDHoatDong:code,

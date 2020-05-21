@@ -5,21 +5,24 @@
   });
   
 function submitAT(c){
-    $('#submitDiemDanh').modal('hide');
+    $('#confirmAttendance').modal('hide');
+    var password = $("input[name='password']").val();
+  
     $.ajax({
     type:'POST',
     url:`/createDiemDanh?c=${c}`,
+    data:{password},
     success:function(checkDiemDanh){
-      if(checkDiemDanh.length > 0) {
-        $('#showInput').html("<form>" + `<input type="text">` + "</form>")
-        $.notify( 'Bạn đã điểm danh !')
+      console.log(checkDiemDanh)
+      if(checkDiemDanh==true){
+        $.notify("Bạn nhập sai mật khẩu điểm danh");
       }
-      else{
-        $('#showInput').html(function() {
-          const result = `<input type="text" />`
-          return result;
-        })
-        $.notify( 'Điểm danh thành công');
+     else if(checkDiemDanh.length > 0) {
+      $.notify("Bạn đã điểm danh !");
+      }
+      else if(checkDiemDanh.length <= 0){
+        $.notify("Điểm danh thành công");
+       
         //setTimeout(`window.location.href="/student-diemdanh"`,6000);
       }
   
@@ -27,6 +30,9 @@ function submitAT(c){
     }
 })
 }
+function authenticateAt(c){
+    $('#confirmBtn').attr('onclick',`submitAT('${c}')`);
+  }
   </script>
 <!-- Notify -->
 <% if(mess&&mess!=''){ %>

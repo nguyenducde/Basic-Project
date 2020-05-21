@@ -49,6 +49,7 @@ module.exports.postCreateActivity = async function(req, res) {
   let datetime=req.body.time;
   let lop=req.body.lop;
   let hocky=req.body.hocki;
+  let pass=req.body.password;
   let checkNameEvent=serviceActivity.findNameEvent(name);
   if(checkNameEvent==null)
   {
@@ -57,12 +58,14 @@ module.exports.postCreateActivity = async function(req, res) {
   }
   else{
       infoAc.insertMany({
-      IDHoatDong:removeCharInStr('-',req.body.code),
-      TenSuKien:name,
-      Lop:lop,
-      HocKy:hocky,
-      ThoiGian:datetime,
-      MSGV:req.user.IDTaiKhoan})
+          IDHoatDong:removeCharInStr('-',req.body.code),
+          TenSuKien:name,
+          Lop:lop,
+          HocKy:hocky,
+          ThoiGian:datetime,
+          MSGV:req.user.IDTaiKhoan,
+          MK:pass
+      })
     // console.log(re[i].MSSV);
     
     // noti.insertMany(info);
@@ -76,7 +79,8 @@ module.exports.postCreateActivity = async function(req, res) {
           HocKy:hocky,
           ThoiGian:datetime,
           MSGV:req.user.IDTaiKhoan,
-          MSSV:element.MSSV
+          MSSV:element.MSSV,
+          MK:pass
         };
         noti.insertMany(info);
       })
@@ -85,7 +89,7 @@ module.exports.postCreateActivity = async function(req, res) {
   return  res.redirect('/teacher-tructiep');
 }
 module.exports.getHome = async function (req, res) {
-  let studentAttendance=0;
+
   let activities = await serviceActivity.getAllMyActivities(req.user.IDTaiKhoan);
   let listJoin=await serviceActivity.getListJoin(req.user.IDTaiKhoan);
  let listDiemDanh=await serviceActivity.getDiemDanh();
@@ -94,7 +98,6 @@ module.exports.getHome = async function (req, res) {
     act: activities,
     listStudent:listJoin,
     mess: req.flash('mess'),
-    studentAt:studentAttendance,
     listStudentDiemDanh:listDiemDanh
    // actRD: activitiesReady
   });

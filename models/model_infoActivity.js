@@ -8,6 +8,7 @@ Lop:String,
 HocKy:String,
 ThoiGian:Date,
 MSGV:String,
+MK:String
 //IDTaiKhoan:{type:mongoose.Schema.Types.ObjectId,ref:'Accounts'}
  
 });
