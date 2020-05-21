@@ -10,10 +10,15 @@ function submitAT(c){
     type:'POST',
     url:`/createDiemDanh?c=${c}`,
     success:function(checkDiemDanh){
-      if(checkDiemDanh.length>0){
-        $.notify( 'Bạn đã điểm danh rùi !');
+      if(checkDiemDanh.length > 0) {
+        $('#showInput').html("<form>" + `<input type="text">` + "</form>")
+        $.notify( 'Bạn đã điểm danh !')
       }
       else{
+        $('#showInput').html(function() {
+          const result = `<input type="text" />`
+          return result;
+        })
         $.notify( 'Điểm danh thành công');
         //setTimeout(`window.location.href="/student-diemdanh"`,6000);
       }
@@ -25,7 +30,11 @@ function submitAT(c){
   </script>
 <!-- Notify -->
 <% if(mess&&mess!=''){ %>
-    <script>
-      $.notify("<%- mess %>", "success");
-    </script>  
-    <% } %>
+  <script>
+    $.notify("<%- mess %>", "success");
+  </script>  
+<% } %>
+
+<div id="showInput">
+
+</div>

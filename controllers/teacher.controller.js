@@ -119,7 +119,7 @@ module.exports.AJAX_delActByCode=async function(req,res){
 
 module.exports.AJAX_reloadAct=async function(req,res){
   let a=await serviceActivity.getAllMyActivities(req.user.MSGV);
-  return res.send(a);
+  res.send(a);
 }
 //Export DiemDanh to excel
 module.exports.AJAX_saveExcel=async function(req,res){
@@ -173,11 +173,10 @@ module.exports.AJAX_saveExcel=async function(req,res){
 //Refresh student attendance
 module.exports.AJAX_refresh=async function(req,res){
   var studentAttendance=await serviceActivity.refresh(req.query.c);
-  let activities = await serviceActivity.getAllMyActivities(req.user.IDTaiKhoan);
-  let listJoin=await serviceActivity.getListJoin(req.user.IDTaiKhoan);
-return res.redirect('/teacher-tructiep')
-
+ 
+  return res.send(studentAttendance)
 }
+
 function randomNum(num) {
   var result           = '';
   var characters       = '0123456789';

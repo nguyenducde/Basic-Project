@@ -1,6 +1,7 @@
 
 
 <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+
 <script>
  $(document).ready(function() {
     $('#ajaxNewCodeAct').click(function(){AJAX_NewCodeActFunc();});
@@ -53,17 +54,7 @@ $('#dlFile').modal('hide');
        saveAs(blob, "Điểm danh lúc " +date.getHours()+" giờ "+date.getMinutes() + " ngày "+date.getDate()+"-"+date.getMonth()+"-"+date.getFullYear()+".xlsx");
       }
  })}
-//Refresh 
-function RefreshAc(c){
-  $('#refresh').modal('hide');
-  $.ajax({
-    type:'POST',
-    url:`/refreshAt?c=${c}`,
-    success:function(){
-   $.notify( 'Tải dữ liệu sinh viên điểm danh thành công')
-    }
-})
-}
+
 </script>
 <!-- Notify -->
 <% if(mess&&mess!=''){ %>
