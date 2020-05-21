@@ -153,14 +153,16 @@ module.exports.AJAX_saveExcel=async function(req,res){
   sheet.columns = [
       { header: 'STT', key: 'IDHoatDong',width: 10 },
       { header: 'Tên Hoạt động', key: 'TenSuKien',width: 25 },
+      { header: 'MS Sinh Viên', key: 'MSSV',width: 25 },
       { header: 'Họ Và Tên', key: 'HoVaTen' ,width: 40},
       { header: 'Thời Gian', key: 'ThoiGian',width: 30 },
+    
    
   ]
   // Add rows in the above header
   for (let i = 0; i < all.length; i++) {
     
-    sheet.addRow({IDHoatDong: i+1, TenSuKien: all[i].TenSuKien,HoVaTen:all[i].HoVaTen, ThoiGian:all[i].ThoiGian });
+    sheet.addRow({IDHoatDong: i+1, TenSuKien: all[i].TenSuKien,MSSV:all[i].MSSV,HoVaTen:all[i].HoVaTen, ThoiGian:all[i].ThoiGian });
   }
 
 	res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
