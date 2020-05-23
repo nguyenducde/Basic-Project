@@ -4,7 +4,7 @@ var students=require('../models/model_student');
 var event=require('../models/module_event');
 var serviceActivity=require('../services/activity');
 var diemdanh=require('../models/model_diemdanh')
-
+const path = require('path');
 
 module.exports.getLogin = function (req, res) {
  if(req.isAuthenticated('local-studentLogin')&&req.user.LoaiTaiKhoan=="Sinh Vien"){
@@ -62,19 +62,19 @@ module.exports.getActStudent = async function (req, res, next) {
 module.exports.saveDiemDanh=async function (req, res){
   var code=req.query.c;
   var pass=req.body.password;
+  var image=req.body.image;
   let getNoti=await serviceActivity.findNoti(code);
   let getNameStudent=await serviceActivity.findNameStudent(req.user.IDTaiKhoan);
-  let object ={
-    IDHoatDong:code,
-    TenSuKien:getNoti.TenSuKien,
-    ThoiGian:getNoti.ThoiGian,
-    HoVaTen:getNameStudent.HoVaTen,
-    MSSV:req.user.IDTaiKhoan
-  }
+
   //Check student đã điểm danh hay chưa
   let checkDiemDanh=await serviceActivity.checkDone(code,req.user.IDTaiKhoan,getNoti.TenSuKien,getNoti.ThoiGian);
-  if(getNoti.MK!=pass){
-    check=true;
+  if(image=="")
+  { 
+    checkImage="ảnh";
+    return res.send(checkImage);
+  }
+  else if(getNoti.MK!=pass){
+    check=false;
     return res.send(check);
   }
   else if(checkDiemDanh.length>0||getNoti.MK!=pass){
@@ -89,10 +89,20 @@ module.exports.saveDiemDanh=async function (req, res){
       TenSuKien:getNoti.TenSuKien,
       ThoiGian:getNoti.ThoiGian,
       HoVaTen:getNameStudent.HoVaTen,
-      MSSV:req.user.IDTaiKhoan
+      MSSV:req.user.IDTaiKhoan,
+      Avatar:image
     },(err,result)=>{
       console.log(result);
     });
    return  res.send(checkDiemDanh);
   }
+}
+module.exports.uploadAndSave= async function (req, res) {
+  const imagePath = path.join('./public/uploads');
+  const fileUpload = new serviceActivity.resize(imagePath);
+  if (!req.file) {
+    res.status(401).json({error: 'Please provide an image'});
+  }
+  const filename = await fileUpload.save(req.file.buffer);
+  return res.send(filename)
 }

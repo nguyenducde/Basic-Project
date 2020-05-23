@@ -6,7 +6,8 @@ IDHoatDong:String,
 TenSuKien:String,
 ThoiGian:Date,
 HoVaTen:String,
-MSSV:String
+MSSV:String,
+Avatar:String
 //IDTaiKhoan:{type:mongoose.Schema.Types.ObjectId,ref:'Accounts'}
  
 });

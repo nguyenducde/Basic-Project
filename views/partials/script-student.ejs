@@ -2,38 +2,72 @@
 <script>
  $(document).ready(function() {
     $(function () {$('[data-toggle="tooltip"]').tooltip()});
+    $("#btnSubmit").click((event) => {
+        //stop submit the form, we will post it manually.
+        event.preventDefault();
+        doAjax();
+    });
   });
   
 function submitAT(c){
     $('#confirmAttendance').modal('hide');
     var password = $("input[name='password']").val();
-  
+    var image=$("#content").text();
     $.ajax({
-    type:'POST',
-    url:`/createDiemDanh?c=${c}`,
-    data:{password},
-    success:function(checkDiemDanh){
-      console.log(checkDiemDanh)
-      if(checkDiemDanh==true){
-        $.notify("Bạn nhập sai mật khẩu điểm danh");
-      }
-     else if(checkDiemDanh.length > 0) {
-      $.notify("Bạn đã điểm danh !");
-      }
-      else if(checkDiemDanh.length <= 0){
-        $.notify("Điểm danh thành công");
-       
-        //setTimeout(`window.location.href="/student-diemdanh"`,6000);
-      }
-  
+        type:'POST',
+        url:`/createDiemDanh?c=${c}`,
+        data:{password,image},
 
+        success:function(checkDiemDanh){
+          console.log(checkDiemDanh)
+          if(checkDiemDanh=="ảnh")
+          {
+            $.notify("Bạn chưa tải ảnh lên");
+          }
+          else if(checkDiemDanh.length > 0) {
+          $.notify("Bạn đã điểm danh !");
+          }
+          else if(checkDiemDanh.length <= 0){
+            $.notify("Điểm danh thành công");
+          }
+          else if(checkDiemDanh==false){
+            $.notify("Bạn nhập sai mật khẩu điểm danh");
+          }
+       
     }
 })
 }
 function authenticateAt(c){
     $('#confirmBtn').attr('onclick',`submitAT('${c}')`);
   }
-  </script>
+  //Upload image
+function doAjax() {
+    // Get form
+    var form = $('#fileUploadForm')[0];
+    console.log(form);
+    var data = new FormData(form);
+
+    $.ajax({
+        type: "POST",
+        enctype: 'multipart/form-data',
+        url: "/upload",
+        data: data,
+        processData: false, //prevent jQuery from automatically transforming the data into a query string
+        contentType: false,
+        cache: false,
+        success: (data) => {
+          console.log(data);
+            $.notify("Tải ảnh lên thành công");
+            $('#content').html(data).hide();
+        },
+        error: (e) => {
+            $("#listFiles").text(e.responseText);
+            
+        }
+    });
+}
+
+</script>
 <!-- Notify -->
 <% if(mess&&mess!=''){ %>
   <script>

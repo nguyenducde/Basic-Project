@@ -1,3 +1,10 @@
+
+const multer = require('multer');
+const sharp = require('sharp');
+const uuidv4 = require('uuid/v4');
+const path = require('path');
+
+
 var noti=require('../models/model_noti');
 var event=require('../models/module_event');
 var diemdanh=require('../models/model_diemdanh');
@@ -72,4 +79,33 @@ module.exports.findNoti =async function (code) {
 module.exports.findNameStudent=async function (name){
   let all=await students.findOne({MSSV:name});
   return all;
+}
+module.exports.upload= multer({
+  limits: {
+    fileSize: 4 * 1024 * 1024,
+  }
+});
+module.exports.resize =class Resize {
+  constructor(folder) {
+    this.folder = folder;
+  }
+  async save(buffer) {
+    const filename = Resize.filename();
+    const filepath = this.filepath(filename);
+
+    await sharp(buffer)
+      .resize(100, 100, {
+        fit: sharp.fit.inside,
+        withoutEnlargement: true
+      })
+      .toFile(filepath);
+    
+    return filename;
+  }
+  static filename() {
+    return `${uuidv4()}.png`;
+  }
+  filepath(filename) {
+    return path.resolve(`${this.folder}/${filename}`)
+  }
 }

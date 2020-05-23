@@ -132,9 +132,30 @@
         </div>
         <div class="modal-body ">
             <input type="password"id="password" name="password"  class="form-control" placeholder="Nhập mật khẩu điểm danh" >
+            <br>
+            <!-- Upload Image-->
+            <form class="md-form" method="POST" enctype="multipart/form-data" id="fileUploadForm">
+              <div><b>Cui lòng chọn ảnh của bạn:</b></div>
+              <div class="file-field">
+                <a class="btn-floating peach-gradient mt-0  text-danger">
+                  <i class="fas fa-paperclip alert-success" aria-hidden="true"></i>
+                  <input type="file" name="image">
+                </a>
+              </div>
+              <div>
+                <button type="submit" class="btn btn-primary "  name="upload"  id="btnSubmit">Tải ảnh</button>
+              </div>
+            </form>
+            
+            
+            <br/>
+             <!---->
+           <!--Content-->
+           <div id="content"></div>
+           
         </div>
         <div class="modal-footer" id="footConfirmAttendance">
-          <button class="btn btn-danger" id="confirmBtn" onclick="">Gửi</button>
+          <button class="btn btn-danger" id="confirmBtn" onclick="" >Gửi</button>
         </div>
       </div>
     </div>
