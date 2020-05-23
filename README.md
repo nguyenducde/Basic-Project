@@ -1,7 +1,8 @@
 # ProjectDiemDanh
 Git clone https://github.com/nguyenducde/DiemDanh-Express-Mongodb.git Desktop
 
- -> Go to file ProjectDiemDanhV3 and open the terminal type **npm run dev** or type **node ./bin/www**
+**Step 1:** Go to file ProjectDiemDanhV3 and open the terminal type **npm install --save**
+ **Step 2:** Go to file ProjectDiemDanhV3 and open the terminal type **npm run dev** or type **node ./bin/www**
  
 ##Authenticated by **module passport.js**
 
