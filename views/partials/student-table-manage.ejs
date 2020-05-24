@@ -20,9 +20,51 @@
               <th class="col-1"><%- i+1 %></th>
               <th class="col-2"><%- UserStudent[i].TenSuKien %></th>
               <th class="col-3"> <%-UserStudent[i].ThoiGian.getDate() %>-<%-UserStudent[i].ThoiGian.getMonth() + 1 %>-<%-UserStudent[i].ThoiGian.getFullYear() %></th>
-              <th class="col-3"><%-UserStudent[i].ThoiGian.getHours() %>:<%-UserStudent[i].ThoiGian.getMinutes() %></th>
+                  <script type="text/javascript">
+                  
+
+                    var countDownDate = <%- UserStudent[ i].ThoiGian.getTime() %>;
+                      console.log( <%- UserStudent[ i].ThoiGian.getTime() %>);
+                      
+                      // Update the count down every 1 second
+                      var x = setInterval(function() {
+
+                        // Get today's date and time
+                        var now = new Date().getTime();
+
+                        // Find the distance between now and the count down date
+                        var distance = countDownDate - now;
+                        
+
+                        // Time calculations for days, hours, minutes and seconds
+                        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                      
+                        // Display the result in the element with id="demo"
+                        $('#countTime<%=i%>').html(days + "d " + hours + "h "
+                        + minutes + "m " + seconds + "s ") 
+                       
+                        // If the count down is finished, write some text
+                        if (distance < 0) {
+                          clearInterval(x);
+                          document.getElementById("countTime<%=i%>").innerHTML = "Hết thời gian điểm danh";
+                          $.notify({
+                            message: ' <strong>Đã hết thời gian điểm danh</strong>', icon:'fa fa-warning', },{type: 'warning'});
+                            $('#completed-task').remove();
+                        setTimeout(`window.location.href="/student-diemdanh"`,6000);
+                          }
+                      
+                      }, 1000);
+                  
+                  
+                  </script>
+              <th class="col-3"  > <b id="countTime<%=i%>">
+                
+              </b> </th>
               <th class="col-3">
-                <button type="submit" id="completed-task" class="fabutton">
+                <button type="submit" id="completed-task<%=i%>" class="fabutton">
                   <i class="fab fa-hornbill fa-2x fa-spin alert-primary" data-toggle="modal" data-target="#confirmAttendance" onclick="authenticateAt('<%-UserStudent[i].IDHoatDong %>')"></i>
                 </button></th>
             </tr>

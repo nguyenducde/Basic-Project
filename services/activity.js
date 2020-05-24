@@ -94,7 +94,7 @@ module.exports.resize =class Resize {
     const filepath = this.filepath(filename);
 
     await sharp(buffer)
-      .resize(100, 100, {
+      .resize(90, 90, {
         fit: sharp.fit.inside,
         withoutEnlargement: true
       })

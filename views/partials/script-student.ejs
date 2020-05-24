@@ -22,16 +22,23 @@ function submitAT(c){
           console.log(checkDiemDanh)
           if(checkDiemDanh=="ảnh")
           {
-            $.notify("Bạn chưa tải ảnh lên");
+            $.notify({	
+              icon: 'fa fa-bug',
+              message: ' <strong>Vui lòng tải lại ảnh</strong>' },{type: 'danger'});
           }
           else if(checkDiemDanh.length > 0) {
-          $.notify("Bạn đã điểm danh !");
+            $.notify({
+                icon:'fa fa-warning',              
+              message: ' <strong>Bạn đã điểm danh</strong>' },{type: 'warning'});
           }
           else if(checkDiemDanh.length <= 0){
-            $.notify("Điểm danh thành công");
+            $.notify({
+              message: ' <strong>Điểm danh thành công</strong>', icon:'fas fa-check', },{type: 'success'});
           }
           else if(checkDiemDanh==false){
-            $.notify("Bạn nhập sai mật khẩu điểm danh");
+            $.notify({
+              icon: 'fa fa-bug',
+              message: ' <strong>Vui lòng nhập lại mật khẩu điểm danh</strong>' },{type: 'danger'});
           }
        
     }
@@ -57,7 +64,14 @@ function doAjax() {
         cache: false,
         success: (data) => {
           console.log(data);
-            $.notify("Tải ảnh lên thành công");
+          var notify = $.notify('<strong>Đang Lưu</strong> Đừng đóng trang này...', {
+          allow_dismiss: false,
+          showProgressbar: true
+        });
+          setTimeout(function() {
+            notify.update({'type': 'success', 'message': '<strong>Thành cồng</strong> Tải ảnh lên thành công!',
+             'progress': 25});
+          }, 4500);
             $('#content').html(data).hide();
         },
         error: (e) => {
@@ -68,12 +82,8 @@ function doAjax() {
 }
 
 </script>
-<!-- Notify -->
-<% if(mess&&mess!=''){ %>
-  <script>
-    $.notify("<%- mess %>", "success");
-  </script>  
-<% } %>
+
+
 
 <div id="showInput">
 
