@@ -47,11 +47,12 @@ module.exports.isLogined_next = async function (req, res, next) {
 //Work noti
 module.exports.postCreateActivity = async function(req, res) {
   let name=req.body.name;
-  let datetime= req.body.time;
+  let datetime= req.body.time.toLocaleString("en-US", { timeZone: "Asia/Ho_Chi_Minh"});
   let lop=req.body.lop;
   let hocky=req.body.hocki;
   let pass=req.body.password;
   let checkNameEvent=serviceActivity.findNameEvent(name);
+  
 
   
   if(checkNameEvent==null||datetime==""||lop==""||hocky==""||pass==""||name=="")
