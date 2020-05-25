@@ -35,7 +35,7 @@
                         console.log((<%- UserStudent[ i].ThoiGian.getHours() %>)+":"+(<%- UserStudent[ i].ThoiGian.getMinutes() %>))
                         // Time calculations for days, hours, minutes and seconds
                         var days = Math.floor((<%- UserStudent[ i].ThoiGian.getTime() %> - now) / (1000 * 60 * 60 * 24));
-                        var hours = Math.floor(((<%- UserStudent[ i].ThoiGian.getTime() %> - (now+7)) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var hours = Math.floor((((<%- UserStudent[ i].ThoiGian.getTime() %> - now) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)))-7;
                         var minutes = Math.floor(((<%- UserStudent[ i].ThoiGian.getTime() %> - now) % (1000 * 60 * 60)) / (1000 * 60));
                         var seconds = Math.floor(((<%- UserStudent[ i].ThoiGian.getTime() %> - now) % (1000 * 60)) / 1000);
                    
