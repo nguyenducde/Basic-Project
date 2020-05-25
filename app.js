@@ -12,6 +12,9 @@ var studentRouter=require('./routers/student.router');
 var teacherRouter=require('./routers/teacher.router');
 var indexRouter=require('./routers/index.router');
 var event=require('./models/module_event');
+const device = require('express-device')
+
+
 // var students=require('./models/model_student');
 // var accounts=require('./models/model_account');
 var evetnobject={
@@ -20,11 +23,11 @@ var evetnobject={
 MSSV:"1710144",
 MSGV:"GVTCC"
 }
-event.find({TenSuKien:"Toán cao cấp"},(err,re)=>{
-  re.forEach(Element=>{
-    console.log(Element.MSSV)
-  })
-})
+// event.find({TenSuKien:"Toán cao cấp"},(err,re)=>{
+//   re.forEach(Element=>{
+//     console.log(Element.MSSV)
+//   })
+// })
 // var object={
 //   IDTaiKhoan:"GV1999",
 //   PassWord:"nguyenducde",
@@ -50,6 +53,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(device.capture());
 //
 //Set Passport
 app.use(session({
