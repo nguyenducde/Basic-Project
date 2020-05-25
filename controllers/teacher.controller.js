@@ -8,6 +8,7 @@ const Excel = require('exceljs');
 var fs = require("fs");
 var path = require("path");
 
+
 module.exports.getLogin = function (req, res) {
  if(req.isAuthenticated('local-teacherLogin')&&req.user.LoaiTaiKhoan=="Giao Vien"){
   return res.render('./teacher_views/teacher-tructiep');
@@ -46,11 +47,13 @@ module.exports.isLogined_next = async function (req, res, next) {
 //Work noti
 module.exports.postCreateActivity = async function(req, res) {
   let name=req.body.name;
-  let datetime=req.body.time;
+  let datetime= req.body.time;
   let lop=req.body.lop;
   let hocky=req.body.hocki;
   let pass=req.body.password;
   let checkNameEvent=serviceActivity.findNameEvent(name);
+
+  
   if(checkNameEvent==null||datetime==""||lop==""||hocky==""||pass==""||name=="")
   {
     req.flash("Tên sự kiện không phù hợp")
