@@ -20,13 +20,14 @@
       
       <% for(var i=0;i<l;i++){ %>
 
-          <% if (UserStudent[i].ThoiGian.getTime() >= new Date().getTime() ) { %>
+          <% if (UserStudent[i].ThoiGian.getTime() <= new Date().getTime() ) { %>
 
             <tr class="d-flex alert-success">
               <th class="col-1"><%- i+1 %></th>
               <th class="col-2"><%- UserStudent[i].TenSuKien %></th>
               <th class="col-3"> <%-UserStudent[i].ThoiGian.getDate() %>-<%-UserStudent[i].ThoiGian.getMonth() + 1 %>-<%-UserStudent[i].ThoiGian.getFullYear() %></th>
                   <script type="text/javascript">
+
                       // Update the count down every 1 second
                       var x = setInterval(function() {
                         // Get today's date and time
@@ -41,7 +42,7 @@
                         // Display the result in the element with id="demo"
                         $('#countTime<%-i%>').html(days + "d " + hours + "h "
                         + minutes + "m " + seconds + "s ") 
-                       
+     
                         // If the count down is finished, write some text
                         if ((<%- UserStudent[ i].ThoiGian.getTime() %> - now)< 0) {
                           clearInterval(x);
