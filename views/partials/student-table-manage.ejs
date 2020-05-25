@@ -19,7 +19,7 @@
     <tbody>
       
       <% for(var i=0;i<l;i++){ %>
-          <% var now=new Date().toLocaleString("en-US", { timeZone: "Asia/Ho_Chi_Minh"}) %>
+          <% var now=new Date().toString("en-US", { timeZone: "Asia/Ho_Chi_Minh"}) %>
           <% if (UserStudent[i].ThoiGian.getTime() >=Date.parse(now)  ) { %>
 
             <tr class="d-flex alert-success">
