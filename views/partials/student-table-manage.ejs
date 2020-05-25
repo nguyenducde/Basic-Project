@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-<script src="moment.js"></script>
-=======
 
->>>>>>> 64f4f40e7001fe3d1b7011a741e7bd358c22d0c5
+
+
 <% if (UserStudent.length > 0) { %>
   <% var l=UserStudent.length; %>
   <b>Tìm thấy <%- l %> thông báo điểm danh</b>
@@ -23,7 +20,7 @@
       
       <% for(var i=0;i<l;i++){ %>
 
-          <% if (UserStudent[i].ThoiGian.getTime() >= new Date().getTime()- 6 ) { %>
+          <% if (UserStudent[i].ThoiGian.getTime() >= new Date().getTime() ) { %>
 
             <tr class="d-flex alert-success">
               <th class="col-1"><%- i+1 %></th>
@@ -36,10 +33,10 @@
                         var now = new Date().getTime();
                         console.log(now)
                         // Time calculations for days, hours, minutes and seconds
-                        var days = Math.floor((<%- UserStudent[ i].ThoiGian.getTime()- 6 %> - now) / (1000 * 60 * 60 * 24));
-                        var hours = Math.floor(((<%- UserStudent[ i].ThoiGian.getTime()- 6 %> - now) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                        var minutes = Math.floor(((<%- UserStudent[ i].ThoiGian.getTime()- 6 %> - now) % (1000 * 60 * 60)) / (1000 * 60));
-                        var seconds = Math.floor(((<%- UserStudent[ i].ThoiGian.getTime()- 6 %> - now) % (1000 * 60)) / 1000);
+                        var days = Math.floor((<%- UserStudent[ i].ThoiGian.getTime() %> - now) / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor(((<%- UserStudent[ i].ThoiGian.getTime() %> - now) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor(((<%- UserStudent[ i].ThoiGian.getTime() %> - now) % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor(((<%- UserStudent[ i].ThoiGian.getTime() %> - now) % (1000 * 60)) / 1000);
                    
                         // Display the result in the element with id="demo"
                         $('#countTime<%-i%>').html(days + "d " + hours + "h "
