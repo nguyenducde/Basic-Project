@@ -46,7 +46,7 @@
                         + minutes + "m " + seconds + "s ") 
      
                         // If the count down is finished, write some text
-                        if ((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date()))< 0) {
+                        if ((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date()))< 7) {
                           clearInterval(x);
                           document.getElementById("countTime<%-i%>").innerHTML = "Hết thời gian điểm danh";
                           $.notify({
