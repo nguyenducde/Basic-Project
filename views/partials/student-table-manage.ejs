@@ -29,24 +29,22 @@
               <th class="col-3"> <%-UserStudent[i].ThoiGian.getDate() %>-<%-UserStudent[i].ThoiGian.getMonth() + 1 %>-<%-UserStudent[i].ThoiGian.getFullYear() %></th>
 
                   <script type="text/javascript">
-                      console.log(new Date())
                       // Update the count down every 1 second
                       var x = setInterval(function() {
                         // Get today's date and time
-                        
-                 
+                    
                         // Time calculations for days, hours, minutes and seconds
                         var days = Math.floor((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'}))) / (1000 * 60 * 60 * 24));
                         var hours = Math.floor(((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse(new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'}))) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                         var minutes = Math.floor(((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'}))) % (1000 * 60 * 60)) / (1000 * 60));
                         var seconds = Math.floor(((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse(new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'}))) % (1000 * 60)) / 1000);
-                       console.log(hours);
+               
                         // Display the result in the element with id="demo"
                         $('#countTime<%-i%>').html(days + "d " + (hours -7) + "h "
                         + minutes + "m " + seconds + "s ") 
      
                         // If the count down is finished, write some text
-                        if ((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date()))< 7) {
+                        if ((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'})))< 7) {
                           clearInterval(x);
                           document.getElementById("countTime<%-i%>").innerHTML = "Hết thời gian điểm danh";
                           $.notify({
