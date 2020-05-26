@@ -29,7 +29,7 @@
               <th class="col-3"> <%-UserStudent[i].ThoiGian.getDate() %>-<%-UserStudent[i].ThoiGian.getMonth() + 1 %>-<%-UserStudent[i].ThoiGian.getFullYear() %></th>
 
                   <script type="text/javascript">
-                    
+                      console.log(new Date())
                       // Update the count down every 1 second
                       var x = setInterval(function() {
                         // Get today's date and time
@@ -46,7 +46,7 @@
                         + minutes + "m " + seconds + "s ") 
      
                         // If the count down is finished, write some text
-                        if ((<%- <%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date()))< 0) {
+                        if ((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date()))< 0) {
                           clearInterval(x);
                           document.getElementById("countTime<%-i%>").innerHTML = "Hết thời gian điểm danh";
                           $.notify({
