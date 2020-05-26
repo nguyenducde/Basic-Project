@@ -42,7 +42,7 @@
                         // Display the result in the element with id="demo"
                         $('#countTime<%-i%>').html(days + "d " + (hours -7) + "h "
                         + minutes + "m " + seconds + "s ") 
-     
+                        console.log((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'}))));
                         // If the count down is finished, write some text
                         if ((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'})))< 7) {
                           clearInterval(x);
