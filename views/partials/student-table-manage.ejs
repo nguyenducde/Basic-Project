@@ -44,9 +44,6 @@
                         + minutes + "m " + seconds + "s ") 
                      
                         // If the count down is finished, write some text
-                        console.log(<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %>);
-                        console.log(Date.parse( new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'})));
-                        console.log((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %>)-(Date.parse( new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'}))))
                         if ((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'})))< 25200000) {
                           clearInterval(x);
                           document.getElementById("countTime<%-i%>").innerHTML = "Hết thời gian điểm danh";
@@ -55,7 +52,7 @@
                             $('#completed-task<%-i%>').remove();
                           
                           
-                            setTimeout(`window.location.href="/student-diemdanh"`,3000);
+                            setTimeout(`window.location.href="/student-diemdanh"`,2000);
                           }
                       }, 1000);
                   </script>  
