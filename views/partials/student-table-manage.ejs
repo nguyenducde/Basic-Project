@@ -20,12 +20,12 @@
       
       <% for(var i=0;i<l;i++){ %>
           
-          <% if (Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) >=Date.parse( new Date())  ) { %>
+          <% if (Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) >=Date.parse(new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'}))  ) { %>
 
 
             <tr class="d-flex alert-success">
               <th class="col-1"><%- i+1 %></th>
-              <th class="col-2"><%- new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'}) %></th>
+              <th class="col-2"><%- UserStudent[i].TenSuKien %></th>
               <th class="col-3"> <%-UserStudent[i].ThoiGian.getDate() %>-<%-UserStudent[i].ThoiGian.getMonth() + 1 %>-<%-UserStudent[i].ThoiGian.getFullYear() %></th>
 
                   <script type="text/javascript">
@@ -36,10 +36,10 @@
                         
                  
                         // Time calculations for days, hours, minutes and seconds
-                        var days = Math.floor((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date())) / (1000 * 60 * 60 * 24));
-                        var hours = Math.floor(((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date())) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                        var minutes = Math.floor(((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date())) % (1000 * 60 * 60)) / (1000 * 60));
-                        var seconds = Math.floor(((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date())) % (1000 * 60)) / 1000);
+                        var days = Math.floor((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'}))) / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor(((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse(new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'}))) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor(((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'}))) % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor(((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse(new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'}))) % (1000 * 60)) / 1000);
                    
                         // Display the result in the element with id="demo"
                         $('#countTime<%-i%>').html(days + "d " + hours + "h "
