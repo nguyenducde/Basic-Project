@@ -103,7 +103,7 @@ module.exports.uploadAndSave= async function (req, res) {
   if (!req.file) {
     res.status(401).json({error: 'Please provide an image'});
   }
-  let checkDiemDanh=await serviceActivity.checkDone(code,req.user.IDTaiKhoan,getNoti.TenSuKien,getNoti.ThoiGian);
+  let checkDiemDanh=await serviceActivity.checkDone();
  if(checkDiemDanh.length>0)
  {
     var checkError=true;

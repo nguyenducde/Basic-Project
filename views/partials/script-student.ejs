@@ -11,6 +11,7 @@
   
 function submitAT(c){
     $('#confirmAttendance').modal('hide');
+    $('#showcode').html(c).hide();
     var password = $("input[name='password']").val();
     var image=$("#content").text();
     $.ajax({
@@ -46,22 +47,25 @@ function submitAT(c){
 }
 function authenticateAt(c){
     $('#confirmBtn').attr('onclick',`submitAT('${c}')`);
+   
   }
   //Upload image
 function doAjax() {
     // Get form
     var form = $('#fileUploadForm')[0];
-    console.log(form);
+ 
     var data = new FormData(form);
+ 
 
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
         url: "/upload",
         data: data,
-        processData: false, //prevent jQuery from automatically transforming the data into a query string
-        contentType: false,
-        cache: false,
+     
+        contentType: false, //this is requireded please see answers above
+         processData: false, 
+         cache:false,
         success: (data) => {
           if(data==true)
           {
