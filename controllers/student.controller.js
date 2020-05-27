@@ -103,6 +103,15 @@ module.exports.uploadAndSave= async function (req, res) {
   if (!req.file) {
     res.status(401).json({error: 'Please provide an image'});
   }
+  let checkDiemDanh=await serviceActivity.checkDone(code,req.user.IDTaiKhoan,getNoti.TenSuKien,getNoti.ThoiGian);
+ if(checkDiemDanh.length>0)
+ {
+    var checkError=true;
+    return res.send(checkError)
+
+ }
+ else {
   const filename = await fileUpload.save(req.file.buffer);
   return res.send(filename)
-}
+ }
+ }

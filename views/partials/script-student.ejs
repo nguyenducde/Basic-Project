@@ -29,7 +29,7 @@ function submitAT(c){
           else if(checkDiemDanh.length > 0) {
             $.notify({
                 icon:'fa fa-warning',              
-              message: ' <strong>Bạn đã điểm danh</strong>' },{type: 'warning'});
+              message: ' <strong>Bạn đã điểm danh !</strong>' },{type: 'warning'});
           }
           else if(checkDiemDanh.length <= 0){
             $.notify({
@@ -63,16 +63,25 @@ function doAjax() {
         contentType: false,
         cache: false,
         success: (data) => {
-          console.log(data);
-          var notify = $.notify('<strong>Đang Lưu</strong> Đừng đóng trang này...', {
-          allow_dismiss: false,
-          showProgressbar: true
-        });
-          setTimeout(function() {
-            notify.update({'type': 'success', 'message': '<strong>Thành cồng</strong> Tải ảnh lên thành công!',
-             'progress': 25});
-          }, 4500);
-            $('#content').html(data).hide();
+          if(data==true)
+          {
+            $.notify({
+                icon:'fa fa-warning',              
+              message: ' <strong>Bạn đã điểm danh !</strong>' },{type: 'warning'});
+          
+          }
+          else{
+                var notify = $.notify('<strong>Đang Lưu</strong> Đừng đóng trang này...', {
+              allow_dismiss: false,
+              showProgressbar: true
+            });
+              setTimeout(function() {
+                notify.update({'type': 'success', 'message': '<strong>Thành cồng</strong> Tải ảnh lên thành công!',
+                'progress': 25});
+              }, 4500);
+                $('#content').html(data).hide()
+            }
+         
         },
         error: (e) => {
             $("#listFiles").text(e.responseText);

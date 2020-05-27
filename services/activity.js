@@ -4,7 +4,6 @@ const sharp = require('sharp');
 const uuidv4 = require('uuid/v4');
 const path = require('path');
 
-
 var noti=require('../models/model_noti');
 var event=require('../models/module_event');
 var diemdanh=require('../models/model_diemdanh');
@@ -39,6 +38,7 @@ module.exports.delActByCode=async function(c,a){
 
   let act=await infoAc.findOneAndDelete({IDHoatDong:c,MSGV:a});
   let actInfoActi=await noti.deleteMany({IDHoatDong:c,MSGV:a});
+  await diemdanh.deleteMany({IDHoatDong:c,MSGV:a});
   if(act)return act.TenSuKien;
   return null;
 }
