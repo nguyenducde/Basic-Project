@@ -116,7 +116,7 @@ module.exports.saveDiemDanh=async function (req, res){
 
 
 module.exports.uploadAndSave= async function (req, res) {
-  var code=req.query.c;
+  var code=req.param('code');
   const imagePath = path.join('./public/uploads');
   const fileUpload = new serviceActivity.resize(imagePath);
   if (!req.file) {

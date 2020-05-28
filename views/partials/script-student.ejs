@@ -64,7 +64,7 @@
      $.ajax({
          type: "POST",
          enctype: 'multipart/form-data',
-         url: `/upload?c=${c}`,
+         url: `/uploadImage?c=${c}`,
          data: data,
          processData: false, //prevent jQuery from automatically transforming the data into a query string
          contentType: false,
@@ -90,7 +90,7 @@
           
          },
          error: (e) => {
-            alert(e);
+            alert("Lỗi hệ thống");
              
          }
      });
