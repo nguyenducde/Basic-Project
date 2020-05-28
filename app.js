@@ -85,39 +85,39 @@ app.use(helmet());
 //     res.status(204).end()
 //   }
 // )
-//removes the X-Powered-By header
-app.use(hidePoweredBy());
-app.disable('x-powered-by');
+// //removes the X-Powered-By header
+// app.use(hidePoweredBy());
+// app.disable('x-powered-by');
 
-//header that enforces secure (HTTP over SSL/TLS) connections to the server
-app.use(hsts({
-  maxAge: 15552000,
-  includeSubDomains: false
-}))
-const hstsMiddleware = hsts({
-  maxAge: 1234000
-})
+// //header that enforces secure (HTTP over SSL/TLS) connections to the server
+// app.use(hsts({
+//   maxAge: 15552000,
+//   includeSubDomains: false
+// }))
+// const hstsMiddleware = hsts({
+//   maxAge: 1234000
+// })
 
-app.use((req, res, next) => {
-  if (req.secure) {
-    hstsMiddleware(req, res, next)
-  } else {
-    next()
-  }
-})
+// app.use((req, res, next) => {
+//   if (req.secure) {
+//     hstsMiddleware(req, res, next)
+//   } else {
+//     next()
+//   }
+// })
 
-//Internet Explorer, restrict untrusted HTML
-app.use(ienoopen());
+// //Internet Explorer, restrict untrusted HTML
+// app.use(ienoopen());
 
-//sets Cache-Control and Pragma headers to disable client-side caching.
-app.use(nocache());
+// //sets Cache-Control and Pragma headers to disable client-side caching.
+// app.use(nocache());
 
-// to prevent browsers from MIME-sniffing a response away from the declared content-type.
-app.use(dontSniffMimetype());
+// // to prevent browsers from MIME-sniffing a response away from the declared content-type.
+// app.use(dontSniffMimetype());
 
-//sets the X-Frame-Options header to provide clickjacking protection.
-    // Don't allow me to be in ANY frames:
-app.use(frameguard({ action: 'deny' }));
+// //sets the X-Frame-Options header to provide clickjacking protection.
+//     // Don't allow me to be in ANY frames:
+// app.use(frameguard({ action: 'deny' }));
 
 //sets X-XSS-Protection to enable the Cross-site scripting (XSS) filter in most recent web browsers
 app.use(xssFilter({ mode: null }));
