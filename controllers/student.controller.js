@@ -124,15 +124,20 @@ module.exports.uploadAndSave= async function (req, res) {
   }
 
   let checkDiemDanh=await serviceActivity.checkDone(code,req.user.IDTaiKhoan);
-  if(checkDiemDanh.length>0)
-  {
-    check=true;
-    return res.send(check);
-
+  try {
+    if(checkDiemDanh.length>0)
+    {
+      check=true;
+      return res.send(check);
+  
+    }
+    else {
+      const filename = await fileUpload.save(req.file.buffer);
+      return res.send(filename)
+    }
+  } catch (error) {
+    consloe.log(error);
   }
-  else {
-    const filename = await fileUpload.save(req.file.buffer);
-    return res.send(filename)
-  }
+ 
 
 }
