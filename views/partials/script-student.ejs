@@ -5,7 +5,7 @@
     $("#btnSubmit").click((event) => {
         //stop submit the form, we will post it manually.
         event.preventDefault();
-        doAjax();
+        doAjax(c);
     });
   });
   
@@ -34,7 +34,9 @@ function submitAT(c){
           else if(checkDiemDanh.length <= 0){
             $.notify({
               message: ' <strong>Điểm danh thành công</strong>', icon:'fas fa-check', },{type: 'success'});
-          }
+              
+            }
+
           else if(checkDiemDanh==false){
             $.notify({
               icon: 'fa fa-bug',
@@ -46,25 +48,30 @@ function submitAT(c){
 }
 function authenticateAt(c){
     $('#confirmBtn').attr('onclick',`submitAT('${c}')`);
+    $('#btnSubmit').attr('onclick',`doAjax('${c}')`);
   }
   //Upload image
-function doAjax() {
+function doAjax(c) {
     // Get form
     var form = $('#fileUploadForm')[0];
-    console.log(form);
     var data = new FormData(form);
-
     $.ajax({
         type: "POST",
         enctype: 'multipart/form-data',
-        url: "/upload",
+        url: `/upload?c=${c}`,
         data: data,
         processData: false, //prevent jQuery from automatically transforming the data into a query string
         contentType: false,
         cache: false,
         success: (data) => {
-          console.log(data);
-          var notify = $.notify('<strong>Đang Lưu</strong> Đừng đóng trang này...', {
+          if(data==true)
+          {
+            $.notify({
+                icon:'fa fa-warning',              
+              message: ' <strong>Bạn đã điểm danh</strong>' },{type: 'warning'});
+          }
+          else{
+            var notify = $.notify('<strong>Đang Lưu</strong> Đừng đóng trang này...', {
           allow_dismiss: false,
           showProgressbar: true
         });
@@ -73,6 +80,8 @@ function doAjax() {
              'progress': 25});
           }, 4500);
             $('#content').html(data).hide();
+          }
+         
         },
         error: (e) => {
             $("#listFiles").text(e.responseText);

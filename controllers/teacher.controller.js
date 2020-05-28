@@ -53,6 +53,13 @@ module.exports.postCreateActivity = async function(req, res) {
   let pass=req.body.password;
   let checkNameEvent=serviceActivity.findNameEvent(name);
 
+  let now = new Date();
+  let code = add0(now.getDate())+add0(now.getMonth()+1)+''+now.getFullYear()+''+randomNum(4)+''+randomNum(4);
+  var check;
+  do {
+    check = await serviceActivity.isCodeNotExist_code(code,req.user.IDTaiKhoan);
+  } while (!check);
+  
   
   if(checkNameEvent==null||datetime==""||lop==""||hocky==""||pass==""||name=="")
   {
@@ -61,7 +68,7 @@ module.exports.postCreateActivity = async function(req, res) {
   }
   else{
       infoAc.insertMany({
-          IDHoatDong:removeCharInStr('-',req.body.code),
+          IDHoatDong:removeCharInStr('-',check),
           TenSuKien:name,
           Lop:lop,
           HocKy:hocky,
@@ -76,7 +83,7 @@ module.exports.postCreateActivity = async function(req, res) {
       result.forEach(element=>{
         //
         let info = {
-          IDHoatDong: removeCharInStr('-',req.body.code),
+          IDHoatDong: removeCharInStr('-',check),
           TenSuKien:name,
           Lop:lop,
           HocKy:hocky,
