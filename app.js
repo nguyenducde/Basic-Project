@@ -31,96 +31,96 @@ const dontSniffMimetype = require('dont-sniff-mimetype');
 const frameguard = require('frameguard');
 const xssFilter = require('x-xss-protection');
 
-//middleware security
-app.use(helmet());
+// //middleware security
+// app.use(helmet());
 
-//middleware cross-site injection
-// app.use(csp({
-//   // Specify directives as normal.
-//   directives: {
-//     defaultSrc: ["'self'", 'default.com'],
-//     scriptSrc: ["'self'", "'unsafe-inline'"],
-//     styleSrc: ['style.com'],
-//     fontSrc: ["'self'", 'fonts.com'],
-//     imgSrc: ['img.com', 'data:'],
-//     sandbox: ['allow-forms', 'allow-scripts'],
-//     reportUri: '/report-violation',
-//     objectSrc: ["'none'"],
-//     upgradeInsecureRequests: true,
-//     workerSrc: false  // This is not set.
-//   },
+// //middleware cross-site injection
+// // app.use(csp({
+// //   // Specify directives as normal.
+// //   directives: {
+// //     defaultSrc: ["'self'", 'default.com'],
+// //     scriptSrc: ["'self'", "'unsafe-inline'"],
+// //     styleSrc: ['style.com'],
+// //     fontSrc: ["'self'", 'fonts.com'],
+// //     imgSrc: ['img.com', 'data:'],
+// //     sandbox: ['allow-forms', 'allow-scripts'],
+// //     reportUri: '/report-violation',
+// //     objectSrc: ["'none'"],
+// //     upgradeInsecureRequests: true,
+// //     workerSrc: false  // This is not set.
+// //   },
 
-//   // This module will detect common mistakes in your directives and throw errors
-//   // if it finds any. To disable this, enable "loose mode".
-//   loose: false,
+// //   // This module will detect common mistakes in your directives and throw errors
+// //   // if it finds any. To disable this, enable "loose mode".
+// //   loose: false,
 
-//   // Set to true if you only want browsers to report errors, not block them.
-//   // You may also set this to a function(req, res) in order to decide dynamically
-//   // whether to use reportOnly mode, e.g., to allow for a dynamic kill switch.
-//   reportOnly: false,
+// //   // Set to true if you only want browsers to report errors, not block them.
+// //   // You may also set this to a function(req, res) in order to decide dynamically
+// //   // whether to use reportOnly mode, e.g., to allow for a dynamic kill switch.
+// //   reportOnly: false,
 
-//   // Set to true if you want to blindly set all headers: Content-Security-Policy,
-//   // X-WebKit-CSP, and X-Content-Security-Policy.
-//   setAllHeaders: false,
+// //   // Set to true if you want to blindly set all headers: Content-Security-Policy,
+// //   // X-WebKit-CSP, and X-Content-Security-Policy.
+// //   setAllHeaders: false,
 
-//   // Set to true if you want to disable CSP on Android where it can be buggy.
-//   disableAndroid: false,
+// //   // Set to true if you want to disable CSP on Android where it can be buggy.
+// //   disableAndroid: false,
 
-//   // Set to false if you want to completely disable any user-agent sniffing.
-//   // This may make the headers less compatible but it will be much faster.
-//   // This defaults to `true`.
-//   browserSniff: true
+// //   // Set to false if you want to completely disable any user-agent sniffing.
+// //   // This may make the headers less compatible but it will be much faster.
+// //   // This defaults to `true`.
+// //   browserSniff: true
+// // }))
+// // app.post(
+// //   '/report-violation',
+// //   bodyParser.json({
+// //     type: ['json', 'application/csp-report']
+// //   }),
+// //   (req, res) => {
+// //     if (req.body) {
+// //       console.log('csp violation: ', req.body)
+// //     } else {
+// //       console.log('csp violation: no data received!')
+// //     }
+// //     res.status(204).end()
+// //   }
+// // )
+// //removes the X-Powered-By header
+// app.use(hidePoweredBy());
+// app.disable('x-powered-by');
+
+// //header that enforces secure (HTTP over SSL/TLS) connections to the server
+// app.use(hsts({
+//   maxAge: 15552000,
+//   includeSubDomains: false
 // }))
-// app.post(
-//   '/report-violation',
-//   bodyParser.json({
-//     type: ['json', 'application/csp-report']
-//   }),
-//   (req, res) => {
-//     if (req.body) {
-//       console.log('csp violation: ', req.body)
-//     } else {
-//       console.log('csp violation: no data received!')
-//     }
-//     res.status(204).end()
+// const hstsMiddleware = hsts({
+//   maxAge: 1234000
+// })
+
+// app.use((req, res, next) => {
+//   if (req.secure) {
+//     hstsMiddleware(req, res, next)
+//   } else {
+//     next()
 //   }
-// )
-//removes the X-Powered-By header
-app.use(hidePoweredBy());
-app.disable('x-powered-by');
+// })
 
-//header that enforces secure (HTTP over SSL/TLS) connections to the server
-app.use(hsts({
-  maxAge: 15552000,
-  includeSubDomains: false
-}))
-const hstsMiddleware = hsts({
-  maxAge: 1234000
-})
+// //Internet Explorer, restrict untrusted HTML
+// app.use(ienoopen());
 
-app.use((req, res, next) => {
-  if (req.secure) {
-    hstsMiddleware(req, res, next)
-  } else {
-    next()
-  }
-})
+// //sets Cache-Control and Pragma headers to disable client-side caching.
+// app.use(nocache());
 
-//Internet Explorer, restrict untrusted HTML
-app.use(ienoopen());
+// // to prevent browsers from MIME-sniffing a response away from the declared content-type.
+// app.use(dontSniffMimetype());
 
-//sets Cache-Control and Pragma headers to disable client-side caching.
-app.use(nocache());
+// //sets the X-Frame-Options header to provide clickjacking protection.
+//     // Don't allow me to be in ANY frames:
+// app.use(frameguard({ action: 'deny' }));
 
-// to prevent browsers from MIME-sniffing a response away from the declared content-type.
-app.use(dontSniffMimetype());
-
-//sets the X-Frame-Options header to provide clickjacking protection.
-    // Don't allow me to be in ANY frames:
-app.use(frameguard({ action: 'deny' }));
-
-//sets X-XSS-Protection to enable the Cross-site scripting (XSS) filter in most recent web browsers
-app.use(xssFilter({ mode: null }));
+// //sets X-XSS-Protection to enable the Cross-site scripting (XSS) filter in most recent web browsers
+// app.use(xssFilter({ mode: null }));
 
 
 
