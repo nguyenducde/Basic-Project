@@ -5,6 +5,7 @@ var event=require('../models/module_event');
 var serviceActivity=require('../services/activity');
 var diemdanh=require('../models/model_diemdanh')
 const path = require('path');
+const fs = require('fs');
 
 module.exports.getLogin = function (req, res) {
  if(req.isAuthenticated('local-studentLogin')&&req.user.LoaiTaiKhoan=="Sinh Vien"){
@@ -77,10 +78,22 @@ module.exports.saveDiemDanh=async function (req, res){
     return res.send(checkImage);
   }
   else if(getNoti.MK!=pass){
+    try {
+      fs.unlinkSync("public/uploads/"+image);
+      //file removed
+    } catch(err) {
+      console.error(err)
+    }
     check=false;
     return res.send(check);
   }
   else if(checkDiemDanh.length>0||getNoti.MK!=pass){
+    try {
+      fs.unlinkSync("public/uploads/"+image);
+      //file removed
+    } catch(err) {
+      console.error(err)
+    }
     //not save database
     return res.send(checkDiemDanh);
   }
