@@ -9,7 +9,6 @@ var logger = require('morgan');
 const bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
-var event=require('./models/module_event');
 const device = require('express-device');
 
 

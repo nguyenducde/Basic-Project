@@ -116,7 +116,7 @@ module.exports.saveDiemDanh=async function (req, res){
 
 
 module.exports.uploadAndSave= async function (req, res) {
-  var code=req.param('code');
+ var code=req.query.c;
   const imagePath = path.join('./public/uploads');
   const fileUpload = new serviceActivity.resize(imagePath);
   if (!req.file) {
@@ -124,7 +124,7 @@ module.exports.uploadAndSave= async function (req, res) {
   }
 
   let checkDiemDanh=await serviceActivity.checkDone(code,req.user.IDTaiKhoan);
-  try {
+  
     if(checkDiemDanh.length>0)
     {
       check=true;
@@ -135,9 +135,7 @@ module.exports.uploadAndSave= async function (req, res) {
       const filename = await fileUpload.save(req.file.buffer);
       return res.send(filename)
     }
-  } catch (error) {
-    consloe.log(error);
-  }
+  
  
 
 }
