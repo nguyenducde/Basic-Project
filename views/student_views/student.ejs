@@ -84,6 +84,11 @@
         </div>
       </nav>
       <div class="content">
+        <% if (Persion.VaiTro==1) { %>
+          <button class="btn btn-primary mt-0 mb-1" data-toggle="modal" data-target="#createNewActModalStudent" ">Thêm hoạt động điểm danh</button>
+        
+        <% } %>
+           
         <div class="row">
           <div class="col-sm-10">
             <div class="card mb-1">
@@ -125,7 +130,38 @@
           </div>
         </div>
       </div>
+        <!-- Modal - Tạo hoạt động -->
+  <div class="modal fade" id="createNewActModalStudent" tabindex="-1" role="dialog" aria-labelledby="createNewActModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createNewActModalLabel">Tạo hoạt động</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form id="createActStudent" class="modal-body">
+          <input type="text" name="name" placeholder="Tên hoạt động" class="form-control mb-1" required>
+          <input type="text" name="lop" placeholder="Lớp" class="form-control mb-1" required>
+          <select name="hocki" placeholder="Học Kỳ" class="form-control mb-1" required>
+            <option value="Học Kỳ 1">Học Kỳ 1</option>
+            <option value="Học Kỳ 2">Học Kỳ 2</option>
+          </select>
+          <input type="datetime-local" name="time"  class="form-control" style="height:38px" >
+          <div class="input-group mb-1">
+            <div class="input-group-append">
+
+            </div>
+          </div>
+          <input type="password" name="password"  class="form-control bg-success text-danger" style="height:38px" placeholder="Tạo mật khẩu hoạt động"  >
+          
+          <button class="btn btn-outline-success" type="submit"><i class="fas fa-plus"></i> Tạo</button>
+        </form>
+      </div>
+    </div>
+  </div>
       <footer class="footer footer-black  footer-white ">
+        <p id="PersionMSGV"><%= Persion.NguoiUyQuyen%></p>
         <div class="container-fluid">
           <div class="row">
             <nav class="footer-nav">
@@ -179,4 +215,41 @@
   </div
   <%- include ("../partials/teacher-footer") %>
 </body>
+<script>
+$( "#createActStudent" ).submit(function( event ) {
+ 
+ // Stop form from submitting normally
+ event.preventDefault();
+$( "#createNewActModalStudent").modal("hide");
+ // Get some values from elements on the page:
+ var $form = $( this ),
+   name = $form.find( "input[name='name']" ).val(),
+   time = $form.find( "input[name='time']" ).val(),
+   lop = $form.find( "input[name='lop']" ).val(),
+   hocki = $form.find( "input[name='hocki']" ).val(),
+   pass = $form.find( "input[name='password']" ).val(),
+   persionDecent=$('#PersionMSGV').text();
+ // Send the data using post
+
+ $.ajax({
+    type: "POST",
+    url: '/createActivityStu',
+    dataType:"jsonp",
+    data:{name,time,lop,hocki,pass,persionDecent},
+    success: function(response){
+  $.notify("Tạo sự kiện điểm danh thành công");
+    },error: function(err) {
+      console.log(err);
+      if(err==0)
+      {
+        console.log(err);
+        $.notify("Tên sự kiện không hợp lệ");
+      }
+      else {
+        $.notify("Tạo sự kiện điểm danh thành công");
+      }
+    }
+  });
+});
+</script>
 </html>

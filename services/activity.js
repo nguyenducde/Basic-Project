@@ -10,6 +10,8 @@ var event=require('../models/module_event');
 var diemdanh=require('../models/model_diemdanh');
 var infoAc=require('../models/model_infoActivity')
 var students=require('../models/model_student');
+var InforEvent=require('../models/model_infoEvent');
+var account=require('../models/model_account');
 //----------------------Activity Teacher--------------------------------- 
 module.exports.createNewActivity = async function (i){
     let act = new noti(i);
@@ -108,4 +110,13 @@ module.exports.resize =class Resize {
   filepath(filename) {
     return path.resolve(`${this.folder}/${filename}`)
   }
+}
+//Phân quyền
+module.exports.getListInfo = async function(c){
+  let all=InforEvent.find({MSGV:c});
+  return all;
+}
+module.exports.findChucNang=async function (c,chucnang){
+  let all=account.find({IDTaiKhoan:c,ChucNang:chucnang}).countDocuments();
+  return all;
 }

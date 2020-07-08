@@ -3,7 +3,10 @@ var mongoose = require('mongoose');
 var accountSchema=new mongoose.Schema({
   IDTaiKhoan:{type:String,index:true,unique:true},
   PassWord:String,
-  LoaiTaiKhoan:String
+  LoaiTaiKhoan:String,
+  VaiTro:Number,
+  NguoiUyQuyen:String,
+  ChucNang:String
 
 });
 

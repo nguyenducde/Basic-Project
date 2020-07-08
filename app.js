@@ -15,33 +15,7 @@ var event=require('./models/module_event');
 const device = require('express-device')
 
 
-// var students=require('./models/model_student');
-// var accounts=require('./models/model_account');
-var evetnobject={
-  IDSuKien:"TCC",
-  TenSuKien:"Toán cao cấp",
-MSSV:"1710144",
-MSGV:"GVTCC"
-}
-// event.find({TenSuKien:"Toán cao cấp"},(err,re)=>{
-//   re.forEach(Element=>{
-//     console.log(Element.MSSV)
-//   })
-// })
-// var object={
-//   IDTaiKhoan:"GV1999",
-//   PassWord:"nguyenducde",
-//   LoaiTaiKhoan:"Giao Vien"
-// }
-// event.insertMany(evetnobject,(err,done)=>{
-//   if(done){
-//     console.log(done);
 
-//   }
-//   else{
-//     console.log(err);
-//   }
-// });
 
 var app=express();
 
@@ -59,16 +33,6 @@ app.use(device.capture());
 app.use(session({
   secret: "mysecret",
   cookie: { maxAge: 1000*60*5000 },
-        //Save session to database 
-  // store: new (require('express-sessions'))({
-  //     storage: 'mongodb',
-  //     instance: mongoose, // optional
-  //     host: 'localhost', // optional
-  //     port: 27017, // optional
-  //     db: 'DiemDanhDB', // optional
-  //     collection: 'sessions', // optional
-  //     expire: 86400 // optional
-  // }),
   resave: true,
   saveUninitialized: true,
   unset: 'destroy',

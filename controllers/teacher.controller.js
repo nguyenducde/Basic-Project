@@ -3,6 +3,8 @@ const flash = require('connect-flash');
 var serviceActivity=require('../services/activity.js');
 var noti=require('../models/model_noti');
 var event=require('../models/module_event');
+var account=require('../models//model_account');
+
 var infoAc=require('../models/model_infoActivity')
 const Excel = require('exceljs');
 var fs = require("fs");
@@ -52,7 +54,12 @@ module.exports.postCreateActivity = async function(req, res) {
   let hocky=req.body.hocki;
   let pass=req.body.password;
   let checkNameEvent=serviceActivity.findNameEvent(name);
-
+  let now = new Date();
+  let code = add0(now.getDate())+add0(now.getMonth()+1)+''+now.getFullYear()+''+randomNum(4)+''+randomNum(4);
+  var check;
+  do {
+    check = await serviceActivity.isCodeNotExist_code(code,req.user.IDTaiKhoan);
+  } while (!check);
   
   if(checkNameEvent==null||datetime==""||lop==""||hocky==""||pass==""||name=="")
   {
@@ -61,7 +68,7 @@ module.exports.postCreateActivity = async function(req, res) {
   }
   else{
       infoAc.insertMany({
-          IDHoatDong:removeCharInStr('-',req.body.code),
+          IDHoatDong:removeCharInStr('-',check),
           TenSuKien:name,
           Lop:lop,
           HocKy:hocky,
@@ -76,7 +83,7 @@ module.exports.postCreateActivity = async function(req, res) {
       result.forEach(element=>{
         //
         let info = {
-          IDHoatDong: removeCharInStr('-',req.body.code),
+          IDHoatDong: removeCharInStr('-',check),
           TenSuKien:name,
           Lop:lop,
           HocKy:hocky,
@@ -96,12 +103,14 @@ module.exports.getHome = async function (req, res) {
   let activities = await serviceActivity.getAllMyActivities(req.user.IDTaiKhoan);
   let listJoin=await serviceActivity.getListJoin(req.user.IDTaiKhoan);
  let listDiemDanh=await serviceActivity.getDiemDanh();
+ let infoEvent=await serviceActivity.getListInfo(req.user.IDTaiKhoan);
   return res.render('./teacher_views/teacher-tructiep', {
     user: req.user,
     act: activities,
     listStudent:listJoin,
     mess: req.flash('mess'),
-    listStudentDiemDanh:listDiemDanh
+    listStudentDiemDanh:listDiemDanh,
+    listInfoEvent:infoEvent
    // actRD: activitiesReady
   });
 }
@@ -184,7 +193,16 @@ module.exports.AJAX_refresh=async function(req,res){
  
   return res.send(studentAttendance)
 }
-
+module.exports.AJAX_Dencention =async function(req,res){
+  var MSSV=req.query.c;
+  var MSGV=req.query.msgv;
+  var TenSuKien=req.query.tensukien;
+  console.log(MSSV+ MSGV+ TenSuKien);
+  account.findOneAndUpdate({IDTaiKhoan:MSSV},{VaiTro:1,ChucNang:TenSuKien,NguoiUyQuyen:MSGV},(err,result)=>{
+    console.log(result);
+  })
+  return res.send("Thành công");
+}
 function randomNum(num) {
   var result           = '';
   var characters       = '0123456789';

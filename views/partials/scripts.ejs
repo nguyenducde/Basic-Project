@@ -36,9 +36,23 @@
           alert('Hệ thống tạm thời bị lỗi! Vui lòng thử lại sau!\n'+err);
           window.location.href="/teacher-tructiep";
   }});}
-  
+function AJAX_Decention(mssv,msgv,tensukien)
+{
+  $('#DeccentModel').modal('hide');
+  $.ajax({type:'POST',
+    url:`/ajax-decention?c=${mssv}&msgv=${msgv}&tensukien=${tensukien}`,
+    success:function(res)
+    {
+      $.notify("Ủy quyền thành công");
+    }
+
+})
+}
 function authenticateDelAct(c){
     $('#delActBtn').attr('onclick',`AJAX_delActByCode('${c}')`);
+  }
+function Decention(mssv,msgv,tensukien){
+    $('#DeccentModel').attr('onclick',`AJAX_Decention('${mssv}','${msgv}','${tensukien}')`);
   }
 
 //Dowload file excel  
