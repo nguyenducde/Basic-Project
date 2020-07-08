@@ -1,4 +1,6 @@
 const passport = require('passport');
+var admin=require('../models/model_admin');
+
 //Check auth
 
 module.exports.isNotLogined_next = async function (req, res, next) {
@@ -9,18 +11,25 @@ module.exports.isNotLogined_next = async function (req, res, next) {
   
   module.exports.isLogined_next = async function (req, res, next) {
     if (req.isAuthenticated('local-adminLogin')) return next();
-    return res.redirect('/');
+    return res.redirect('/admin');
   }
 module.exports.getLogin= async function (req, res, next) {
     mess="";
-   return res.render('./admin/login',mess);
+   return res.render('./admin_views/login',mess);
 }
 module.exports.getHome= async function (req, res, next) {
-    mess="";
-   return res.render('./admin/login',mess);
+    Mess="";
+    admin.findOne({IDMaAdmin:req.user.IDTaiKhoan},(err,result)=>{
+      console.log(result);
+      return res.render('./admin_views/home',{
+        mess:Mess,
+        Profile:result
+       });
+    })
+   
 }
 module.exports.postLoginAdmin = passport.authenticate('local-adminLogin', {
-    successRedirect : './admin/home',
+    successRedirect : '/admin-home',
     failureRedirect : '/admin',
     failureFlash : true
   });
