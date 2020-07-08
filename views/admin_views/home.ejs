@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Admin | Quản lý</title>
+  <link rel="icon" type="image/png" href="./img/apple.png">
+  <title><%= Profile.HoVaTen%> | Quản lý</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -221,11 +222,16 @@
                 <div class="col-sm-6">
                   <h3 class="m-0 text-dark">Danh Sách</h3>
                 </div><!-- /.col -->
-              </div>
+        </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+    <br>
+    <div class="content">
+        <button class="btn btn-primary mt-0 mb-1" data-toggle="modal" data-target="#createNewActModalAdmin" >Thêm hoạt động điểm danh</button>
+    
+    </div>
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
@@ -236,6 +242,36 @@
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
   </aside>
+  <!--Tạo hoạt động điểm danh-->
+  <div class="modal fade" id="createNewActModalAdmin" tabindex="-1" role="dialog" aria-labelledby="createNewActModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createNewActModalLabel">Tạo hoạt động</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form id="createActStudent" class="modal-body">
+          <input type="text" name="name" placeholder="Tên hoạt động" class="form-control mb-1" required>
+          <input type="text" name="lop" placeholder="Lớp" class="form-control mb-1" required>
+          <select name="hocki" placeholder="Học Kỳ" class="form-control mb-1" required>
+            <option value="Học Kỳ 1">Học Kỳ 1</option>
+            <option value="Học Kỳ 2">Học Kỳ 2</option>
+          </select>
+          <input type="datetime-local" name="time"  class="form-control" style="height:38px" >
+          <div class="input-group mb-1">
+            <div class="input-group-append">
+
+            </div>
+          </div>
+          <input type="password" name="password"  class="form-control bg-success text-danger" style="height:38px" placeholder="Tạo mật khẩu hoạt động"  >
+          
+          <button class="btn btn-outline-success" type="submit"><i class="fas fa-plus"></i> Tạo</button>
+        </form>
+      </div>
+    </div>
+  </div>
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
