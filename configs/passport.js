@@ -48,10 +48,21 @@ passport.use('local-teacherLogin', new LocalStrategy(
    if(user.PassWord!=psw||user.LoaiTaiKhoan!="Giao Vien" ) return done(null,false,req.flash('error', 'Mật khẩu không đúng'));
     return done(null, user);
   })
-})
-}
-  
-
-))
+})}))
+passport.use('local-adminLogin', new LocalStrategy(
+  {
+    usernameField: 'usernamead',
+   passwordField: 'passwordad',
+   passReqToCallback:true
+  },
+  function (req, usernamead, passwordad, done) { 
+    process.nextTick(function () {
+  Account.findOne({IDTaiKhoan: usernamead}, function (err, user) {
+   if (err)  return done(null,false,req.flash('error','Vui lòng kiêm tra lại thông tin tài khoản.'));
+   if (user==null) return done(null, false, req.flash('error', 'Tài khoản không tồn tại.')); 
+   if(user.PassWord!=passwordad||user.LoaiTaiKhoan!="Admin" ) return done(null,false,req.flash('error', 'Mật khẩu không đúng'));
+    return done(null, user);
+  })
+})}))
 
 }

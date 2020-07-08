@@ -88,7 +88,7 @@ module.exports.saveDiemDanh=async function (req, res){
   let getNameStudent=await serviceActivity.findNameStudent(req.user.IDTaiKhoan);
 
   //Check student đã điểm danh hay chưa
-  let checkDiemDanh=await serviceActivity.checkDone(code,req.user.IDTaiKhoan);
+  let checkDiemDanh= await serviceActivity.checkDone(code,req.user.IDTaiKhoan);
   if(image=="")
   { 
     checkImage="ảnh";
@@ -160,7 +160,7 @@ function removeCharInStr(c,s){
   for(var i=0;i<s.length;i++)
   o+=(s[i]!=c)?s[i]:'';
   return o;}
-  module.exports.postCreateActivity = async function(req, res) {
+module.exports.postCreateActivity = async function(req, res) {
     let name=req.body.name;
     let datetime= req.body.time;
     let lop=req.body.lop;
@@ -224,22 +224,30 @@ function removeCharInStr(c,s){
   }
 
 
-  let checkDiemDanh=await serviceActivity.checkDone(code,req.user.IDTaiKhoan);
-  try {
-    if(checkDiemDanh.length>0)
-    {
-      check=true;
-      return res.send(check);
-  
-    }
-    else {
-      const filename = await fileUpload.save(req.file.buffer);
-      return res.send(filename)
-    }
-  } catch (error) {
-    consloe.log(error);
-  }
- 
+  module.exports.uploadAndSave= async function (req, res) {
+    var code=req.query.c;
+     const imagePath = path.join('./public/uploads');
+     const fileUpload = new serviceActivity.resize(imagePath);
+     if (!req.file) {
+       res.status(401).json({error: 'Please provide an image'});
+     }
+   
+     let checkDiemDanh=await serviceActivity.checkDone(code,req.user.IDTaiKhoan);
+     
+       if(checkDiemDanh.length>0)
+       {
+         check=true;
+         return res.send(check);
+     
+       }
+       else {
+         const filename = await fileUpload.save(req.file.buffer);
+         return res.send(filename)
+       }
+     
+    
+   
+   }
 
 
 

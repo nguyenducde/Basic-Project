@@ -17,7 +17,7 @@ const device = require('express-device');
 var studentRouter=require('./routers/student.router');
 var teacherRouter=require('./routers/teacher.router');
 var indexRouter=require('./routers/index.router');
-
+var adminRouter=require('./routers/admin.router');
 
 
 //module security
@@ -159,6 +159,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(indexRouter);
 app.use(teacherRouter);
 app.use(studentRouter);
+app.use(adminRouter);
 app.get('/qr',(req,res)=>{
  return  res.render('./student_views/qr');
 })
