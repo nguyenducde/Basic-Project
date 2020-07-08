@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" type="text/css" href="./css/admin.css">
   <link rel="icon" type="image/png" href="./img/apple.png">
   <title><%= Profile.HoVaTen%> | Quản lý</title>
   <!-- Tell the browser to be responsive to screen width -->
@@ -27,6 +28,9 @@
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -83,7 +87,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+        <a class="nav-link" data-slide="true" href="" role="button">
           <i class="fas fa-th-large"></i>
         </a>
       </li>
@@ -218,21 +222,87 @@
         </div>
         <!-- /.row -->
         <!-- Main row -->
-        <div class="row">
-                <div class="col-sm-6">
-                  <h3 class="m-0 text-dark">Danh Sách</h3>
-                </div><!-- /.col -->
-        </div>
+      
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
     <br>
     <div class="content">
-        <button class="btn btn-primary mt-0 mb-1" data-toggle="modal" data-target="#createNewActModalAdmin" >Thêm hoạt động điểm danh</button>
-    
+      <button class="btn btn-primary mt-0 mb-1" data-toggle="modal" data-target="#createNewActModalAdmin" >Thêm hoạt động điểm danh</button>
     </div>
-  </div>
+    <br>
+    <div class="content">
+        <div class="row">
+          <!-- Bảng sự kiện-->
+          <div class="col-sm-5" >
+            <h4 class="m-0 text-dark">Danh Sách</h4>
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+              <table class="table table-bordered table-striped mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Họ Và Tên</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Nguyễn Đức Đề</th>
+                    <td>Nguyễn Đức Đề</td>
+                    <td>Nguyễn Đức Đề</td>
+                    <td>Nguyễn Đức Đề</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!--Bảng ủy quyền-->
+            <div class="col-sm-7" >
+              <h4>Phân quyền</h4>
+              <!--Tìm kiếm-->
+              <div class="row">
+                <div class="col-sm-7" >
+                  
+                </div>
+                <div class="col-sm-4" style="margin-bottom:6px">
+                  <input class="form-control" type="text" id="searchUser" placeholder="Search" aria-label="Search">
+                </div>
+              </div>
+              
+             <!--Kết thúc tìm kiếm-->
+              <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                <table class="table table-bordered table-striped mb-0">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Vai Trò</th>
+                      <th scope="col">Ủy Quyền</th>
+                      <th scope="col">Hủy</th>
+                    </tr>
+                  </thead>
+                  <tbody id="TablePhanQuyen">
+                    <% PeopleAc.forEach(function(user){ %>
+                      <tr>
+                        <th scope="row"><%= user.IDTaiKhoan%></th>
+                        <td><%= user.LoaiTaiKhoan%></td>
+                        <td><%= user.IDTaiKhoan%></td>
+                        <td><%= user.IDTaiKhoan%></td>
+                      </tr>
+                    <% }); %>
+                   
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+        
+        
+    </div>
+ 
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     
@@ -252,7 +322,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form id="createActStudent" class="modal-body">
+        <form id="createActAdmin" class="modal-body">
           <input type="text" name="name" placeholder="Tên hoạt động" class="form-control mb-1" required>
           <input type="text" name="lop" placeholder="Lớp" class="form-control mb-1" required>
           <select name="hocki" placeholder="Học Kỳ" class="form-control mb-1" required>
@@ -275,7 +345,16 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
+<script>
+$(document).ready(function(){
+  $("#searchUser").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#TablePhanQuyen tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->

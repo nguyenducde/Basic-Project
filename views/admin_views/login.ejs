@@ -5,16 +5,18 @@
   <%- include ("../partials/teacher-head") %>
   
   <style>
-    body{background: #0000 url('../img/bg-login.jpg') no-repeat center center fixed; background-size: cover;}
+    body{background: #0000 url('../img/bg-login.png') no-repeat center center fixed; background-size: cover;}
   </style>
 </head>
 <body>
-  <div class="card card-trans-white" style="width: 100%; max-width: 350px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%);">
+  <div class="card card-trans-white" style="width: 100%; max-width: 450px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%);">
     <form id="formAct" action="/admin/manage" method="POST" class="card-body">
       <i class="text-danger"><%- mess %></i>
       <input type="text" name="usernamead" class="form-control mb-1" placeholder="Tên đăng nhập" required>
+      <br>
       <input type="password" name="passwordad" id="passwordInp" class="form-control mb-1" placeholder="Mật khẩu" required>
       <div id="inpNameArea"></div>
+      <br>
       <button class="btn btn-primary w-100 mb-1 mt-0" id="SubmitBtn" type="submit">Đăng nhập</button>
       <a href="javascript:void(0)" id="forgetPasGen" style="text-decoration: none;" class="text-danger">Quên mật khẩu</a>
       <a href="javascript:void(0)" id="createAccGen" style="text-decoration: none;" class="text-success float-right">Tạo tài khoản</a>

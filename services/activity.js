@@ -133,3 +133,8 @@ module.exports.findChucNang=async function (c,chucnang){
   let all=account.find({IDTaiKhoan:c,ChucNang:chucnang}).countDocuments();
   return all;
 }
+module.exports.findAllAccount=async function (req, res)
+{
+  let all=account.find({});
+  return all;
+}

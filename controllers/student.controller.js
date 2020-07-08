@@ -159,7 +159,8 @@ function removeCharInStr(c,s){
   var o='';
   for(var i=0;i<s.length;i++)
   o+=(s[i]!=c)?s[i]:'';
-  return o;}
+  return o;
+}
 module.exports.postCreateActivity = async function(req, res) {
     let name=req.body.name;
     let datetime= req.body.time;
@@ -224,30 +225,5 @@ module.exports.postCreateActivity = async function(req, res) {
   }
 
 
-  module.exports.uploadAndSave= async function (req, res) {
-    var code=req.query.c;
-     const imagePath = path.join('./public/uploads');
-     const fileUpload = new serviceActivity.resize(imagePath);
-     if (!req.file) {
-       res.status(401).json({error: 'Please provide an image'});
-     }
-   
-     let checkDiemDanh=await serviceActivity.checkDone(code,req.user.IDTaiKhoan);
-     
-       if(checkDiemDanh.length>0)
-       {
-         check=true;
-         return res.send(check);
-     
-       }
-       else {
-         const filename = await fileUpload.save(req.file.buffer);
-         return res.send(filename)
-       }
-     
-    
-   
-   }
-
-
+  
 
