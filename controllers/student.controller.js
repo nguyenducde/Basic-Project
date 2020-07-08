@@ -8,11 +8,13 @@ var diemdanh=require('../models/model_diemdanh');
 var infoAc=require('../models/model_infoActivity');
 var noti=require('../models/model_noti');
 const path = require('path');
+const fs = require('fs');
 
 module.exports.getLogin = function (req, res) {
  if(req.isAuthenticated('local-studentLogin')&&req.user.LoaiTaiKhoan=="Sinh Vien"){
   return  students.findOne({MSSV:req.user.IDTaiKhoan},(err,result)=>{
      if(result){
+
         account.findOne({IDTaiKhoan:req.user.IDTaiKhoan},(err,resultAccount)=>{
          
           return   res.render('./student_views/student',{
@@ -25,8 +27,12 @@ module.exports.getLogin = function (req, res) {
   }  
  });
  }
+
+   
+
+
  if(req.isAuthenticated('local-teacherLogin')&&req.user.LoaiTaiKhoan=="Giao Vien"){
-  return res.redirect('/teacher')
+  return res.redirect('/teacher');
  }
  else{
   req.flash('error', 'Vui lòng đăng nhập lại');
@@ -52,6 +58,8 @@ module.exports.isNotLogined_next = async function (req, res, next) {
   if(req.isAuthenticated('local-studentLogin')) return next();
  
 }
+
+
 module.exports.isLogined_next = async function (req, res, next) {
   if (req.isAuthenticated('local-teacherLogin')) return next();
   return res.redirect('/');
@@ -59,7 +67,7 @@ module.exports.isLogined_next = async function (req, res, next) {
 
 //Get infomation student by MSSV,DateTime
 module.exports.getActStudent = async function (req, res, next) {
-  var time=new Date();
+  
 
   let act_Student=await serviceActivity.GetActStudent(req.user.IDTaiKhoan)
  
@@ -69,6 +77,8 @@ module.exports.getActStudent = async function (req, res, next) {
       });
    
 }
+
+
 //Save DiemDanh in databases
 module.exports.saveDiemDanh=async function (req, res){
   var code=req.query.c;
@@ -78,17 +88,29 @@ module.exports.saveDiemDanh=async function (req, res){
   let getNameStudent=await serviceActivity.findNameStudent(req.user.IDTaiKhoan);
 
   //Check student đã điểm danh hay chưa
-  let checkDiemDanh=await serviceActivity.checkDone(code,req.user.IDTaiKhoan,getNoti.TenSuKien,getNoti.ThoiGian);
+  let checkDiemDanh=await serviceActivity.checkDone(code,req.user.IDTaiKhoan);
   if(image=="")
   { 
     checkImage="ảnh";
     return res.send(checkImage);
   }
   else if(getNoti.MK!=pass){
+    try {
+      fs.unlinkSync("public/uploads/"+image);
+      //file removed
+    } catch(err) {
+      console.error(err)
+    }
     check=false;
     return res.send(check);
   }
   else if(checkDiemDanh.length>0||getNoti.MK!=pass){
+    try {
+      fs.unlinkSync("public/uploads/"+image);
+      //file removed
+    } catch(err) {
+      console.error(err)
+    }
     //not save database
     return res.send(checkDiemDanh);
   }
@@ -108,12 +130,16 @@ module.exports.saveDiemDanh=async function (req, res){
    return  res.send(checkDiemDanh);
   }
 }
+
+
 module.exports.uploadAndSave= async function (req, res) {
+  var code=req.query.c;
   const imagePath = path.join('./public/uploads');
   const fileUpload = new serviceActivity.resize(imagePath);
   if (!req.file) {
     res.status(401).json({error: 'Please provide an image'});
   }
+
   const filename = await fileUpload.save(req.file.buffer);
   return res.send(filename)
 }
@@ -196,3 +222,24 @@ function removeCharInStr(c,s){
     })
     return  res.send(true);
   }
+
+
+  let checkDiemDanh=await serviceActivity.checkDone(code,req.user.IDTaiKhoan);
+  try {
+    if(checkDiemDanh.length>0)
+    {
+      check=true;
+      return res.send(check);
+  
+    }
+    else {
+      const filename = await fileUpload.save(req.file.buffer);
+      return res.send(filename)
+    }
+  } catch (error) {
+    consloe.log(error);
+  }
+ 
+
+
+

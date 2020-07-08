@@ -3,7 +3,7 @@ const multer = require('multer');
 const sharp = require('sharp');
 const uuidv4 = require('uuid/v4');
 const path = require('path');
-
+const fs = require('fs');
 
 var noti=require('../models/model_noti');
 var event=require('../models/module_event');
@@ -40,7 +40,20 @@ module.exports.createNewActivity = async function (i){
 module.exports.delActByCode=async function(c,a){
 
   let act=await infoAc.findOneAndDelete({IDHoatDong:c,MSGV:a});
-  let actInfoActi=await noti.deleteMany({IDHoatDong:c,MSGV:a});
+  await noti.deleteMany({IDHoatDong:c,MSGV:a});
+  //delete file image
+  await diemdanh.find({IDHoatDong:c},(err,result)=>{
+    result.forEach(element=>{
+      try {
+        fs.unlinkSync("public/uploads/"+element.Avatar);
+        //file removed
+      } catch(err) {
+        console.error(err)
+      }
+    })
+  });
+  await diemdanh.deleteMany({IDHoatDong:c});
+  
   if(act)return act.TenSuKien;
   return null;
 }
@@ -70,8 +83,8 @@ module.exports.getDiemDanh=async function(){
 
 //----------------------Activity Student--------------------------------- 
 //Check student đã điểm danh chưa
-module.exports.checkDone=async function(code,id,ten,thoigian){
-  let all=await diemdanh.find({IDHoatDong:code,MSSV:id,TenSuKien:ten,ThoiGian:thoigian});
+module.exports.checkDone=async function(code,id,thoigian){
+  let all=await diemdanh.find({IDHoatDong:code,MSSV:id});
   return all;
 }
 module.exports.findNoti =async function (code) {
