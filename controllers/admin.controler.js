@@ -115,12 +115,16 @@ module.exports.AJAX_xacNhanUyQuyen=async function (req, res, next) {
   var IdUser=req.query.c;
   var AdminUser=req.body.IDUserAdmin;
   var TenChucNang=req.body.tensukien;
-  console.log(AdminUser+TenChucNang);
-  account.update({IDTaiKhoan:IdUser},{VaiTro:'1',NguoiUyQuyen:AdminUser.slice(1),ChucNang:TenChucNang})
+ 
+  account.updateOne({IDTaiKhoan:IdUser},{VaiTro:"1",NguoiUyQuyen:AdminUser.slice(1),ChucNang:TenChucNang},(err,result)=>{
+    console.log(result+err);
+  })
   return  res.end();
 }
 module.exports.AJAX_HuyxacNhanUyQuyen=function (req, res) {
-  account.findOneAndUpdate({IDTaiKhoan:req.query.c},{VaiTro:'0',NguoiUyQuyen:'',ChucNang:''})
+  account.updateOne({IDTaiKhoan:req.query.c},{VaiTro:"0",NguoiUyQuyen:"",ChucNang:""},(err,result)=>{
+    console.log(result +err);
+  })
   return  res.send("");
 }
 module.exports.AJAX_delActByCode=async function(req,res){
