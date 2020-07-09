@@ -228,6 +228,10 @@
     <div class="content">
       <button class="btn btn-primary mt-0 mb-1" data-toggle="modal" data-target="#createNewActModalAdmin" >Thêm hoạt động điểm danh</button>
     </div>
+    <div class="content">
+      <%- include ("../partials/admin-table-manage") %>
+    </div>
+    
     <br>
     <div class="content">
         <div class="row">
@@ -248,7 +252,7 @@
                   <% ListEventUyQuyen.forEach(function(event){ %>
                     <tr>
                       <th scope="row"><%= event.TenSuKien%></th>
-                      <td><input type="checkbox" name="tensukien" value='<%- event.TenSuKien %>' id="check_id"></td>
+                      <td><input type="checkbox" name="tensukien" value='<%-event.TenSuKien %>' id="check_id"></td>
                     </tr>
                   <% }); %>
                 </tbody>

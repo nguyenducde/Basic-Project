@@ -84,7 +84,7 @@
         </div>
       </nav>
       <div class="content">
-        <% if (Persion.VaiTro==1) { %>
+        <% if (Persion.VaiTro=="1") { %>
           <button class="btn btn-primary mt-0 mb-1" data-toggle="modal" data-target="#createNewActModalStudent" >Thêm hoạt động điểm danh</button>
         
         <% } %>
@@ -226,7 +226,7 @@ $( "#createNewActModalStudent").modal("hide");
    name = $form.find( "input[name='name']" ).val(),
    time = $form.find( "input[name='time']" ).val(),
    lop = $form.find( "input[name='lop']" ).val(),
-   hocki = $form.find( "input[name='hocki']" ).val(),
+   hocki = $form.find( "select[name='hocki']" ).val(),
    pass = $form.find( "input[name='password']" ).val(),
    persionDecent=$('#PersionMSGV').text();
  // Send the data using post

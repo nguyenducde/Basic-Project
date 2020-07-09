@@ -34,7 +34,7 @@ module.exports.createNewActivity = async function (i){
  }
  //Work in student
  module.exports.getListJoin=function(c){
-  let all=event.find({MSGV:c})
+  let all=noti.find({MSGV:c})
   return all;
 }
 module.exports.delActByCode=async function(c,a){
@@ -138,7 +138,7 @@ module.exports.findAllAccount=async function (req, res)
   let all=account.find({});
   return all;
 }
-module.exports.findNameEventDuplate=async function (req,res){
-  let all=InforEvent.find({});
+module.exports.findNameEventDuplate=async function (id){
+  let all=InforEvent.find({MSGV:id});
   return all;
 }

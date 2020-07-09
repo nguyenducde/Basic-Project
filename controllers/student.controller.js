@@ -99,7 +99,7 @@ module.exports.saveDiemDanh=async function (req, res){
       fs.unlinkSync("public/uploads/"+image);
       //file removed
     } catch(err) {
-      console.error(err)
+      console.log(err)
     }
     check=false;
     return res.send(check);
@@ -134,15 +134,25 @@ module.exports.saveDiemDanh=async function (req, res){
 
 module.exports.uploadAndSave= async function (req, res) {
   var code=req.query.c;
-  const imagePath = path.join('./public/uploads');
-  const fileUpload = new serviceActivity.resize(imagePath);
-  if (!req.file) {
-    res.status(401).json({error: 'Please provide an image'});
-  }
-
-  const filename = await fileUpload.save(req.file.buffer);
-  return res.send(filename)
-}
+   const imagePath = path.join('./public/uploads');
+   const fileUpload = new serviceActivity.resize(imagePath);
+   if (!req.file) {
+     res.status(401).json({error: 'Please provide an image'});
+   }
+ 
+   let checkDiemDanh=await serviceActivity.checkDone(code,req.user.IDTaiKhoan);
+   
+     if(checkDiemDanh.length>0)
+     {
+       check=true;
+       return res.send(check);
+   
+     }
+     else {
+       const filename = await fileUpload.save(req.file.buffer);
+       return res.send(filename)
+     }
+ }
 
 function randomNum(num) {
   var result           = '';
@@ -166,8 +176,8 @@ module.exports.postCreateActivity = async function(req, res) {
     let datetime= req.body.time;
     let lop=req.body.lop;
     let hocky=req.body.hocki;
-    let pass=req.body.password;
-    let msgv=req.body. persionDecent;
+    let pass=req.body.pass;
+    let msgv=req.body.persionDecent;
     let checkNameEvent=serviceActivity.findNameEvent(name);
   
     let now = new Date();
@@ -197,11 +207,13 @@ module.exports.postCreateActivity = async function(req, res) {
             ThoiGian:datetime,
             MSGV:msgv,
             MK:pass
+        },(err,result)=>{
+          console.log(result);
         })
       // console.log(re[i].MSSV);
       
       // noti.insertMany(info);
-      event.find({TenSuKien:name},(err,result)=>{
+      event.find({TenSuKien:name,MSGV:msgv},(err,result)=>{
         result.forEach(element=>{
           //
           let info = {
@@ -218,7 +230,7 @@ module.exports.postCreateActivity = async function(req, res) {
         })
       })
     }
-    account.findOneAndUpdate({IDTaiKhoan:req.user.IDTaiKhoan},{VaiTro:0,ChucNang:"",NguoiUyQuyen:""},(err,result)=>{
+    account.findOneAndUpdate({IDTaiKhoan:req.user.IDTaiKhoan},{VaiTro:"0",ChucNang:"",NguoiUyQuyen:""},(err,result)=>{
       console.log(result);
     })
     return  res.send(true);

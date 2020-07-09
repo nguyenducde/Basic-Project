@@ -23,30 +23,27 @@
               <th class="col-2"><%- UserStudent[i].TenSuKien %></th>
               <th class="col-3"> <%-UserStudent[i].ThoiGian.getDate() %>-<%-UserStudent[i].ThoiGian.getMonth() + 1 %>-<%-UserStudent[i].ThoiGian.getFullYear() %></th>
                   <script type="text/javascript">
-                      // Update the count down every 1 second
-                      var x = setInterval(function() {
+                     var x = setInterval(function() {
                         // Get today's date and time
-                    
+                        var now = new Date().getTime();
                         // Time calculations for days, hours, minutes and seconds
-                        var days = Math.floor((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'}))) / (1000 * 60 * 60 * 24));
-                        var hours = Math.floor(((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse(new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'}))) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                        var minutes = Math.floor(((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'}))) % (1000 * 60 * 60)) / (1000 * 60));
-                        var seconds = Math.floor(((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse(new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'}))) % (1000 * 60)) / 1000);
-               
+                        var days = Math.floor((<%- UserStudent[ i].ThoiGian.getTime() %> - now) / (1000 * 60 * 60 * 24));
+                        var hours = Math.floor(((<%- UserStudent[ i].ThoiGian.getTime() %> - now) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor(((<%- UserStudent[ i].ThoiGian.getTime() %> - now) % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor(((<%- UserStudent[ i].ThoiGian.getTime() %> - now) % (1000 * 60)) / 1000);
+                   
                         // Display the result in the element with id="demo"
-                        $('#countTime<%-i%>').html(days + "d " + (hours -7) + "h "
+                        $('#countTime<%-i%>').html(days + "d " + hours + "h "
                         + minutes + "m " + seconds + "s ") 
-                     
+                       
                         // If the count down is finished, write some text
-                        if ((<%- Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) %> - Date.parse( new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'})))< 25200000) {
+                        if ((<%- UserStudent[ i].ThoiGian.getTime() %> - now)< 0) {
                           clearInterval(x);
                           document.getElementById("countTime<%-i%>").innerHTML = "Hết thời gian điểm danh";
                           $.notify({
                             message: ' <strong>Đã hết thời gian điểm danh</strong>', icon:'fa fa-warning', },{type: 'warning'});
                             $('#completed-task<%-i%>').remove();
-                          
-                          
-                            setTimeout(`window.location.href="/student-diemdanh"`,2000);
+                            setTimeout(`window.location.href="/student-diemdanh"`,3000);
                           }
                       }, 1000);
                   </script>  

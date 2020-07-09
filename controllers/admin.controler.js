@@ -21,14 +21,22 @@ module.exports.getLogin= async function (req, res, next) {
 module.exports.getHome= async function (req, res, next) {
     Mess="";
     let PeopleAcocount= await serviceActivity.findAllAccount();
-    let ListEvent=await serviceActivity.findNameEventDuplate();
+    let ListEvent=await serviceActivity.findNameEventDuplate(req.user.IDTaiKhoan);
+    let activities = await serviceActivity.getAllMyActivities(req.user.IDTaiKhoan);
+    let listJoin=await serviceActivity.getListJoin(req.user.IDTaiKhoan);
+   let listDiemDanh=await serviceActivity.getDiemDanh();
+   let infoEvent=await serviceActivity.getListInfo(req.user.IDTaiKhoan);
     admin.findOne({IDMaAdmin:req.user.IDTaiKhoan},(err,result)=>{
       console.log(result);
       return res.render('./admin_views/home',{
         mess:Mess,
         Profile:result,
         PeopleAc:PeopleAcocount,
-        ListEventUyQuyen:ListEvent
+        ListEventUyQuyen:ListEvent,
+        act: activities,
+        listStudent:listJoin,
+        listStudentDiemDanh:listDiemDanh,
+        listInfoEvent:infoEvent
        });
     })
    
@@ -48,13 +56,13 @@ module.exports.AJAX_xacNhanUyQuyen=async function (req, res, next) {
   var IdUser=req.query.c;
   var AdminUser=req.body.IDUserAdmin;
   var TenChucNang=req.body.tensukien;
-  account.findOneAndUpdate({IDTaiKhoan:IdUser},{VaiTro:1,ChucNang:TenChucNang,NguoiUyQuyen:AdminUser},(err,result)=>{
+  account.findOneAndUpdate({IDTaiKhoan:IdUser},{VaiTro:"1",ChucNang:TenChucNang,NguoiUyQuyen:AdminUser.slice(1)},(err,result)=>{
     console.log(result);
   })
-  return  res.send("");
+  return  res.end();
 }
 module.exports.AJAX_HuyxacNhanUyQuyen=function (req, res) {
-  account.findOneAndUpdate({IDTaiKhoan:req.query.c},{VaiTro:0,ChucNang:"",NguoiUyQuyen:""},(err,result)=>{
+  account.findOneAndUpdate({IDTaiKhoan:req.query.c},{VaiTro:"0",ChucNang:"",NguoiUyQuyen:""},(err,result)=>{
     console.log(result);
   })
   return  res.send("");

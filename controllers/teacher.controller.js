@@ -81,7 +81,7 @@ module.exports.postCreateActivity = async function(req, res) {
     // console.log(re[i].MSSV);
     
     // noti.insertMany(info);
-    event.find({TenSuKien:name},(err,result)=>{
+    event.find({TenSuKien:name,MSGV:req.user.IDTaiKhoan},(err,result)=>{
       result.forEach(element=>{
         //
         let info = {

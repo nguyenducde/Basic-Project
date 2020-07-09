@@ -4,7 +4,7 @@ var accountSchema=new mongoose.Schema({
   IDTaiKhoan:{type:String,index:true,unique:true},
   PassWord:String,
   LoaiTaiKhoan:String,
-  VaiTro:Number,
+  VaiTro:String,
   NguoiUyQuyen:String,
   ChucNang:String
 

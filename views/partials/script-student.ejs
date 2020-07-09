@@ -77,17 +77,9 @@
                message: ' <strong>Bạn đã điểm danh</strong>' },{type: 'warning'});
            }
            else{
-             var notify = $.notify('<strong>Đang Lưu</strong> Đừng đóng trang này...', {
-           allow_dismiss: false,
-           showProgressbar: true
-         });
-           setTimeout(function() {
-             notify.update({'type': 'success', 'message': '<strong>Thành cồng</strong> Tải ảnh lên thành công!',
-              'progress': 15});
-           }, 4500);
+             $.notify("Tải ảnh lên thành công")
              $('#content').html(data).hide();
-           }
-          
+           } 
          },
          error: (e) => {
             alert(e);
