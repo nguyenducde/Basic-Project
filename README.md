@@ -1,4 +1,4 @@
-# ProjectDiemDanh
+# Do An Co So
 Git clone https://github.com/nguyenducde/DiemDanh-Express-Mongodb.git Desktop
 
 **Step 1:** Go to file DiemDanh-Express-Mongodb and open the terminal type **npm install --save**
@@ -14,7 +14,9 @@ Git clone https://github.com/nguyenducde/DiemDanh-Express-Mongodb.git Desktop
 | Teacher | GVNDD | nguyenducde| 
 | Student | MSSV Student of CTK41|default MSSV| 
 
-
+## Image
+ 1.admin interface
+ <img src="https://imgur.com/gallery/ueGl295">
   
   
  ### **Website Demo:**
