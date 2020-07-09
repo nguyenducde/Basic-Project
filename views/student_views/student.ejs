@@ -236,9 +236,9 @@ $( "#createNewActModalStudent").modal("hide");
     url: '/createActivityStu',
     data:{name,time,lop,hocki,pass,persionDecent},
     success: function(res){
-      if(res==0)
+      console.log(res);
+      if(res==false)
       {
-       
         $.notify("Tên sự kiện không hợp lệ");
       }
       else {

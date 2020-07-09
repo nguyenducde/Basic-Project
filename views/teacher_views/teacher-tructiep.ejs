@@ -93,9 +93,10 @@
       <div class="content">
         <div class="row">
           <% if (user.VaiTro=="1") { %>
-            <p>Có 1 người đã ủy quyền điểm danh cho bạn</p>
-            <button class="btn btn-primary mt-0 mb-1" data-toggle="modal" data-target="#createNewActModalUyQuyenAdmin" >Tạo hoạt động điểm danh</button>
+            <b style="margin-right: 15px">Có 1 người đã ủy quyền điểm danh cho bạn </b>
+            <button class="btn btn-primary mt-0 mb-1" data-toggle="modal" data-target="#createNewActModalUyQuyenAdmin" >Tạo </button>
           <% } %>
+         
           <div class="col-sm-12">
             <button class="btn btn-primary mt-0 mb-1" data-toggle="modal" data-target="#createNewActModal" ">Thêm hoạt động điểm danh</button>
             <div>
@@ -159,16 +160,16 @@
     </div>
   </div>
   <!-- Modal - Tạo hoạt động -->
-  <div class="modal fade" id="createNewActModal" tabindex="-1" role="dialog" aria-labelledby="createNewActModalLabel" aria-hidden="true">
+  <div class="modal fade" id="createNewActModalUyQuyenAdmin" tabindex="-1" role="dialog" aria-labelledby="createNewActModalUyQuyenAdminLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="createNewActModalLabel">Tạo hoạt động</h5>
+          <h5 class="modal-title" id="createNewActModalUyQuyenAdminLabel">Tạo hoạt động</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="create-activity" method="POST" class="modal-body">
+        <form id="adminPersionCreateActt" class="modal-body">
           <input type="text" name="name" placeholder="Tên hoạt động" class="form-control mb-1" required>
           <input type="text" name="lop" placeholder="Lớp" class="form-control mb-1" required>
           <select name="hocki" placeholder="Học Kỳ" class="form-control mb-1" required>
@@ -180,6 +181,39 @@
           
           <button class="btn btn-outline-success" type="submit"><i class="fas fa-plus"></i> Tạo</button>
         </form>
+      </div>
+    </div>
+  </div>
+  <!-- Modal - Tạo hoạt động Admin -->
+  <div class="modal fade" id="createNewActModalStudent" tabindex="-1" role="dialog" aria-labelledby="createNewActModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="createNewActModalLabel">Tạo hoạt động</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form id="createActStudent" class="modal-body">
+          <input type="text" name="name" placeholder="Tên hoạt động" class="form-control mb-1" required>
+          <input type="text" name="lop" placeholder="Lớp" class="form-control mb-1" required>
+          <select name="hocki" placeholder="Học Kỳ" class="form-control mb-1" required>
+            <option value="Học Kỳ 1">Học Kỳ 1</option>
+            <option value="Học Kỳ 2">Học Kỳ 2</option>
+          </select>
+          <input type="datetime-local" name="time"  class="form-control" style="height:38px" >
+          <div class="input-group mb-1">
+            <div class="input-group-append">
+
+            </div>
+          </div>
+          <input type="password" name="password"  class="form-control bg-success text-danger" style="height:38px" placeholder="Tạo mật khẩu hoạt động"  >
+          
+          <button class="btn btn-outline-success" type="submit"><i class="fas fa-plus"></i> Tạo</button>
+        </form>
+      </div>
+    </div>
+  </div>
       </div>
     </div>
   </div>

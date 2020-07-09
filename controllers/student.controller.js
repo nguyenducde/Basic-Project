@@ -189,7 +189,11 @@ module.exports.postCreateActivity = async function(req, res) {
 
   let checkPerChucNang=await serviceActivity.findChucNang(req.user.IDTaiKhoan,name);
   console.log(checkPerChucNang);
-    if(checkNameEvent==null||datetime==""||lop==""||hocky==""||pass==""||name=="")
+  if(checkPerChucNang<=0)
+  {
+    return res.send(false);
+  }
+  else if(checkNameEvent==null||datetime==""||lop==""||hocky==""||pass==""||name=="")
     {
       req.flash("Tên sự kiện không phù hợp")
     return res.redirect('/student');
@@ -198,7 +202,7 @@ module.exports.postCreateActivity = async function(req, res) {
     { 
      return res.send(checkPerChucNang);
     }
-    else{
+  else{
         infoAc.insertMany({
             IDHoatDong:removeCharInStr('-',check),
             TenSuKien:name,

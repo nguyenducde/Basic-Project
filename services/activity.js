@@ -129,8 +129,8 @@ module.exports.getListInfo = async function(c){
   let all=InforEvent.find({MSGV:c});
   return all;
 }
-module.exports.findChucNang=async function (c){
-  let all=account.find({IDTaiKhoan:c}).countDocuments();
+module.exports.findChucNang=async function (c,name){
+  let all=account.find({IDTaiKhoan:c,ChucNang:name}).countDocuments();
   return all;
 }
 module.exports.findAllAccount=async function (req, res)
