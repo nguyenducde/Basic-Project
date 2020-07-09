@@ -49,8 +49,22 @@
   <% } else { %>
   <b>Bạn chưa có hoạt động nào!</b><br>
   <% } %>
+  <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js"></script>
   <!--Xóa hoạt động , xuất excel-->
   <script>
-   
+   //Dowload file excel  
+function AJAX_dlFileExcelAdmin(c){
+
+  $.ajax({type:'POST',
+      url:`/excelAdmin?c=${c}`,
+      xhrFields: { responseType: "blob" },
+      data: {}
+      ,success:function (data) { 
+        $.notify( 'Tải file excel thành công')
+        var date=new Date();
+        let blob = new Blob([data], {type: 'vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8'});
+       saveAs(blob, "Điểm danh lúc " +date.getHours()+" giờ "+date.getMinutes() + " ngày "+date.getDate()+"-"+date.getMonth()+"-"+date.getFullYear()+".xlsx");
+      }
+ })}
 
   </script>

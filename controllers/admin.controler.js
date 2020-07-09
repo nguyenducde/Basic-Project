@@ -4,6 +4,7 @@ var serviceActivity=require('../services/activity.js');
 var noti=require('../models/model_noti');
 var event=require('../models/module_event');
 var account=require('../models/model_account');
+const Excel = require('exceljs');
 
 var infoAc=require('../models/model_infoActivity')
 //Check auth
@@ -31,7 +32,7 @@ module.exports.getHome= async function (req, res, next) {
    let listDiemDanh=await serviceActivity.getDiemDanh();
    let infoEvent=await serviceActivity.getListInfo(req.user.IDTaiKhoan);
     admin.findOne({IDMaAdmin:req.user.IDTaiKhoan},(err,result)=>{
-      console.log(result);
+     
       return res.render('./admin_views/home',{
         mess:Mess,
         Profile:result,
@@ -50,7 +51,7 @@ module.exports.postCreateActivity = async function(req, res) {
   let datetime= req.body.time;
   let lop=req.body.lop;
   let hocky=req.body.hocki;
-  let pass=req.body.pass;
+  let pass=req.body.password;
   let checkNameEvent=serviceActivity.findNameEvent(name);
 
   let now = new Date();
@@ -68,24 +69,19 @@ module.exports.postCreateActivity = async function(req, res) {
   }
   else{
       infoAc.insertMany({
-          IDHoatDong:removeCharInStr('-',check),
+          IDHoatDong:check,
           TenSuKien:name,
           Lop:lop,
           HocKy:hocky,
           ThoiGian:datetime,
           MSGV:req.user.IDTaiKhoan,
           MK:pass
-      },(err,result)=>{
-        console.log(result);
       })
-    // console.log(re[i].MSSV);
-    
-    // noti.insertMany(info);
     event.find({TenSuKien:name,MSGV:req.user.IDTaiKhoan},(err,result)=>{
       result.forEach(element=>{
         //
         let info = {
-          IDHoatDong: removeCharInStr('-',check),
+          IDHoatDong: check,
           TenSuKien:name,
           Lop:lop,
           HocKy:hocky,
@@ -98,7 +94,7 @@ module.exports.postCreateActivity = async function(req, res) {
       })
     })
   }
-  return  res.end();
+  return  res.redirect('/admin-home');
 }
 module.exports.postLoginAdmin = passport.authenticate('local-adminLogin', {
     successRedirect : '/admin-home',
@@ -149,4 +145,53 @@ function removeCharInStr(c,s){
   var o='';
   for(var i=0;i<s.length;i++)
   o+=(s[i]!=c)?s[i]:'';
+}
+module.exports.AJAX_saveExcel=async function(req,res){
+  var all=await serviceActivity.exportExcel(req.query.c);
+  var workbook = new Excel.Workbook();
+
+	// workbook.creator = 'Me';
+	// workbook.lastModifiedBy = 'Her';
+	// workbook.created = new Date(1985, 8, 30);
+	// workbook.modified = new Date();
+	// workbook.lastPrinted = new Date(2016, 9, 27);
+	// workbook.properties.date1904 = true;
+
+  workbook.views = [
+    {
+      x: 0, y: 0, width: 25000, height: 10000,
+      firstSheet: 0, activeTab: 1, visibility: 'visible'
+    }
+  ]
+  
+
+  // Create a sheet
+  var sheet = workbook.addWorksheet('Sheet1',{
+    pageSetup:{paperSize: 9, orientation:'landscape',verticalCentered:true}
+  }, {properties:{tabColor:{argb:'FF00FF00'}}});
+  
+  // A table header
+  sheet.columns = [
+      { header: 'STT', key: 'IDHoatDong',width: 10 },
+      { header: 'Tên Hoạt động', key: 'TenSuKien',width: 25 },
+      { header: 'MS Sinh Viên', key: 'MSSV',width: 25 },
+      { header: 'Họ Và Tên', key: 'HoVaTen' ,width: 40},
+      { header: 'Thời Gian', key: 'ThoiGian',width: 30 },
+    
+   
+  ]
+  // Add rows in the above header
+  for (let i = 0; i < all.length; i++) {
+    
+    sheet.addRow({IDHoatDong: i+1, TenSuKien: all[i].TenSuKien,MSSV:all[i].MSSV,HoVaTen:all[i].HoVaTen, ThoiGian:all[i].ThoiGian });
+  }
+
+	res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+	res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
+	workbook.xlsx.write(res)
+		.then(function (data) {
+			res.end();
+			console.log('File write done........');
+		});
+ 
 }

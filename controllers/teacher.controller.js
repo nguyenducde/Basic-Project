@@ -222,4 +222,74 @@ function removeCharInStr(c,s){
   var o='';
   for(var i=0;i<s.length;i++)
   o+=(s[i]!=c)?s[i]:'';
-  return o;}
+  return o;
+}
+
+module.exports.postCreateActivityAD = async function(req, res) {
+    let name=req.body.name;
+    let datetime= req.body.time;
+    let lop=req.body.lop;
+    let hocky=req.body.hocki;
+    let pass=req.body.pass;
+    let msgv=req.body.persionDecent;
+    let checkNameEvent=serviceActivity.findNameEvent(name);
+  
+    let now = new Date();
+  let code = add0(now.getDate())+add0(now.getMonth()+1)+''+now.getFullYear()+''+randomNum(4)+''+randomNum(4);
+  var check;
+  do {
+    check = await serviceActivity.isCodeNotExist_code(code,req.user.IDTaiKhoan);
+  } while (!check);
+
+  let checkPerChucNang=await serviceActivity.findChucNang(req.user.IDTaiKhoan,name);
+  console.log(checkPerChucNang);
+  if(checkPerChucNang<=0)
+  {
+    return res.send(false);
+  }
+  else if(checkNameEvent==null||datetime==""||lop==""||hocky==""||pass==""||name=="")
+    {
+      req.flash("Tên sự kiện không phù hợp")
+    return res.redirect('/student');
+    }
+    else if(checkPerChucNang<=0)
+    { 
+     return res.send(checkPerChucNang);
+    }
+  else{
+        infoAc.insertMany({
+            IDHoatDong:removeCharInStr('-',check),
+            TenSuKien:name,
+            Lop:lop,
+            HocKy:hocky,
+            ThoiGian:datetime,
+            MSGV:msgv,
+            MK:pass
+        },(err,result)=>{
+          console.log(result);
+        })
+      // console.log(re[i].MSSV);
+      
+      // noti.insertMany(info);
+      event.find({TenSuKien:name,MSGV:msgv},(err,result)=>{
+        result.forEach(element=>{
+          //
+          let info = {
+            IDHoatDong: removeCharInStr('-',check),
+            TenSuKien:name,
+            Lop:lop,
+            HocKy:hocky,
+            ThoiGian:datetime,
+            MSGV:msgv,
+            MSSV:element.MSSV,
+            MK:pass
+          };
+          noti.insertMany(info);
+        })
+      })
+    }
+    account.findOneAndUpdate({IDTaiKhoan:req.user.IDTaiKhoan},{VaiTro:"0",ChucNang:"",NguoiUyQuyen:""},(err,result)=>{
+      console.log(result);
+    })
+    return  res.send(true);
+  }

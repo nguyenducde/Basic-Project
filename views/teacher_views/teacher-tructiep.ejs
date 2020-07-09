@@ -159,7 +159,7 @@
       </footer>
     </div>
   </div>
-  <!-- Modal - Tạo hoạt động -->
+  <!-- Modal - Tạo hoạt động admin -->
   <div class="modal fade" id="createNewActModalUyQuyenAdmin" tabindex="-1" role="dialog" aria-labelledby="createNewActModalUyQuyenAdminLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -169,7 +169,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form id="adminPersionCreateActt" class="modal-body">
+        <form id="btnTaoActPhanQuyen" class="modal-body">
           <input type="text" name="name" placeholder="Tên hoạt động" class="form-control mb-1" required>
           <input type="text" name="lop" placeholder="Lớp" class="form-control mb-1" required>
           <select name="hocki" placeholder="Học Kỳ" class="form-control mb-1" required>
@@ -179,13 +179,13 @@
           <input type="datetime-local" name="time"  class="form-control" style="height:38px" >
           <input type="password" name="password"  class="form-control bg-success text-danger" style="height:38px" placeholder="Tạo mật khẩu hoạt động"  >
           
-          <button class="btn btn-outline-success" type="submit"><i class="fas fa-plus"></i> Tạo</button>
+          <button  class="btn btn-outline-success" type="submit"><i class="fas fa-plus"></i> Tạo</button>
         </form>
       </div>
     </div>
   </div>
-  <!-- Modal - Tạo hoạt động Admin -->
-  <div class="modal fade" id="createNewActModalStudent" tabindex="-1" role="dialog" aria-labelledby="createNewActModalLabel" aria-hidden="true">
+  <!-- Modal - Tạo hoạt động  -->
+  <div class="modal fade" id="createNewActModal" tabindex="-1" role="dialog" aria-labelledby="createNewActModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -194,7 +194,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form id="createActStudent" class="modal-body">
+        <form action="create-activity" method="post"class="modal-body">
           <input type="text" name="name" placeholder="Tên hoạt động" class="form-control mb-1" required>
           <input type="text" name="lop" placeholder="Lớp" class="form-control mb-1" required>
           <select name="hocki" placeholder="Học Kỳ" class="form-control mb-1" required>
@@ -368,6 +368,7 @@
     </div>
   </div>
   <%- include ("../partials/teacher-footer") %>
+  <p id="PersionAdmin"><%= user.NguoiUyQuyen%></p>
   <%- include ("../partials/scripts") %>
 
   

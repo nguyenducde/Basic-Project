@@ -12,6 +12,7 @@ router.post('/ajax-reload-activity', teacherController.isLogined_next, teacherCo
 router.post('/excel',teacherController.isLogined_next,teacherController.AJAX_saveExcel);
 router.post('/refreshAt',teacherController.isLogined_next,teacherController.AJAX_refresh);
 router.post('/ajax-decention',teacherController.isLogined_next,teacherController.AJAX_Dencention);
+router.post('/createActivityAd',teacherController.isLogined_next,teacherController.postCreateActivityAD);
 router.get('/teacher/logout',teacherController.logOut);
 
 module.exports=router;

@@ -226,7 +226,7 @@
     <!-- /.content -->
     <br>
     <div class="content">
-      <button class="btn btn-primary mt-0 mb-1" data-toggle="modal" data-target="#createNewActModalAdmin" >Thêm hoạt động điểm danh</button>
+      <button class="btn btn-primary mt-0 mb-1" data-toggle="modal" data-target="#createNewActivityAdmin" >Thêm hoạt động điểm danh</button>
     </div>
     <br>
     <div class="content">
@@ -314,8 +314,8 @@
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
   </aside>
-  <!--Tạo hoạt động điểm danh-->
-  <div class="modal fade" id="createNewActModalAdmin" tabindex="-1" role="dialog" aria-labelledby="createNewActModalLabel" aria-hidden="true">
+  <!-- Modal - Tạo hoạt động  -->
+  <div class="modal fade" id="createNewActivityAdmin" tabindex="-1" role="dialog" aria-labelledby="createNewActModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -324,7 +324,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form id="createActAdmin" class="modal-body">
+        <form action="Admin-create-activity" method="post"class="modal-body">
           <input type="text" name="name" placeholder="Tên hoạt động" class="form-control mb-1" required>
           <input type="text" name="lop" placeholder="Lớp" class="form-control mb-1" required>
           <select name="hocki" placeholder="Học Kỳ" class="form-control mb-1" required>
@@ -338,11 +338,13 @@
             </div>
           </div>
           <input type="password" name="password"  class="form-control bg-success text-danger" style="height:38px" placeholder="Tạo mật khẩu hoạt động"  >
+          
           <button class="btn btn-outline-success" type="submit"><i class="fas fa-plus"></i> Tạo</button>
         </form>
       </div>
     </div>
   </div>
+      
   <!-- Modal - Xác nhận ủy quyền -->
   <div class="modal fade" id="UyQuyenModel" tabindex="-1" role="dialog" aria-labelledby="UyQuyenModelLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -487,34 +489,7 @@ function AJAX_HuyxacNhanUyQuyen(c)
       
     })
 }
-//Thêm hoạt động
-$( "#createActAdmin" ).submit(function( event ) {
- 
- // Stop form from submitting normally
- event.preventDefault();
-$("#createNewActModalAdmin").modal("hide");
- // Get some values from elements on the page:
- var $form = $( this ),
-   name = $form.find( "input[name='name']" ).val(),
-   time = $form.find( "input[name='time']" ).val(),
-   lop = $form.find( "input[name='lop']" ).val(),
-   hocki = $form.find( "select[name='hocki']" ).val(),
-   pass = $form.find( "input[name='password']" ).val()
-  
- // Send the data using post
 
- $.ajax({
-    type: "POST",
-    url: '/createActivityAdmin',
-    data:{name,time,lop,hocki,pass},
-    success: function(res){
-        $.notify("Tạo sự kiện điểm danh thành công");
-        setTimeout(`window.location.href="/admin-home"`,3000);
-      
-    },error: function(err) { 
-    }
-  });
-});
 //Xóa Hoạt động
 function authenDeleteAc(c)
     { 
