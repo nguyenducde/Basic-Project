@@ -87,10 +87,15 @@
           </div>
         </div>
       </nav>
-      <div class="content">
+      
         
+     
+      <div class="content">
         <div class="row">
-
+          <% if (user.VaiTro=="1") { %>
+            <p>Có 1 người đã ủy quyền điểm danh cho bạn</p>
+            <button class="btn btn-primary mt-0 mb-1" data-toggle="modal" data-target="#createNewActModalUyQuyenAdmin" >Tạo hoạt động điểm danh</button>
+          <% } %>
           <div class="col-sm-12">
             <button class="btn btn-primary mt-0 mb-1" data-toggle="modal" data-target="#createNewActModal" ">Thêm hoạt động điểm danh</button>
             <div>

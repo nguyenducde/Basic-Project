@@ -34,7 +34,7 @@ module.exports.createNewActivity = async function (i){
  }
  //Work in student
  module.exports.getListJoin=function(c){
-  let all=noti.find({MSGV:c})
+  let all=event.find({MSGV:c})
   return all;
 }
 module.exports.delActByCode=async function(c,a){
@@ -129,8 +129,8 @@ module.exports.getListInfo = async function(c){
   let all=InforEvent.find({MSGV:c});
   return all;
 }
-module.exports.findChucNang=async function (c,chucnang){
-  let all=account.find({IDTaiKhoan:c,ChucNang:chucnang}).countDocuments();
+module.exports.findChucNang=async function (c){
+  let all=account.find({IDTaiKhoan:c}).countDocuments();
   return all;
 }
 module.exports.findAllAccount=async function (req, res)

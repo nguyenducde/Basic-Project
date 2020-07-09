@@ -14,16 +14,18 @@
       </tr>
     </thead>
     <tbody>
-      
       <% for(var i=0;i<l;i++){ %>
-          
-          <% if (Date.parse(UserStudent[ i].ThoiGian.toLocaleString("en-US",{timeZone: 'UTC'})) >=Date.parse(new Date().toLocaleString("en-US",{timeZone: 'Asia/Ho_Chi_Minh'}))  ) { %>
+          <% if (UserStudent[i].ThoiGian.getTime() >= new Date().getTime() ) { %>
             <tr class="d-flex alert-success">
               <th class="col-1"><%- i+1 %></th>
               <th class="col-2"><%- UserStudent[i].TenSuKien %></th>
               <th class="col-3"> <%-UserStudent[i].ThoiGian.getDate() %>-<%-UserStudent[i].ThoiGian.getMonth() + 1 %>-<%-UserStudent[i].ThoiGian.getFullYear() %></th>
                   <script type="text/javascript">
-                     var x = setInterval(function() {
+                  
+                  
+                      
+                      // Update the count down every 1 second
+                      var x = setInterval(function() {
                         // Get today's date and time
                         var now = new Date().getTime();
                         // Time calculations for days, hours, minutes and seconds

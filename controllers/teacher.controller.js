@@ -3,7 +3,7 @@ const flash = require('connect-flash');
 var serviceActivity=require('../services/activity.js');
 var noti=require('../models/model_noti');
 var event=require('../models/module_event');
-var account=require('../models//model_account');
+var account=require('../models/model_account');
 
 var infoAc=require('../models/model_infoActivity')
 const Excel = require('exceljs');
@@ -106,6 +106,7 @@ module.exports.getHome = async function (req, res) {
   let listJoin=await serviceActivity.getListJoin(req.user.IDTaiKhoan);
  let listDiemDanh=await serviceActivity.getDiemDanh();
  let infoEvent=await serviceActivity.getListInfo(req.user.IDTaiKhoan);
+
   return res.render('./teacher_views/teacher-tructiep', {
     user: req.user,
     act: activities,
@@ -113,8 +114,9 @@ module.exports.getHome = async function (req, res) {
     mess: req.flash('mess'),
     listStudentDiemDanh:listDiemDanh,
     listInfoEvent:infoEvent
-   // actRD: activitiesReady
   });
+ 
+  
 }
 module.exports.AJAX_createNewCodeAct = async function (req, res) {
   let now = new Date();

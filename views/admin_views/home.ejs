@@ -228,6 +228,7 @@
     <div class="content">
       <button class="btn btn-primary mt-0 mb-1" data-toggle="modal" data-target="#createNewActModalAdmin" >Thêm hoạt động điểm danh</button>
     </div>
+    <br>
     <div class="content">
       <%- include ("../partials/admin-table-manage") %>
     </div>
@@ -380,6 +381,25 @@
       </div>
     </div>
   </div>
+   <!-- Modal - Xóa nhận hoạt động -->
+   <div class="modal fade" id="DeleteAcModel" tabindex="-1" role="dialog" aria-labelledby="DeleteAcModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="DeleteAcModell">Xác nhận hành động</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span id="delActProgress">Bạn có chắc chắn muốn xóa hoạt động này không?</span>
+        </div>
+        <div class="modal-footer" id="XoaATModelfoot">
+          <button class="btn btn-danger" id="DeleteAtBtn" onclick="">Xóa</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
@@ -418,26 +438,34 @@ function authenticateUyQuyen(c)
 function AJAX_xacNhanUyQuyen(c)
 { 
   $('#UyQuyenModel').modal('hide');
-  //$(document.body).removeClass("modal-open");
- // $(".modal-backdrop").remove();
-  if ($('#check_id').is(":checked"))
-{
-  tensukien=$('#check_id').val();
-  IDUserAdmin=$('#IDUserAdmin').text();
-  $.ajax({type:'POST',
-      url:`/xacnhanUyQuyen?c=${c}`,
-      type:"POST",
-      data:{tensukien,IDUserAdmin},
-      success:function(data){
-        $.notify("Ủy quyền thành công");
-      },error: function(err)
-      { 
-        $.notify("Ủy quyền thất bại");
-      }
-      
-    })
+  
+                // Khai báo tham số
+                var checkbox = document.getElementsByName('tensukien');
+                var tensukien = "";
+                
+                // Lặp qua từng checkbox để lấy giá trị
+                for (var i = 0; i < checkbox.length; i++){
+                    if (checkbox[i].checked === true){
+                      tensukien +=checkbox[i].value;
+                        
+                          IDUserAdmin=$('#IDUserAdmin').text();
+                          $.ajax({type:'POST',
+                              url:`/xacnhanUyQuyen?c=${c}`,
+                              type:"POST",
+                              data:{tensukien,IDUserAdmin},
+                              success:function(data){
+                                $.notify("Ủy quyền thành công");
+                                
+                              },error: function(err)
+                              { 
+                                $.notify("Ủy quyền thất bại");
+                              }
+                              
+                            })
+                    }
+                }
 }
-}
+
 //Hủy ủy quyền
 function authenticateHuyUyQuyen(c)
 { 
@@ -451,6 +479,7 @@ function AJAX_HuyxacNhanUyQuyen(c)
       type:"POST",
       success:function(data){
         $.notify("Hủy ủy quyền thành công");
+        
       },error: function(err)
       { 
         $.notify("Hủy ủy quyền thất bại");
@@ -458,6 +487,56 @@ function AJAX_HuyxacNhanUyQuyen(c)
       
     })
 }
+//Thêm hoạt động
+$( "#createActAdmin" ).submit(function( event ) {
+ 
+ // Stop form from submitting normally
+ event.preventDefault();
+$("#createNewActModalAdmin").modal("hide");
+ // Get some values from elements on the page:
+ var $form = $( this ),
+   name = $form.find( "input[name='name']" ).val(),
+   time = $form.find( "input[name='time']" ).val(),
+   lop = $form.find( "input[name='lop']" ).val(),
+   hocki = $form.find( "select[name='hocki']" ).val(),
+   pass = $form.find( "input[name='password']" ).val()
+  
+ // Send the data using post
+
+ $.ajax({
+    type: "POST",
+    url: '/createActivityAdmin',
+    data:{name,time,lop,hocki,pass},
+    success: function(res){
+        $.notify("Tạo sự kiện điểm danh thành công");
+        setTimeout(`window.location.href="/admin-home"`,3000);
+      
+    },error: function(err) { 
+    }
+  });
+});
+//Xóa Hoạt động
+function authenDeleteAc(c)
+    { 
+      $('#DeleteAtBtn').attr('onclick',`AJAX_DeleteAtAdmin('${c}')`);
+    }
+    function AJAX_DeleteAtAdmin(c)
+    { 
+  $('#DeleteAcModel').modal('hide');
+  $.ajax({type:'POST',
+      url:`/DeleteAtAdmin?c=${c}`,
+      type:"POST",
+      success:function(res){
+        if(res)
+        $.notify(`Hoạt động <b>${res}</b> đã được xóa thành công`, "success");
+        setTimeout(`window.location.href="/admin-home"`,3000);
+      },error: function(err)
+      { 
+        $.notify('Không tìm thấy thông tin về hoạt động cần xóa!','error');
+      }
+      
+    })
+    }
 </script>
 <script src="./javascripts/plugins/bootstrap-notify.js"></script>
 <script src="dist/js/adminlte.js"></script>

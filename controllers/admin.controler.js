@@ -1,7 +1,11 @@
 const passport = require('passport');
 var admin=require('../models/model_admin');
 var serviceActivity=require('../services/activity.js');
+var noti=require('../models/model_noti');
+var event=require('../models/module_event');
 var account=require('../models/model_account');
+
+var infoAc=require('../models/model_infoActivity')
 //Check auth
 
 module.exports.isNotLogined_next = async function (req, res, next) {
@@ -41,6 +45,61 @@ module.exports.getHome= async function (req, res, next) {
     })
    
 }
+module.exports.postCreateActivity = async function(req, res) {
+  let name=req.body.name;
+  let datetime= req.body.time;
+  let lop=req.body.lop;
+  let hocky=req.body.hocki;
+  let pass=req.body.pass;
+  let checkNameEvent=serviceActivity.findNameEvent(name);
+
+  let now = new Date();
+  let code = add0(now.getDate())+add0(now.getMonth()+1)+''+now.getFullYear()+''+randomNum(4)+''+randomNum(4);
+  var check;
+  do {
+    check = await serviceActivity.isCodeNotExist_code(code,req.user.IDTaiKhoan);
+  } while (!check);
+
+  
+  if(checkNameEvent==null||datetime==""||lop==""||hocky==""||pass==""||name=="")
+  {
+    req.flash("Tên sự kiện không phù hợp")
+  return res.redirect('/admin-home');
+  }
+  else{
+      infoAc.insertMany({
+          IDHoatDong:removeCharInStr('-',check),
+          TenSuKien:name,
+          Lop:lop,
+          HocKy:hocky,
+          ThoiGian:datetime,
+          MSGV:req.user.IDTaiKhoan,
+          MK:pass
+      },(err,result)=>{
+        console.log(result);
+      })
+    // console.log(re[i].MSSV);
+    
+    // noti.insertMany(info);
+    event.find({TenSuKien:name,MSGV:req.user.IDTaiKhoan},(err,result)=>{
+      result.forEach(element=>{
+        //
+        let info = {
+          IDHoatDong: removeCharInStr('-',check),
+          TenSuKien:name,
+          Lop:lop,
+          HocKy:hocky,
+          ThoiGian:datetime,
+          MSGV:req.user.IDTaiKhoan,
+          MSSV:element.MSSV,
+          MK:pass
+        };
+        noti.insertMany(info);
+      })
+    })
+  }
+  return  res.end();
+}
 module.exports.postLoginAdmin = passport.authenticate('local-adminLogin', {
     successRedirect : '/admin-home',
     failureRedirect : '/admin',
@@ -56,18 +115,20 @@ module.exports.AJAX_xacNhanUyQuyen=async function (req, res, next) {
   var IdUser=req.query.c;
   var AdminUser=req.body.IDUserAdmin;
   var TenChucNang=req.body.tensukien;
-  account.findOneAndUpdate({IDTaiKhoan:IdUser},{VaiTro:"1",ChucNang:TenChucNang,NguoiUyQuyen:AdminUser.slice(1)},(err,result)=>{
-    console.log(result);
-  })
+  console.log(AdminUser+TenChucNang);
+  account.update({IDTaiKhoan:IdUser},{VaiTro:'1',NguoiUyQuyen:AdminUser.slice(1),ChucNang:TenChucNang})
   return  res.end();
 }
 module.exports.AJAX_HuyxacNhanUyQuyen=function (req, res) {
-  account.findOneAndUpdate({IDTaiKhoan:req.query.c},{VaiTro:"0",ChucNang:"",NguoiUyQuyen:""},(err,result)=>{
-    console.log(result);
-  })
+  account.findOneAndUpdate({IDTaiKhoan:req.query.c},{VaiTro:'0',NguoiUyQuyen:'',ChucNang:''})
   return  res.send("");
 }
-
+module.exports.AJAX_delActByCode=async function(req,res){
+  let c=req.query.c;
+  let i=await serviceActivity.delActByCode(c,req.user.IDTaiKhoan);
+  console.log(i);
+  return res.send(i);
+}
 
 function randomNum(num) {
   var result           = '';
