@@ -234,20 +234,19 @@ $( "#createNewActModalStudent").modal("hide");
  $.ajax({
     type: "POST",
     url: '/createActivityStu',
-    dataType:"jsonp",
     data:{name,time,lop,hocki,pass,persionDecent},
-    success: function(response){
-  $.notify("Tạo sự kiện điểm danh thành công");
-    },error: function(err) {
-      console.log(err);
-      if(err==0)
+    success: function(res){
+      if(res==0)
       {
-        console.log(err);
+       
         $.notify("Tên sự kiện không hợp lệ");
       }
       else {
         $.notify("Tạo sự kiện điểm danh thành công");
       }
+    },error: function(err) {
+      
+      
     }
   });
 });

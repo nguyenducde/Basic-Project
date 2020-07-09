@@ -27,10 +27,7 @@
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -87,7 +84,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-slide="true" href="" role="button">
+        <a class="nav-link" data-slide="true" href="/adminLogOut" role="button">
           <i class="fas fa-th-large"></i>
         </a>
       </li>
@@ -98,7 +95,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="https://www.facebook.com/labengoan.cutessss" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Quản Trị Viên</span>
@@ -165,12 +162,12 @@
               <div class="inner">
                 <h3>150</h3>
 
-                <p>New Orders</p>
+                <p>Người dùng mới</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Nhiều thông tin hơn <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -180,12 +177,12 @@
               <div class="inner">
                 <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-                <p>Bounce Rate</p>
+                <p>Tỷ lệ phát triển</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Nhiều thông tin hơn <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -195,12 +192,12 @@
               <div class="inner">
                 <h3>44</h3>
 
-                <p>User Registrations</p>
+                <p>Tổng số người dùng</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Nhiều thông tin hơn <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -210,12 +207,12 @@
               <div class="inner">
                 <h3>65</h3>
 
-                <p>Unique Visitors</p>
+                <p>Số người đã ghé qua</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Nhiều thông tin hơn <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -238,23 +235,22 @@
           <div class="col-sm-5" >
             <h4 class="m-0 text-dark">Danh Sách</h4>
             <div class="table-wrapper-scroll-y my-custom-scrollbar">
-              <table class="table table-bordered table-striped mb-0">
+              <table class="table table-bordered table-striped mb-0 text-center">
                 <thead>
                   <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Họ Và Tên</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Tên Sự Kiện</th>
+                    <th scope="col">Tích Chọn</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">Nguyễn Đức Đề</th>
-                    <td>Nguyễn Đức Đề</td>
-                    <td>Nguyễn Đức Đề</td>
-                    <td>Nguyễn Đức Đề</td>
-                  </tr>
                   
+                  <% ListEventUyQuyen.forEach(function(event){ %>
+                    <tr>
+                      <th scope="row"><%= event.TenSuKien%></th>
+                      <td><input type="checkbox" name="tensukien" value='<%- event.TenSuKien %>' id="check_id"></td>
+                    </tr>
+                  <% }); %>
                 </tbody>
               </table>
             </div>
@@ -274,13 +270,15 @@
               
              <!--Kết thúc tìm kiếm-->
               <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                <table class="table table-bordered table-striped mb-0">
+                <table class="table table-bordered table-striped mb-0 text-center">
                   <thead>
                     <tr>
                       <th scope="col">ID</th>
                       <th scope="col">Vai Trò</th>
+                     
                       <th scope="col">Ủy Quyền</th>
                       <th scope="col">Hủy</th>
+                     
                     </tr>
                   </thead>
                   <tbody id="TablePhanQuyen">
@@ -288,8 +286,9 @@
                       <tr>
                         <th scope="row"><%= user.IDTaiKhoan%></th>
                         <td><%= user.LoaiTaiKhoan%></td>
-                        <td><%= user.IDTaiKhoan%></td>
-                        <td><%= user.IDTaiKhoan%></td>
+                        
+                        <td> <i class="fab fa-hornbill alert-success" data-toggle="modal" data-target="#UyQuyenModel" onclick="authenticateUyQuyen('<%- user.IDTaiKhoan %>')" style="font-size:24px" ></i></td>
+                        <td><i class='far fa-stop-circle' data-toggle="modal" data-target="#HuyUyQuyenModel" onclick="authenticateHuyUyQuyen('<%- user.IDTaiKhoan %>')" style='color:red;font-size:24px'></i></td>
                       </tr>
                     <% }); %>
                    
@@ -304,9 +303,7 @@
     </div>
  
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    
-  </footer>
+ 
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -336,25 +333,57 @@
             </div>
           </div>
           <input type="password" name="password"  class="form-control bg-success text-danger" style="height:38px" placeholder="Tạo mật khẩu hoạt động"  >
-          
           <button class="btn btn-outline-success" type="submit"><i class="fas fa-plus"></i> Tạo</button>
         </form>
+      </div>
+    </div>
+  </div>
+  <!-- Modal - Xác nhận ủy quyền -->
+  <div class="modal fade" id="UyQuyenModel" tabindex="-1" role="dialog" aria-labelledby="UyQuyenModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="UyQuyenModelLabel">Xác nhận hành động</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span id="delActProgress">Bạn có chắc chắn muốn ủy quyền cho người này không?</span>
+        </div>
+        <div class="modal-footer" id="UyQuyenModelfoot">
+          <button class="btn btn-primary" id="xacnhanUyQuyenBtn" onclick="">Ủy Quyền</button>
+        </div>
+      </div>
+    </div>
+  </div>
+   <!-- Modal - Xác nhận hủy ủy quyền -->
+   <div class="modal fade" id="HuyUyQuyenModel" tabindex="-1" role="dialog" aria-labelledby="delActModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="delActModalLabel">Xác nhận hành động</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span id="delActProgress">Bạn có chắc chắn muốn hủy quyền  người này không?</span>
+        </div>
+        <div class="modal-footer" id="footDelActModal">
+          <button class="btn btn-danger" id="HuyxacnhanUyQuyenBtn" onclick="">Hủy</button>
+        </div>
       </div>
     </div>
   </div>
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-<script>
-$(document).ready(function(){
-  $("#searchUser").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#TablePhanQuyen tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
+<footer class="main-footer">
+    <p id="IDUserAdmin"> <%= Profile.IDMaAdmin%></p>
+</footer>
+
+
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -367,6 +396,66 @@ $(document).ready(function(){
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- daterangepicker -->
 <!-- AdminLTE App -->
+<script>
+  $('#IDUserAdmin').hide();
+$(document).ready(function(){
+  $("#searchUser").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#TablePhanQuyen tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+//Xác nhận ủy quyền
+function authenticateUyQuyen(c)
+{ 
+  $('#xacnhanUyQuyenBtn').attr('onclick',`AJAX_xacNhanUyQuyen('${c}')`);
+}
+function AJAX_xacNhanUyQuyen(c)
+{ 
+  $('#UyQuyenModel').modal('hide');
+  //$(document.body).removeClass("modal-open");
+ // $(".modal-backdrop").remove();
+  if ($('#check_id').is(":checked"))
+{
+  tensukien=$('#check_id').val();
+  IDUserAdmin=$('#IDUserAdmin').text();
+  $.ajax({type:'POST',
+      url:`/xacnhanUyQuyen?c=${c}`,
+      type:"POST",
+      data:{tensukien,IDUserAdmin},
+      success:function(data){
+        $.notify("Ủy quyền thành công");
+      },error: function(err)
+      { 
+        $.notify("Ủy quyền thất bại");
+      }
+      
+    })
+}
+}
+//Hủy ủy quyền
+function authenticateHuyUyQuyen(c)
+{ 
+  $('#HuyxacnhanUyQuyenBtn').attr('onclick',`AJAX_HuyxacNhanUyQuyen('${c}')`);
+}
+function AJAX_HuyxacNhanUyQuyen(c)
+{ 
+  $('#HuyUyQuyenModel').modal('hide');
+  $.ajax({type:'POST',
+      url:`/HuyUyQuyen?c=${c}`,
+      type:"POST",
+      success:function(data){
+        $.notify("Hủy ủy quyền thành công");
+      },error: function(err)
+      { 
+        $.notify("Hủy ủy quyền thất bại");
+      }
+      
+    })
+}
+</script>
+<script src="./javascripts/plugins/bootstrap-notify.js"></script>
 <script src="dist/js/adminlte.js"></script>
 
 </body>

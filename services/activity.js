@@ -138,3 +138,7 @@ module.exports.findAllAccount=async function (req, res)
   let all=account.find({});
   return all;
 }
+module.exports.findNameEventDuplate=async function (req,res){
+  let all=InforEvent.find({});
+  return all;
+}

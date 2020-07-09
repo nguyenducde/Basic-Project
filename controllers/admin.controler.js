@@ -1,6 +1,7 @@
 const passport = require('passport');
 var admin=require('../models/model_admin');
 var serviceActivity=require('../services/activity.js');
+var account=require('../models/model_account');
 //Check auth
 
 module.exports.isNotLogined_next = async function (req, res, next) {
@@ -20,12 +21,14 @@ module.exports.getLogin= async function (req, res, next) {
 module.exports.getHome= async function (req, res, next) {
     Mess="";
     let PeopleAcocount= await serviceActivity.findAllAccount();
+    let ListEvent=await serviceActivity.findNameEventDuplate();
     admin.findOne({IDMaAdmin:req.user.IDTaiKhoan},(err,result)=>{
       console.log(result);
       return res.render('./admin_views/home',{
         mess:Mess,
         Profile:result,
-        PeopleAc:PeopleAcocount
+        PeopleAc:PeopleAcocount,
+        ListEventUyQuyen:ListEvent
        });
     })
    
@@ -41,6 +44,23 @@ module.exports.logOut=async function(req,res){
   return   res.redirect('/admin'); //Inside a callback… bulletproof!
   });
 }
+module.exports.AJAX_xacNhanUyQuyen=async function (req, res, next) {
+  var IdUser=req.query.c;
+  var AdminUser=req.body.IDUserAdmin;
+  var TenChucNang=req.body.tensukien;
+  account.findOneAndUpdate({IDTaiKhoan:IdUser},{VaiTro:1,ChucNang:TenChucNang,NguoiUyQuyen:AdminUser},(err,result)=>{
+    console.log(result);
+  })
+  return  res.send("");
+}
+module.exports.AJAX_HuyxacNhanUyQuyen=function (req, res) {
+  account.findOneAndUpdate({IDTaiKhoan:req.query.c},{VaiTro:0,ChucNang:"",NguoiUyQuyen:""},(err,result)=>{
+    console.log(result);
+  })
+  return  res.send("");
+}
+
+
 function randomNum(num) {
   var result           = '';
   var characters       = '0123456789';
