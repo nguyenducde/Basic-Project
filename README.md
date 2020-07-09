@@ -16,7 +16,7 @@ Git clone https://github.com/nguyenducde/DiemDanh-Express-Mongodb.git Desktop
 
 ## Image
  1.admin interface
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/ueGl295"><a href="//imgur.com/a/ueGl295">ss</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+<img src="https://i.imgur.com/LbdsgKc.png">
   
   
  ### **Website Demo:**
