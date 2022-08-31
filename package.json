@@ -31,7 +31,7 @@
     "http-msgs": "^1.0.9",
     "instascan": "^1.0.0",
     "moment": "^2.26.0",
-    "moment-timezone": "^0.5.31",
+    "moment-timezone": "^0.5.35",
     "mongo-xlsx": "^1.0.12",
     "mongoose": "^5.9.10",
     "morgan": "^1.10.0",
