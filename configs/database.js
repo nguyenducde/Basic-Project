@@ -1,1 +1,2 @@
-module.exports.url='mongodb://nguyenducde:lalang123@cluster0-shard-00-00-pxb4j.mongodb.net:27017,cluster0-shard-00-01-pxb4j.mongodb.net:27017,cluster0-shard-00-02-pxb4j.mongodb.net:27017/DiemDanhDB?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority'
+module.exports.url =
+  "mongodb+srv://nguyenducde:lalanganhaivip1@cluster0.m0jj83n.mongodb.net/DiemDanhDB?retryWrites=true&w=majority";
